@@ -6,6 +6,13 @@ export const CardRestaurantContainer = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
+
+    img {
+        height: 120px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 8px 8px 0px 0px;
+    }
 `
 
 export const InfosCard = styled.div`
