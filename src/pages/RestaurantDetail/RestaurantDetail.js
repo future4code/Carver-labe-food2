@@ -32,13 +32,16 @@ const RestaurantDetail = () => {
         return array;
     }
 
+
     return (
         <C.Container>
             <HeaderRestaurant /> 
             <C.Content>
                 <C.Main>
+
                 <RestaurantCard />
                     {listProducts()}
+
                 </C.Main>
             </C.Content>
         </C.Container>
