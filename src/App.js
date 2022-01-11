@@ -15,7 +15,7 @@ const App = () => {
         {/* <Router /> */}
         {/* <InitialPage/> */}
         {/* <LoginPage/> */}
-        <RegisterPage/>
+        <Router />
         {/* <AndressPage/> */}
       </ThemeProvider>
     </GlobalState>
