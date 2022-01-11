@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import * as C from "./styled";
-import ImageBurguer from "../../../assets/ProductCard/mao-santa-burguer-1531851949973-v-2-900-x-506.png"
-
+import ConfirmDialog from "../ConfirmDialog/ConfirmDialog";
 
 const ProductCard = (props) => {
+    const [open, setOpen] = useState(false);
+
+    const addCart = () => {
+        setOpen(true);
+    }
+
     return (
         <C.CardProductContainer>
             <img src={props.product.photoUrl} alt={props.product.name} />
@@ -19,10 +24,11 @@ const ProductCard = (props) => {
                 </>
                 :
                 <>
-                    <C.ButtonCart color={"green"}>adicionar</C.ButtonCart>
+                    <C.ButtonCart color={"green"} onClick={addCart}>adicionar</C.ButtonCart>
                 </>
-            }
 
+            }
+            {open === true && <ConfirmDialog open={open} setOpen={setOpen} />}
         </C.CardProductContainer >
     )
 }

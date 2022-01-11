@@ -9,7 +9,7 @@ export const CardRestaurantContainer = styled.div`
 
     img {
         height: 120px;
-        width: 328px;
+        width: 100%;
         object-fit: cover;
         border-radius: 8px 8px 0px 0px;
     }
