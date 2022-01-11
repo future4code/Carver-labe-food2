@@ -52,31 +52,17 @@ const CartPage = () => {
             }
         })
 
-    const removeItem = (itemToRemove) => {
-        const position = cart.findIndex((item) => {
-            return item.id === itemToRemove.id;
-        });
-
-        let newCart = [...cart];
-
-        if (newCart[position].amount === 1) {
-            newCart.splice(position, 1);
-        } else {
-            newCart[position].amount -= 1;
-        }
-
-        setCart(newCart);
-    };
-
-    const CardProduct = products.map((product) => {
+    const CardProduct = cart.map((product) => {
         sum += Number(product.price.replace(",", ".")) * product.amount
 
         const price = (Number(product.price.replace(",", ".")) * product.amount)
 
         return (
-            <ProductCard photo={product.photoUrl} name={product.name} description={product.description} price={price.toFixed(2).replace(".",",")} amount={product.amount} removeItem={removeItem}/>
+            <ProductCard photo={product.photoUrl} id={product.id} name={product.name} description={product.description} price={price.toFixed(2).replace(".", ",")} amount={product.amount} />
         )
     })
+
+
 
     return (
         <ContainerPai>

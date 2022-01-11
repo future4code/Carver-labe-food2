@@ -5,9 +5,14 @@ import RestaurantCard from "./RestaurantCard/RestaurantCard";
 import TitleProductCard from "./TitleProductCard/TitleProductCard";
 import ProductCard from "./ProductCard/ProductCard";
 import { products } from "./products";
+import GlobalStateContext from "../../contexts/GlobalStateContext";
 
 const RestaurantDetail = () => {
-     let organizedProducts = [];
+    const [cart, setCart] = useContext(GlobalStateContext);
+
+    console.log(cart);
+
+    let organizedProducts = [];
     products && products.restaurant.products.map((item) => {
         if (organizedProducts.findIndex((category) => category.name === item.category) === -1) {
             organizedProducts = [...organizedProducts, {
@@ -26,7 +31,7 @@ const RestaurantDetail = () => {
         for (let i = 0; i < organizedProducts.length; i++) {
             array.push(<TitleProductCard key={Math.random()} title={organizedProducts[i].name} />);
             organizedProducts[i].products.map((item, id) => {
-                array.push(<ProductCard key={Math.random()} product={item} />);
+                array.push(<ProductCard key={Math.random()} photo={item.photoUrl} name={item.name} description={item.description} price={(Number(item.price.replace(",", "."))).toFixed(2).replace(".", ",")} amount={"0"} />);
             });
         }
         return array;
@@ -35,11 +40,11 @@ const RestaurantDetail = () => {
 
     return (
         <C.Container>
-            <HeaderRestaurant /> 
+            <HeaderRestaurant />
             <C.Content>
                 <C.Main>
 
-                <RestaurantCard />
+                    <RestaurantCard />
                     {listProducts()}
 
                 </C.Main>
