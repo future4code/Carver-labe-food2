@@ -24,6 +24,7 @@ export const PersonalInformationProfileArea = styled.div`
         margin-bottom: 8px;
         font-size: 16px;
         padding: 0 16px;
+        font-weight: normal;
     }
 `
 export const ButtonContainer = styled.div`
@@ -52,6 +53,7 @@ export const OrderHistoryArea = styled.div`
         font-size: 16px;
         letter-spacing: -0.39px;
         color: #000000;
+        font-weight: normal;
         
     }
 `
