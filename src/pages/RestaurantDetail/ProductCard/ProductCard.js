@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import * as C from "./styled";
 import ConfirmDialog from "../ConfirmDialog/ConfirmDialog";
 
-const ProductCard = (props) => {
+const ProductCard = ({photo, name, description, price, amount}) => {
+    
     const [open, setOpen] = useState(false);
 
     const addCart = () => {
@@ -11,15 +12,15 @@ const ProductCard = (props) => {
 
     return (
         <C.CardProductContainer>
-            <img src={props.product.photoUrl} alt={props.product.name} />
+            <img src={photo} alt={name} />
             <C.InfosContainer>
-                <C.TitleInfo>{props.product.name}</C.TitleInfo>
-                <C.DescInfo>{props.product.description}</C.DescInfo>
-                <C.DescPrice>R$ {Number(props.product.price.replace(",", ".")).toFixed(2).replace(".", ",")} </C.DescPrice>
+                <C.TitleInfo>{name}</C.TitleInfo>
+                <C.DescInfo>{description}</C.DescInfo>
+                <C.DescPrice>R$ {price} </C.DescPrice>
             </C.InfosContainer>
-            {props.product.amount > 0 ?
+            {amount > 0 ?
                 <>
-                    <C.AmountCart color={"green"}>{props.product.amount}</C.AmountCart>
+                    <C.AmountCart color={"green"}>{amount}</C.AmountCart>
                     <C.ButtonCart color={"red"}>remover</C.ButtonCart>
                 </>
                 :
