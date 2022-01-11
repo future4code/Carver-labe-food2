@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, CardMedia, TextField, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl, Toolbar, AppBar } from '@material-ui/core';
@@ -19,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
             width: '85%',
+            textTransform: "none",
+
         },
     },
     margin: {
@@ -40,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 const RegisterPage = () => {
     const classes1 = useStyles1();
     const classes = useStyles();
+    
 
     const [values, setValues] = React.useState({
         name: '',
@@ -113,9 +116,11 @@ const RegisterPage = () => {
                     onChange={handleChange('amount')}
                     placeholder="000.000.000-00"
                     required
-                    InputProps={{ inputProps: { min: 11, max: 11 } }} // teroricamente para aceitar uma quantidade minima
-                />
-
+                    // onInput = {(e) =>{
+                    //     e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0, 11)
+                    // }}
+                   />
+              
                 <FormControl required className={clsx(classes.margin, classes.textField)} variant="outlined">
                     <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
                     <OutlinedInput
@@ -166,7 +171,7 @@ const RegisterPage = () => {
                     />
                 </FormControl>
                 <>
-                    <Button variant="contained" color="primary" className={classes.withoutLabel} >
+                    <Button style={{ textTransform: "none" }} variant="contained" color="primary" className={classes.withoutLabel} >
                         Criar
                     </Button>
                 </>
