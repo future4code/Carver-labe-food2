@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     withoutLabel: {
         marginTop: theme.spacing(1),
         width: '85%',
+        textTransform: "none",
     },
     botao: {
         '& > *': {
@@ -95,7 +96,7 @@ const AndressPage = () => {
                     label="Complemento"
                     placeholder="Apto. / Bloco"
                     variant="outlined"
-                    required
+                    
                 />
                 <TextField
                     id="filled-textarea"
@@ -122,7 +123,7 @@ const AndressPage = () => {
                     value={values.name}
                     onChange={handleChange('name')}
                     label="Estado"
-                    placeholder="Estado"
+                    placeholder="Ex: DF"
                     multiline
                     variant="outlined"
                     required
