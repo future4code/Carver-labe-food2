@@ -96,7 +96,7 @@ const AndressPage = () => {
                     label="Complemento"
                     placeholder="Apto. / Bloco"
                     variant="outlined"
-                    required
+                    
                 />
                 <TextField
                     id="filled-textarea"
@@ -123,7 +123,7 @@ const AndressPage = () => {
                     value={values.name}
                     onChange={handleChange('name')}
                     label="Estado"
-                    placeholder="Estado"
+                    placeholder="Ex: DF"
                     multiline
                     variant="outlined"
                     required
