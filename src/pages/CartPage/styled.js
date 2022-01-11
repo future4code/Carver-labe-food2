@@ -33,7 +33,7 @@ export const Cart = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 16px;
+    padding: 5px 16px 16px 16px;
 `
 
 export const InfoRestaurant = styled.div`
@@ -97,6 +97,7 @@ export const Payment = styled.div`
     p{
         border-bottom: 1px solid black;
         padding: 5px;
+        margin-bottom: 10px;
     }
 
     form{
@@ -116,11 +117,13 @@ export const Button = styled.button`
     height: 42px;
     border-radius: 2px;
     background-color: #5cb646;
+    font-weight: bold;
 `
 
 export const Footer = styled.div`
     height: 49px;
     width: 100%;
+    position: sticky;
     background-color: black;
     bottom: 0;
 `

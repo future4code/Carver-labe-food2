@@ -8,6 +8,7 @@ import AndressPage from "../pages/AddressPage/AndressPage";
 import InitialPage from "../pages/InitialPage/InitialPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
+import CartPage from "../pages/CartPage/CartPage";
 
 
 const Router = () => {
@@ -21,6 +22,7 @@ const Router = () => {
                 <Route path={"/cadastro"} element={<RegisterPage />} />
                 <Route path={"/cadastrar-endereco"} element={<AndressPage />} />
                 <Route path={"/restaurante/:id"} element={<RestaurantDetail />} />
+                <Route path={"/carrinho"} element={<CartPage/>}/>
                 <Route path={"/profile"} element={<Profile/>} />
                 <Route path="*" element={<>Not Found</>}/>
             </Routes>

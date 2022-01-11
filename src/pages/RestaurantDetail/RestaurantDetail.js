@@ -36,6 +36,7 @@ const RestaurantDetail = () => {
         }
     }
 
+    
 
     return (
         <C.Container >
@@ -44,10 +45,10 @@ const RestaurantDetail = () => {
                 <C.Main>
                     <RestaurantCard />
                     <TitleProductCard title={"Principais"} />
-                    <ProductCard product={productsTeste[0]} />
-                    <ProductCard product={productsTeste[1]} />
+                    <ProductCard photo ={productsTeste[0].photoUrl} name={productsTeste[0].name} description={productsTeste[0].description} price={Number(productsTeste[0].price).toFixed(2).replace(".",",")} amount={productsTeste[0].amount}/>
+                    {/* <ProductCard product={productsTeste[1]} />
                     <TitleProductCard title={"Acompanhamentos"} />
-                    <ProductCard product={productsTeste[3]} />
+                    <ProductCard product={productsTeste[3]} /> */}
                 </C.Main>
             </C.Content>
         </C.Container >
