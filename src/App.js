@@ -12,11 +12,7 @@ const App = () => {
   return (
     <GlobalState>
       <ThemeProvider theme={theme}>
-        {/* <Router /> */}
-        {/* <InitialPage/> */}
-        {/* <LoginPage/> */}
-        <RegisterPage/>
-        {/* <AndressPage/> */}
+        <Router />
       </ThemeProvider>
     </GlobalState>
   )
