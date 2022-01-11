@@ -9,6 +9,7 @@ import InitialPage from "../pages/InitialPage/InitialPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 
+
 const Router = () => {
     return (
         <BrowserRouter>
