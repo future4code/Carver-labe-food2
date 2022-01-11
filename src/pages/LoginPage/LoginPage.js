@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     withoutLabel: {
         marginTop: theme.spacing(1),
         width: '85%',
+        textTransform: "none",
     },
     botao: {
         '& > *': {
