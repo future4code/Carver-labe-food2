@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 
 const ConfirmDialog = (props) => {
-    const [amount, setAmount] = useState(1);
+    const [amount, setAmount] = useState(0);
 
     const onChange = (e) => {
         setAmount(e.target.value);
@@ -24,6 +24,7 @@ const ConfirmDialog = (props) => {
                 <DialogContent>
                     <C.ContainerSelect>
                         <C.Select onChange={onChange}>
+                        <option value={1}>0</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
                             <option value={3}>3</option>

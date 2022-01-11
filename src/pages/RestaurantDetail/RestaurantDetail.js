@@ -1,57 +1,50 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as C from "./styled";
 import HeaderRestaurant from "../RestaurantDetail/HeaderRestaurant/HeaderRestaurant";
 import RestaurantCard from "./RestaurantCard/RestaurantCard";
 import TitleProductCard from "./TitleProductCard/TitleProductCard";
 import ProductCard from "./ProductCard/ProductCard";
+import { products } from "./products";
 
 const RestaurantDetail = () => {
-    const productsTeste = {
-        0: {
-            "id": "CnKdjU6CyKakQDGHzNln",
-            "category": "Salgado",
-            "price": "1",
-            "photoUrl": "https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/65c38aa8-b094-413d-9a80-ddc256bfcc78/201907031404_66194495.jpg",
-            "name": "Bibsfiha carne",
-            "description": "Esfiha deliciosa, receita secreta do Habibs.",
-            amount: 1,
-        },
-        1: {
-            "id": "dixrjmRJvcBER8pivj9X",
-            "name": "Bibsfiha queijo",
-            "description": "Esfiha deliciosa, receita secreta do Habibs.",
-            "category": "Salgado",
-            "price": "1",
-            "photoUrl": "https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/65c38aa8-b094-413d-9a80-ddc256bfcc78/201907031403_66194479.jpg",
-            amount: 0,
-        },
-        3: {
-            "id": "hwTEJXaj2mvR17oUTwm2",
-            "photoUrl": "https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/65c38aa8-b094-413d-9a80-ddc256bfcc78/201907031439_71805445.jpg",
-            "name": "Suco",
-            "description": "Laranja, Acerola ou Maçã",
-            "category": "Bebida",
-            "price": "7,90",
-            amount: 0,
+     let organizedProducts = [];
+    products && products.restaurant.products.map((item) => {
+        if (organizedProducts.findIndex((category) => category.name === item.category) === -1) {
+            organizedProducts = [...organizedProducts, {
+                "name": item.category,
+                "products": [item]
+            }]
         }
+        else {
+            const categoryId = organizedProducts.findIndex((category) => item.category === category.name);
+            organizedProducts[categoryId].products.push(item);
+        }
+    });
+
+    const listProducts = () => {
+        const array = [];
+        for (let i = 0; i < organizedProducts.length; i++) {
+            array.push(<TitleProductCard key={Math.random()} title={organizedProducts[i].name} />);
+            organizedProducts[i].products.map((item, id) => {
+                array.push(<ProductCard key={Math.random()} product={item} />);
+            });
+        }
+        return array;
     }
 
-    
 
     return (
-        <C.Container >
-            <HeaderRestaurant />
+        <C.Container>
+            <HeaderRestaurant /> 
             <C.Content>
                 <C.Main>
-                    <RestaurantCard />
-                    <TitleProductCard title={"Principais"} />
-                    <ProductCard photo ={productsTeste[0].photoUrl} name={productsTeste[0].name} description={productsTeste[0].description} price={Number(productsTeste[0].price).toFixed(2).replace(".",",")} amount={productsTeste[0].amount}/>
-                    {/* <ProductCard product={productsTeste[1]} />
-                    <TitleProductCard title={"Acompanhamentos"} />
-                    <ProductCard product={productsTeste[3]} /> */}
+
+                <RestaurantCard />
+                    {listProducts()}
+
                 </C.Main>
             </C.Content>
-        </C.Container >
+        </C.Container>
     )
 }
 
