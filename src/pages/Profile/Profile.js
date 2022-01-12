@@ -2,7 +2,8 @@ import React from 'react'
 import { AdressInformation, ButtonContainer, GrayText, Line, OrderDate, OrderHistoryArea, OrderHistoryCard, OrderHistoryTitleCard, OrderTotalCost, PersonalInformationProfileArea, ProfilePageContainer } from './profile.css.js'
 import IconButton from '@material-ui/core/IconButton';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
-
+import Footer from "../../components/Footer/Footer"
+import { Footer1 } from '../CartPage/styled.js';
 
 export default function Profile() {
     return (
@@ -54,7 +55,10 @@ export default function Profile() {
                     <OrderTotalCost>Total R$67,00</OrderTotalCost>
                 </OrderHistoryCard>
             </OrderHistoryArea>
-
+            {/* <Footer1>
+            <Footer/>
+            </Footer1> */}
+            
         </ProfilePageContainer>
     )
 }

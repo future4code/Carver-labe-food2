@@ -52,18 +52,7 @@ const AndressPage = () => {
 
     return (
         <Container>
-            <header>
-                <div>
-                    <AppBar position="static">
-                        <Toolbar>
-                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                <ArrowBackIosIcon />
-                            </IconButton>
-                        </Toolbar>
-                    </AppBar>
-                </div>
-            </header>
-
+            
             <p>Meu endereço</p>
 
             <form className={classes.root} noValidate autoComplete="off">

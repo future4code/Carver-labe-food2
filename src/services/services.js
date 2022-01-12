@@ -83,12 +83,10 @@ export const placeOrder = (body, restaurantId) => {
         }
     })
     request.then(res => {
-
-        return res.data.user
+        return res.data
     }).catch(err => {
         alert(err.response.data.message)
     })
-
 }
 
 export const updateProfile = (body) => {
@@ -145,6 +143,7 @@ export const getRestaurantsDetails = async (restaurantId, token) => {
     } catch (err) {
         alert(err.response);
     }
+
 }
 
 export const getActiveOrder = () => {

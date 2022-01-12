@@ -9,6 +9,7 @@ import InitialPage from "../pages/InitialPage/InitialPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import CartPage from "../pages/CartPage/CartPage";
+import Footer from "../components/Footer/Footer";
 
 
 const Router = () => {
@@ -23,9 +24,10 @@ const Router = () => {
                 <Route path={"/cadastrar-endereco"} element={<AndressPage />} />
                 <Route path={"/restaurante/:id"} element={<RestaurantDetail />} />
                 <Route path={"/carrinho"} element={<CartPage/>}/>
-                <Route path={"/profile"} element={<Profile/>} />
+                <Route path={"/perfil"} element={<Profile/>} />
                 <Route path="*" element={<>Not Found</>}/>
             </Routes>
+            <Footer/>
         </BrowserRouter>
     )
 }
