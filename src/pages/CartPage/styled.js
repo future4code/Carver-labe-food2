@@ -34,6 +34,7 @@ export const Cart = styled.div`
     flex-direction: column;
     width: 100%;
     padding: 5px 16px 16px 16px;
+    height: auto;
 `
 
 export const InfoRestaurant = styled.div`
@@ -118,6 +119,8 @@ export const Button = styled.button`
     border-radius: 2px;
     background-color: #5cb646;
     font-weight: bold;
+    bottom: 70px;
+    width: 100%;
 `
 
 export const Footer = styled.div`

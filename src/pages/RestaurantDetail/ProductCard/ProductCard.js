@@ -1,14 +1,32 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import * as C from "./styled";
 import ConfirmDialog from "../ConfirmDialog/ConfirmDialog";
+import GlobalStateContext from "../../../contexts/GlobalStateContext";
 
-const ProductCard = ({photo, name, description, price, amount}) => {
-    
+const ProductCard = ({photo, id, name, description, price, amount}) => {
+    const [cart, setCart] = useContext(GlobalStateContext)
     const [open, setOpen] = useState(false);
 
     const addCart = () => {
         setOpen(true);
     }
+
+    const removeItem = () => {
+        const position = cart.findIndex((item) => {
+            return item.id === id;
+        });
+
+        let newCart = [...cart];
+
+        if (newCart[position].amount === 1) {
+            newCart.splice(position, 1);
+        } else {
+            newCart[position].amount -= 1;
+        }
+
+        setCart(newCart);
+    };
+    
 
     return (
         <C.CardProductContainer>
@@ -21,7 +39,7 @@ const ProductCard = ({photo, name, description, price, amount}) => {
             {amount > 0 ?
                 <>
                     <C.AmountCart color={"green"}>{amount}</C.AmountCart>
-                    <C.ButtonCart color={"red"}>remover</C.ButtonCart>
+                    <C.ButtonCart color={"red"} onClick={removeItem}>remover</C.ButtonCart>
                 </>
                 :
                 <>

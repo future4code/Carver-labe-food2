@@ -7,6 +7,7 @@ import ProductCard from "./ProductCard/ProductCard";
 import { products } from "./products";
 
 const RestaurantDetail = () => {
+    
      let organizedProducts = [];
     products && products.restaurant.products.map((item) => {
         if (organizedProducts.findIndex((category) => category.name === item.category) === -1) {
