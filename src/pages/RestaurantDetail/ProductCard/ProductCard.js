@@ -31,6 +31,7 @@ const ProductCard = ({ photo, id, name, description, price, amount, restaurant }
         } else {
             newCart[position].amount -= 1;
         }
+        
         setCart(newCart);
     };
 
