@@ -1,14 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
 import * as C from "./styled";
 import ConfirmDialog from "../ConfirmDialog/ConfirmDialog";
 import GlobalStateContext from "../../../contexts/GlobalStateContext";
 
-const ProductCard = ({photo, id, name, description, price, amount}) => {
-    const [cart, setCart] = useContext(GlobalStateContext)
+const ProductCard = ({ photo, id, name, description, price, amount, restaurant }) => {
+    const [cart, setCart] = useContext(GlobalStateContext);
     const [open, setOpen] = useState(false);
+    const product = { photo, id, name, description, price, amount, restaurant }
 
     const addCart = () => {
         setOpen(true);
+    }
+
+    if (amount === "request") {
+        const index = cart.findIndex((item) => item.name === name);
+        if (index !== -1) {
+            amount = cart[index].amount;
+        }
     }
 
     const removeItem = () => {
@@ -23,10 +31,9 @@ const ProductCard = ({photo, id, name, description, price, amount}) => {
         } else {
             newCart[position].amount -= 1;
         }
-
+        
         setCart(newCart);
     };
-    
 
     return (
         <C.CardProductContainer>
@@ -45,9 +52,8 @@ const ProductCard = ({photo, id, name, description, price, amount}) => {
                 <>
                     <C.ButtonCart color={"green"} onClick={addCart}>adicionar</C.ButtonCart>
                 </>
-
             }
-            {open === true && <ConfirmDialog open={open} setOpen={setOpen} />}
+            {open === true && <ConfirmDialog open={open} setOpen={setOpen} product={product} />}
         </C.CardProductContainer >
     )
 }

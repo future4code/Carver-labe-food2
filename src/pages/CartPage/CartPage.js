@@ -1,22 +1,11 @@
 import React, { useContext, useState } from 'react'
-import { ContainerPai, Cabecalho, AddressContainer, AddressUser, Cart, InfoRestaurant, ContainerProducts, CardProduto, Info, Price, Footer, Payment, Button } from './styled'
+import { ContainerPai, AddressContainer, AddressUser, Cart, InfoRestaurant, ContainerProducts, CardProduto, Info, Price, Footer, Payment, Button } from './styled'
 import ProductCard from '../RestaurantDetail/ProductCard/ProductCard'
 import GlobalStateContext from '../../contexts/GlobalStateContext';
 
 const CartPage = () => {
     let sum = 0;
-    const [cart,] = useContext(GlobalStateContext)
-
-    const [restaurant, setRestaurant] = useState({
-        "id": "1",
-        "description": "Habib's é uma rede de restaurantes de comida rápida brasileira especializada em culinária árabe, os restaurantes vendem mais de 600 milhões de esfirras por ano. A empresa emprega 22 mil colaboradores e tem 421 unidades distribuídas em mais de cem municípios em 20 unidades federativas.",
-        "shipping": 6,
-        "address": "Rua das Margaridas, 110 - Jardim das Flores",
-        "name": "Habibs",
-        "logoUrl": "http://soter.ninja/futureFoods/logos/habibs.jpg",
-        "deliveryTime": 60,
-        "category": "Árabe"
-    })
+    const [cart, setCart, restaurant, setRestaurant] = useContext(GlobalStateContext)
 
     const [profileUser, setProfileUser] = useState(
         {
@@ -45,6 +34,8 @@ const CartPage = () => {
             <ProductCard photo={product.photoUrl} id={product.id} name={product.name} description={product.description} price={changeAccent(price)} amount={product.amount} />
         )
     })
+
+
 
     return (
         <ContainerPai>
