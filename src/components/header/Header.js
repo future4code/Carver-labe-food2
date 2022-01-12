@@ -128,6 +128,7 @@ const Header = () => {
                                                 </AppBar>
                                             </header>
                                             : location.pathname === '/' ? <></> 
+                                            : location.pathname === '/login' ? <></> 
                                             :
                                             <header>
                                                 <AppBar position="static">
