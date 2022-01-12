@@ -1,60 +1,77 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import * as C from "./styled";
 import HeaderRestaurant from "../RestaurantDetail/HeaderRestaurant/HeaderRestaurant";
 import RestaurantCard from "./RestaurantCard/RestaurantCard";
 import TitleProductCard from "./TitleProductCard/TitleProductCard";
 import ProductCard from "./ProductCard/ProductCard";
+<<<<<<< HEAD
 import Header from "../../components/header/Header";
+=======
+import { products } from "./products";
+import GlobalStateContext from "../../contexts/GlobalStateContext";
+>>>>>>> e98fd506c59030e9bfa447e6b180a503d21e71e2
 
 const RestaurantDetail = () => {
-    const productsTeste = {
-        0: {
-            "id": "CnKdjU6CyKakQDGHzNln",
-            "category": "Salgado",
-            "price": "1",
-            "photoUrl": "https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/65c38aa8-b094-413d-9a80-ddc256bfcc78/201907031404_66194495.jpg",
-            "name": "Bibsfiha carne",
-            "description": "Esfiha deliciosa, receita secreta do Habibs.",
-            amount: 1,
-        },
-        1: {
-            "id": "dixrjmRJvcBER8pivj9X",
-            "name": "Bibsfiha queijo",
-            "description": "Esfiha deliciosa, receita secreta do Habibs.",
-            "category": "Salgado",
-            "price": "1",
-            "photoUrl": "https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/65c38aa8-b094-413d-9a80-ddc256bfcc78/201907031403_66194479.jpg",
-            amount: 0,
-        },
-        3: {
-            "id": "hwTEJXaj2mvR17oUTwm2",
-            "photoUrl": "https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/65c38aa8-b094-413d-9a80-ddc256bfcc78/201907031439_71805445.jpg",
-            "name": "Suco",
-            "description": "Laranja, Acerola ou Maçã",
-            "category": "Bebida",
-            "price": "7,90",
-            amount: 0,
+    const [cart, setCart] = useContext(GlobalStateContext);
+
+    useEffect(() => {
+      
+    }, [cart]);
+
+    const restaurants = {
+        "id": "1",
+        "description": "Habib's é uma rede de restaurantes de comida rápida brasileira especializada em culinária árabe, os restaurantes vendem mais de 600 milhões de esfirras por ano. A empresa emprega 22 mil colaboradores e tem 421 unidades distribuídas em mais de cem municípios em 20 unidades federativas.",
+        "shipping": 6,
+        "address": "Rua das Margaridas, 110 - Jardim das Flores",
+        "name": "Habibs",
+        "logoUrl": "https://istoe.com.br/wp-content/uploads/sites/14/2018/04/habibs.jpg",
+        "deliveryTime": 60,
+        "category": "Árabe"
+      }
+
+     let organizedProducts = [];
+    products && products.restaurant.products.map((item) => {
+        if (organizedProducts.findIndex((category) => category.name === item.category) === -1) {
+            organizedProducts = [...organizedProducts, {
+                "name": item.category,
+                "products": [item]
+            }]
         }
+        else {
+            const categoryId = organizedProducts.findIndex((category) => item.category === category.name);
+            organizedProducts[categoryId].products.push(item);
+        }
+    });
+
+    const listProducts = () => {
+        const array = [];
+        for (let i = 0; i < organizedProducts.length; i++) {
+            array.push(<TitleProductCard key={Math.random()} title={organizedProducts[i].name} />);
+            organizedProducts[i].products.map((item, id) => {
+                array.push(<ProductCard key={Math.random()} photo={item.photoUrl} id={item.id} name={item.name} description={item.description} price={(Number(item.price.replace(",", "."))).toFixed(2).replace(".", ",")} amount={"request"} restaurant={restaurants} />);
+            });
+        }
+        return array;
     }
 
-
     return (
+<<<<<<< HEAD
         <C.Container >
             {/* <HeaderRestaurant /> */}
             <Header
             // id={mapId} 
             />
+=======
+        <C.Container>
+            <HeaderRestaurant />
+>>>>>>> e98fd506c59030e9bfa447e6b180a503d21e71e2
             <C.Content>
                 <C.Main>
-                    <RestaurantCard />
-                    <TitleProductCard title={"Principais"} />
-                    <ProductCard product={productsTeste[0]} />
-                    <ProductCard product={productsTeste[1]} />
-                    <TitleProductCard title={"Acompanhamentos"} />
-                    <ProductCard product={productsTeste[3]} />
+                    <RestaurantCard restaurants={restaurants}/>
+                    {listProducts()}
                 </C.Main>
             </C.Content>
-        </C.Container >
+        </C.Container>
     )
 }
 

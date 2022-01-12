@@ -6,6 +6,7 @@ import { Container } from "./styled";
 import Logo from '../../assests/logo-preta.png'
 import clsx from 'clsx';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
+import useForm from "../../hooks/useForm";
 
 import Header from "../../components/header/Header";
 
@@ -42,11 +43,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RegisterPage = () => {
-    const classes1 = useStyles1();
     const classes = useStyles();
     
+    const [form, onChange] = useForm(
+        {
+            name: 'Madreyv Gomes',
+            email: 'madreyv@gmail.com',
+            password: '123456',
+            cpf:'33333333333'
+        }
+    )
+    
 
-    const [values, setValues] = React.useState({
+    const [values, setValues] = useState({
         name: '',
         email: '',
         password: '',
@@ -64,6 +73,11 @@ const RegisterPage = () => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(form)
+    }
 
     return (
         <Container>
@@ -86,23 +100,25 @@ const RegisterPage = () => {
                 alt="pokemons"
             />
             <p>Cadastrar</p>
-            <form className={classes.root} noValidate autoComplete="off">
+            <form className={classes.root} noValidate={false} autoComplete="on" onSubmit={handleSubmit}>
 
                 <TextField
                     id="filled-textarea"
-                    value={values.name}
-                    onChange={handleChange('name')}
+                    value={form.name}
+                    onChange={onChange}
                     label="Nome"
                     placeholder="Nome e sobrenome"
                     variant="outlined"
+                    name="name"
                     required
                 />
 
                 <TextField
                     type="email"
                     id="filled-textarea"
-                    value={values.email}
-                    onChange={handleChange('email')}
+                    name="email"
+                    value={form.email}
+                    onChange={onChange}
                     label="E-mail"
                     placeholder="email@email.com"
                     multiline
@@ -113,16 +129,17 @@ const RegisterPage = () => {
                 <TextField
                     id="outlined-number"
                     label="CPF"
-                    type="number"
+                    type="texte"
                     variant="outlined"
-                    value={values.amount}
-                    onChange={handleChange('amount')}
+                    name="cpf"
+                    value={form.cpf}
+                    onChange={onChange}
                     placeholder="000.000.000-00"
+                    mask={'[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}'}
+                    inputProps={{pattern:'[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}'}}
+                    showMask
                     required
-                    // onInput = {(e) =>{
-                    //     e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0, 11)
-                    // }}
-                   />
+                />
               
                 <FormControl required className={clsx(classes.margin, classes.textField)} variant="outlined">
                     <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
@@ -130,8 +147,9 @@ const RegisterPage = () => {
                         id="outlined-adornment-password"
                         placeholder="Minimo 6 caracteres"
                         type={values.showPassword ? 'text' : 'password'}
-                        value={values.password}
-                        onChange={handleChange('password')}
+                        name="password"
+                        value={form.password}
+                        onChange={onChange}
                         endAdornment={
                             <InputAdornment position="end">
                                 <IconButton
@@ -174,7 +192,7 @@ const RegisterPage = () => {
                     />
                 </FormControl>
                 <>
-                    <Button style={{ textTransform: "none" }} variant="contained" color="primary" className={classes.withoutLabel} >
+                    <Button style={{ textTransform: "none" }} variant="contained" color="primary" type="submit" className={classes.withoutLabel} >
                         Criar
                     </Button>
                 </>

@@ -1,8 +1,6 @@
 import React from 'react'
 import { AdressInformation, ButtonContainer, GrayText, Line, OrderDate, OrderHistoryArea, OrderHistoryCard, OrderHistoryTitleCard, OrderTotalCost, PersonalInformationProfileArea, ProfilePageContainer } from './profile.css.js'
-import { Button } from "@material-ui/core"
 import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import Header from '../../components/header/Header.js';
 import Footer from '../../components/footer/Footer.js';
