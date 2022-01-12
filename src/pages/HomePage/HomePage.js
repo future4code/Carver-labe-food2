@@ -18,6 +18,10 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Text, TabsStyled } from "./styled";
 import ImageCard from '../../assests/image.png'
+import Header from "../../components/header/Header";
+import Footer from "../../components/Footer/Footer";
+
+
 
 
 const useStyles1 = makeStyles((theme) => ({
@@ -44,18 +48,18 @@ const useStylesBottomNavigation = makeStyles({
     root: {
         width: "100%"
     },
-   
+
 });
 
-const useStylesCard= makeStyles({
-    root:{
+const useStylesCard = makeStyles({
+    root: {
         maxWidth: 338,
     },
     media: {
         height: 103,
     },
-    content:{
-        height:20
+    content: {
+        height: 20
     }
 });
 
@@ -160,7 +164,7 @@ const HomePage = () => {
     const classes1 = useStyles1();
     const classes2 = useStylesScrollableTabs();
     const classes3 = useStylesBottomNavigation();
-    const classes4=useStylesCard()
+    const classes4 = useStylesCard()
     const [valueBottom, setValueBottom] = React.useState(0);
     const [value, setValue] = React.useState(0);
 
@@ -171,22 +175,6 @@ const HomePage = () => {
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
-                <header>
-                    <div>
-                        <AppBar position="static">
-                            <Toolbar>
-                                <IconButton
-                                    edge="start"
-                                    className={classes1.menuButton}
-                                    color="inherit"
-                                    aria-label="menu"
-                                >
-                                    <ArrowBackIosIcon />
-                                </IconButton>
-                            </Toolbar>
-                        </AppBar>
-                    </div>
-                </header>
                 <SearchContainer>
                     <AppBar color="transparent" position="static">
                         <Toolbar>
@@ -224,21 +212,21 @@ const HomePage = () => {
                     </TabsStyled>
 
                     <TabPanel value={value} index={0}>
-                    <Card className={classes4.root}>
-                    <CardActionArea>
-                        <CardMedia
-                            className={classes4.media}
-                            image={ImageCard}
-                            title="Contemplative Reptile"
-                        />
-                        <CardContent className={classes4.content}>
-                            <Typography gutterBottom variant="body2" color="primary" component="h2">
-                            Vinil Butantã
-                            </Typography>
-                           
-                        </CardContent>
-                    </CardActionArea>
-                </Card>
+                        <Card className={classes4.root}>
+                            <CardActionArea>
+                                <CardMedia
+                                    className={classes4.media}
+                                    image={ImageCard}
+                                    title="Contemplative Reptile"
+                                />
+                                <CardContent className={classes4.content}>
+                                    <Typography gutterBottom variant="body2" color="primary" component="h2">
+                                        Vinil Butantã
+                                    </Typography>
+
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
                     </TabPanel>
                     <TabPanel value={value} index={1}>
                         Item Two
@@ -259,8 +247,8 @@ const HomePage = () => {
                         Item Seven
                     </TabPanel>
                 </div>
-              
-                <AppBar position="fixed" color="transparent" className={classes.appBar}>
+
+                {/* <AppBar position="fixed" color="transparent" className={classes.appBar}>
                     <Toolbar>
                         <BottomNavigation
                             value={valueBottom}
@@ -284,7 +272,8 @@ const HomePage = () => {
                             />
                         </BottomNavigation>
                     </Toolbar>
-                </AppBar>
+                </AppBar> */}
+                {/* <Footer /> */}
             </div>
         </ThemeProvider>
     );

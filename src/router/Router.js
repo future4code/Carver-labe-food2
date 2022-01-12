@@ -9,6 +9,7 @@ import InitialPage from "../pages/InitialPage/InitialPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import CartPage from "../pages/CartPage/CartPage";
+import Footer from "../components/Footer/Footer";
 
 
 const Router = () => {
@@ -26,6 +27,7 @@ const Router = () => {
                 <Route path={"/perfil"} element={<Profile/>} />
                 <Route path="*" element={<>Not Found</>}/>
             </Routes>
+            <Footer/>
         </BrowserRouter>
     )
 }
