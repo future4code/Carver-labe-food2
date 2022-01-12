@@ -7,7 +7,7 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import IconButton from '@material-ui/core/IconButton';
 import { goToCart, goToHome, goToProfile } from "../../router/coordinator";
 import { useNavigate } from "react-router-dom";
-import { Footer1 } from "./styled";
+import { Container, Footer1 } from "./styled";
 
 
 import { useLocation } from "react-router-dom";
@@ -119,10 +119,8 @@ const Footer = () => {
         //          </BottomNavigation>
 
         // </Toolbar>
-
-
-    <footer>
-    {
+        <>
+            {
                 location.pathname === "/home" || location.pathname === "/carrinho" || location.pathname === "/perfil" ?
                     <AppBar className={classes.root} position="fixed">
                         <BottomNavigation value={value} onChange={handleChange} showLabels >
@@ -133,9 +131,7 @@ const Footer = () => {
 
                     </AppBar> : <></>
             }
-    </footer>
-
-
+        </>
     )
 }
 

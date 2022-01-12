@@ -47,6 +47,7 @@ export const AdressInformation = styled(PersonalInformationProfileArea)`
 export const OrderHistoryArea = styled.div`
     padding: 16px;
     width: 91vw;
+    margin-bottom: 12vw;
 
     h5{
         margin: 0 0 8px;

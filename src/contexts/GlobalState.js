@@ -13,7 +13,33 @@ const GlobalState = (props) => {
         "category": "Árabe"
       });
 
-    const [cart, setCart] = useState([ ]);
+    const [cart, setCart] = useState([{
+        "id": "CnKdjU6CyKakQDGHzNln",
+        "category": "Salgado",
+        "price": "1",
+        "photoUrl": "https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/65c38aa8-b094-413d-9a80-ddc256bfcc78/201907031404_66194495.jpg",
+        "name": "Bibsfiha carne",
+        "description": "Esfiha deliciosa, receita secreta do Habibs.",
+        amount: 1
+      },
+      {
+        "id": "KJqMl2DxeShkSBevKVre",
+        "photoUrl": "https://www.sushimanscwb.com.br/wp-content/uploads/2018/10/1579_REFRIGERANTE_LATA_-_350ml_17d2e336feb44a2696fd6cf852c41b50-1.jpeg",
+        "name": "Refrigerante",
+        "description": "Coca cola, Sprite ou Guaraná",
+        "category": "Bebida",
+        "price": "4",
+        amount: 1
+      },
+      {
+        "id": "SmT6MYMm8QC8riHYApzt",
+        "name": "Batata Frita",
+        "description": "Batata frita crocante e sequinha.",
+        "category": "Acompanhamento",
+        "price": "9,50",
+        "photoUrl": "https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/65c38aa8-b094-413d-9a80-ddc256bfcc78/201907031409_66194560.jpg",
+        amount: 1
+      }]);
 
     return(
         <GlobalStateContext.Provider value={[cart, setCart, restaurant, setRestaurant]}>
