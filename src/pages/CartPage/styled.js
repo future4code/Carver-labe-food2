@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from '@material-ui/core/Button';
 
 export const ContainerPai = styled.div`
     display: flex;
@@ -7,7 +8,7 @@ export const ContainerPai = styled.div`
 `
 
 export const InfoCart = styled.div`
-    min-height: 85.5vh;
+    min-height: 85vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -89,7 +90,6 @@ export const Price = styled.div`
 `
 
 export const Payment = styled.div`
-    /* height: 89px; */
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -117,12 +117,11 @@ export const Payment = styled.div`
 
 `
 
-export const Button = styled.button`
+export const ButtonUI = styled(Button)`
     height: 42px;
     border-radius: 2px;
     background-color: #5cb646;
-    font-weight: bold;
     width: 90vw;
-    margin-bottom: 1vh;
+    margin-bottom: "10px";
 `
 
