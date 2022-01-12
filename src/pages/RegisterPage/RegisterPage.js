@@ -7,6 +7,8 @@ import Logo from '../../assests/logo-preta.png'
 import clsx from 'clsx';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
+import Header from "../../components/header/Header";
+
 const useStyles1 = makeStyles((theme) => ({
     menuButton: {
         marginRight: theme.spacing(2),
@@ -65,7 +67,7 @@ const RegisterPage = () => {
 
     return (
         <Container>
-            <header>
+            {/* <header>
                 <div>
                     <AppBar position="static">
                         <Toolbar>
@@ -75,7 +77,8 @@ const RegisterPage = () => {
                         </Toolbar>
                     </AppBar>
                 </div>
-            </header>
+            </header> */}
+            <Header/>
 
             <CardMedia
                 component="img"

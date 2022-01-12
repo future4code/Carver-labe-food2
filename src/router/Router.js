@@ -8,12 +8,13 @@ import AndressPage from "../pages/AddressPage/AndressPage";
 import InitialPage from "../pages/InitialPage/InitialPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
+import CartPage from "../pages/CartPage/CartPage";
 
 
 const Router = () => {
     return (
         <BrowserRouter>
-            <Header/>
+            {/* <Header/> */}
             <Routes>
                 <Route path={"/"} element={<InitialPage />} />
                 <Route path={"/home"} element={<HomePage />} />
@@ -21,7 +22,8 @@ const Router = () => {
                 <Route path={"/cadastro"} element={<RegisterPage />} />
                 <Route path={"/cadastrar-endereco"} element={<AndressPage />} />
                 <Route path={"/restaurante/:id"} element={<RestaurantDetail />} />
-                <Route path={"/profile"} element={<Profile/>} />
+                <Route path={"/perfil"} element={<Profile/>} />
+                <Route path={"/carrinho"} element={<CartPage/>} />
                 <Route path="*" element={<>Not Found</>}/>
             </Routes>
         </BrowserRouter>

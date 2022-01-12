@@ -118,9 +118,9 @@ export const Button = styled.button`
     background-color: #5cb646;
 `
 
-export const Footer = styled.div`
+export const Footer1 = styled.div`
     height: 49px;
     width: 100%;
-    background-color: black;
+    /* background-color: black; */
     bottom: 0;
 `

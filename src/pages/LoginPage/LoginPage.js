@@ -5,6 +5,8 @@ import { Container } from "./styled";
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
+import { goToRegister } from "../../router/coordinator";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginPage = () => {
     const classes = useStyles();
+    const history = useNavigate()
 
     const [values, setValues] = React.useState({
         amount: '',
@@ -101,7 +104,7 @@ const LoginPage = () => {
                     <Button variant="contained" color="primary" className={classes.withoutLabel} >
                         Entrar
                     </Button>
-                    <Button color="#000000" className={classes.botao}>
+                    <Button color="#000000" className={classes.botao} onClick={ () => goToRegister(history)}>
                         Não possui cadastro? Clique aqui
                     </Button>
                 </>

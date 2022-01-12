@@ -4,11 +4,15 @@ import { Button } from "@material-ui/core"
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
+import Header from '../../components/header/Header.js';
+import Footer from '../../components/footer/Footer.js';
+import { Footer1 } from './profile.css.js';
 
 
 export default function Profile() {
     return (
         <ProfilePageContainer>
+            <Header />
             <PersonalInformationProfileArea>
                 <h5>Bruna Oliveira</h5>
                 <h5>bruna_o@gmail.com</h5>
@@ -19,7 +23,7 @@ export default function Profile() {
                         <CreateOutlinedIcon />
                     </IconButton>
                 </ButtonContainer>
-                
+
             </PersonalInformationProfileArea>
 
             <AdressInformation>
@@ -34,7 +38,7 @@ export default function Profile() {
 
             <OrderHistoryArea>
                 <h5>Histórico de pedidos</h5>
-                <Line/>
+                <Line />
                 <OrderHistoryCard>
                     <OrderHistoryTitleCard>Bullguer Vila Madalena</OrderHistoryTitleCard>
                     <OrderDate>23 outubro 2019</OrderDate>
@@ -56,6 +60,9 @@ export default function Profile() {
                     <OrderTotalCost>Total R$67,00</OrderTotalCost>
                 </OrderHistoryCard>
             </OrderHistoryArea>
+            <Footer1>
+                <Footer />
+            </Footer1>
 
         </ProfilePageContainer>
     )

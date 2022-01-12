@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { ContainerPai, Cabecalho, AddressContainer, AddressUser, Cart, InfoRestaurant, ContainerProducts, CardProduto, Info, Price, Footer, Payment, Button } from './styled'
+import { ContainerPai, Cabecalho, AddressContainer, AddressUser, Cart, InfoRestaurant, ContainerProducts, CardProduto, Info, Price, Payment, Button, Footer1 } from './styled'
 import ProductCard from '../RestaurantDetail/ProductCard/ProductCard'
+import Footer from '../../components/footer/Footer'
+import Header from '../../components/header/Header'
 
 const CartPage = () => {
     const [restaurant, setRestaurant] = useState({
@@ -23,7 +25,7 @@ const CartPage = () => {
             name: "Bibsfiha carne",
             description: "Esfiha deliciosa, receita secreta do Habibs.",
             amount: 1
-            
+
         },
         {
             id: "KJqMl2DxeShkSBevKVre",
@@ -37,14 +39,15 @@ const CartPage = () => {
     ])
 
     const CardProduto = products.map((produto) => {
-        return(
-            <ProductCard product = {produto}/>
+        return (
+            <ProductCard product={produto} />
         )
     })
 
     return (
         <ContainerPai>
-            <Cabecalho />
+            {/* <Cabecalho /> */}
+            <Header />
 
             <AddressContainer>
                 <AddressUser>Endereço de entrega</AddressUser>
@@ -88,8 +91,12 @@ const CartPage = () => {
                 <Button>
                     Confirmar
                 </Button>
+                <Footer1>
+                    <Footer />
+                </Footer1>
+
             </Cart>
-            <Footer />
+
         </ContainerPai>
     )
 }

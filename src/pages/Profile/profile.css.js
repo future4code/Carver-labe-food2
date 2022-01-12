@@ -95,3 +95,10 @@ export const OrderTotalCost = styled.h6`
     font-weight: bold;
     letter-spacing: -0.39px;
 `
+
+export const Footer1 = styled.div`
+    height: 49px;
+    width: 100%;
+    /* background-color: black; */
+    bottom: 0;
+`

@@ -3,6 +3,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, TextField, IconButton, Toolbar, AppBar } from '@material-ui/core';
 import { Container } from "./styled";
+import Header from "../../components/header/Header";
 
 const useStyles1 = makeStyles((theme) => ({
     menuButton: {
@@ -52,18 +53,9 @@ const AndressPage = () => {
 
     return (
         <Container>
-            <header>
-                <div>
-                    <AppBar position="static">
-                        <Toolbar>
-                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                <ArrowBackIosIcon />
-                            </IconButton>
-                        </Toolbar>
-                    </AppBar>
-                </div>
-            </header>
-
+            
+            <Header/>
+            
             <p>Meu endereço</p>
 
             <form className={classes.root} noValidate autoComplete="off">

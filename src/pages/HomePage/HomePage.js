@@ -18,6 +18,8 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Text, TabsStyled } from "./styled";
 import ImageCard from '../../assests/image.png'
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
 
 
 const useStyles1 = makeStyles((theme) => ({
@@ -171,7 +173,7 @@ const HomePage = () => {
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
-                <header>
+                {/* <header>
                     <div>
                         <AppBar position="static">
                             <Toolbar>
@@ -186,7 +188,8 @@ const HomePage = () => {
                             </Toolbar>
                         </AppBar>
                     </div>
-                </header>
+                </header> */}
+                <Header/>
                 <SearchContainer>
                     <AppBar color="transparent" position="static">
                         <Toolbar>
@@ -260,7 +263,7 @@ const HomePage = () => {
                     </TabPanel>
                 </div>
               
-                <AppBar position="fixed" color="transparent" className={classes.appBar}>
+                {/* <AppBar position="fixed" color="transparent" className={classes.appBar}>
                     <Toolbar>
                         <BottomNavigation
                             value={valueBottom}
@@ -268,7 +271,8 @@ const HomePage = () => {
                                 setValueBottom(newValue);
                             }}
                             showLabels
-                            className={classes3.root}
+                            classNa
+                            me={classes3.root}
                         >
                             <BottomNavigationAction
                                 selected={false}
@@ -284,7 +288,10 @@ const HomePage = () => {
                             />
                         </BottomNavigation>
                     </Toolbar>
-                </AppBar>
+                </AppBar> */}
+                <div>
+                    <Footer/>
+                </div>
             </div>
         </ThemeProvider>
     );

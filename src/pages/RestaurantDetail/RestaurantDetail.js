@@ -4,6 +4,7 @@ import HeaderRestaurant from "../RestaurantDetail/HeaderRestaurant/HeaderRestaur
 import RestaurantCard from "./RestaurantCard/RestaurantCard";
 import TitleProductCard from "./TitleProductCard/TitleProductCard";
 import ProductCard from "./ProductCard/ProductCard";
+import Header from "../../components/header/Header";
 
 const RestaurantDetail = () => {
     const productsTeste = {
@@ -39,7 +40,10 @@ const RestaurantDetail = () => {
 
     return (
         <C.Container >
-            <HeaderRestaurant />
+            {/* <HeaderRestaurant /> */}
+            <Header
+            // id={mapId} 
+            />
             <C.Content>
                 <C.Main>
                     <RestaurantCard />
