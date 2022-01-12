@@ -3,17 +3,24 @@ import * as C from "./styled";
 import ConfirmDialog from "../ConfirmDialog/ConfirmDialog";
 import GlobalStateContext from "../../../contexts/GlobalStateContext";
 
-const ProductCard = ({ photo, id, name, description, price, amount }) => {
+const ProductCard = ({ photo, id, name, description, price, amount, restaurant }) => {
     const [cart, setCart] = useContext(GlobalStateContext);
     const [open, setOpen] = useState(false);
+    const product = { photo, id, name, description, price, amount, restaurant }
 
     const addCart = () => {
         setOpen(true);
     }
-    
+
+    if (amount === "request") {
+        const index = cart.findIndex((item) => item.name === name);
+        if (index !== -1) {
+            amount = cart[index].amount;
+        }
+    }
+
     const removeItem = () => {
         const position = cart.findIndex((item) => {
-            console.log(item.id, id)
             return item.id === id;
         });
 
@@ -45,7 +52,7 @@ const ProductCard = ({ photo, id, name, description, price, amount }) => {
                     <C.ButtonCart color={"green"} onClick={addCart}>adicionar</C.ButtonCart>
                 </>
             }
-            {open === true && <ConfirmDialog open={open} setOpen={setOpen} />}
+            {open === true && <ConfirmDialog open={open} setOpen={setOpen} product={product} />}
         </C.CardProductContainer >
     )
 }
