@@ -72,6 +72,23 @@ export const getFullAddress = () => {
     })
 }
 
+export const placeOrder = (body, restaurantId) => {
+    const url = BASE_URL + `/restaurants/${restaurantId}/order`
+    const token = localStorage.getItem('token')
+
+    const request = axios.put(url, body, {
+        headers: {
+            auth: token,
+            'Content-Type': 'application/json'
+        }
+    })
+    request.then(res => {
+        return res.data
+    }).catch(err => {
+        alert(err.response.data.message)
+    })
+}
+
 export const updateProfile = (body) => {
     const url = BASE_URL + `/profile`
     const token = localStorage.getItem('token')
@@ -111,22 +128,22 @@ export const getRestaurants = () => {
 
 }
 
-export const getRestaurantsDetails = (restaurantId) => {
+export const getRestaurantsDetails = async (restaurantId, token) => {
     const url = BASE_URL + `/restaurants/${restaurantId}`
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
 
-    const request = axios.get(url, {
-        headers: {
-            auth: token,
-            'Content-Type': 'application/json'
-        }
-    })
+    try {
+        const request = await axios.get(url, {
+            headers: {
+                auth: token,
+                'Content-Type': 'application/json'
+            }
+        })
+        return request.data;
+    } catch (err) {
+        alert(err.response);
+    }
 
-    request.then(res => {
-        return res.data
-    }).catch(err => {
-        alert(err.response.data.message)
-    })
 }
 
 export const getActiveOrder = () => {
