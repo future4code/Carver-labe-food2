@@ -13,7 +13,7 @@ import RegisterPage from "../pages/RegisterPage/RegisterPage";
 const Router = () => {
     return (
         <BrowserRouter>
-            <Header/>
+            {/* <Header/> */}
             <Routes>
                 <Route path={"/"} element={<InitialPage />} />
                 <Route path={"/home"} element={<HomePage />} />

@@ -4,19 +4,18 @@ import { Button } from "@material-ui/core"
 import theme from "../../constants/theme"
 import { ThemeProvider } from '@material-ui/styles';
 import InputBase from "@material-ui/core/InputBase";
-import { alpha, makeStyles } from "@material-ui/core/styles";
-// import { ShoppingCartOutlinedIcon, HomeOutlinedIcon, PersonOutlineOutlinedIcon } from "@material-ui/icons";
+import {  makeStyles } from '@material-ui/core/styles';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import SearchIcon from "@material-ui/icons/Search";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import { IconButton, CardMedia, Card, CardContent, CardActionArea, CardActions, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
+import { IconButton, CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { Text, TabsStyled } from "./styled";
+import { Text, TabsStyled, UnderTextCard,  ContainerCardUnderText, SeachContainer } from "./styled";
 import ImageCard from '../../assests/image.png'
 
 
@@ -30,14 +29,10 @@ const useStylesScrollableTabs = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         width: "100%",
-        // backgroundColor: theme.palette.background.paper,
+        backgroundColor: theme.palette.background.paper,
         textColor: "primary",
 
-    },
-    MuiTabRoot99: {
-        textTransform: 'none'
     }
-
 }));
 
 const useStylesBottomNavigation = makeStyles({
@@ -49,13 +44,17 @@ const useStylesBottomNavigation = makeStyles({
 
 const useStylesCard= makeStyles({
     root:{
-        maxWidth: 338,
+        maxWidth: 368,
+        marginBottom:12,
     },
     media: {
-        height: 103,
+        height: 113,
     },
     content:{
-        height:20
+        height:36
+    },
+    text:{
+        marginBottom:0
     }
 });
 
@@ -73,11 +72,6 @@ const useStyles = makeStyles((theme) => ({
     search: {
         position: "relative",
         borderRadius: theme.shape.borderRadius,
-        // backgroundColor: alpha,
-        // "&:hover": {
-        //     backgroundColor: alpha
-        // },
-
         marginLeft: 0,
         width: "100%",
         [theme.breakpoints.up("sm")]: {
@@ -188,7 +182,7 @@ const HomePage = () => {
                     </div>
                 </header>
                 <SearchContainer>
-                    <AppBar color="transparent" position="static">
+                    <SeachContainer color="transparent" position="static">
                         <Toolbar>
                             <div className={classes.search}>
                                 <div className={classes.searchIcon}>
@@ -204,7 +198,7 @@ const HomePage = () => {
                                 />
                             </div>
                         </Toolbar>
-                    </AppBar>
+                    </SeachContainer>
                 </SearchContainer>
                 <div className={classes2.MuiTabRoot99}>
                     <TabsStyled
@@ -232,13 +226,44 @@ const HomePage = () => {
                             title="Contemplative Reptile"
                         />
                         <CardContent className={classes4.content}>
-                            <Typography gutterBottom variant="body2" color="primary" component="h2">
+                            <Typography className={classes4.text} gutterBottom variant="body2" color="primary">
                             Vinil Butantã
                             </Typography>
+                            < ContainerCardUnderText className={classes4.text} gutterBottom variant="body2" color="primary">     
+                            <UnderTextCard gutterBottom variant="caption" color="initial" >
                            
+                            60 min
+                            </UnderTextCard>
+                            <UnderTextCard gutterBottom variant="caption" color="initial" >
+                             frete R$: 3,00
+                            </UnderTextCard>
+                            </ ContainerCardUnderText>
                         </CardContent>
                     </CardActionArea>
                 </Card>
+                    <Card className={classes4.root}>
+                    <CardActionArea>
+                        <CardMedia
+                            className={classes4.media}
+                            image='https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/65c38aa8-b094-413d-9a80-ddc256bfcc78/201907031404_66194495.jpg'
+                            title="Contemplative Reptile"
+                        />
+                        <CardContent className={classes4.content}>
+                            <Typography className={classes4.text} gutterBottom variant="body2" color="primary">
+                            Bibsfiha carne
+                            </Typography>
+                            < ContainerCardUnderText className={classes4.text} gutterBottom variant="body2" color="primary">       
+                            <UnderTextCard gutterBottom variant="caption" color="initial" >
+                            60 min
+                            </UnderTextCard>
+                            <UnderTextCard gutterBottom variant="caption" color="initial" >
+                             frete R$: 1,00
+                            </UnderTextCard>
+                            </ ContainerCardUnderText>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                   
                     </TabPanel>
                     <TabPanel value={value} index={1}>
                         Item Two
