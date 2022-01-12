@@ -7,7 +7,7 @@ export const ContainerPai = styled.div`
 `
 
 export const InfoCart = styled.div`
-    min-height: 85.5vh;
+    min-height: 85vh;
     width: 100%;
     display: flex;
     flex-direction: column;
