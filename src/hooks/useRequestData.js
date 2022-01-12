@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
-export default function useRequestData(url) {
-    const [data,setData] = useState()
+export default function useRequestData(url,initialData) {
+    const [data,setData] = useState(initialData)
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -18,7 +18,7 @@ export default function useRequestData(url) {
         .catch((err)=>{
             alert(err.response.data.message)
         })
-    }, [input])
+    }, [url])
 
 
     return data
