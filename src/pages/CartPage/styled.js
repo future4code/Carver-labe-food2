@@ -5,10 +5,6 @@ export const ContainerPai = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    footer{
-        margin-top: 12vh;
-    }
 `
 
 export const InfoCart = styled.div`
@@ -18,6 +14,7 @@ export const InfoCart = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10vh;
 `
 
 export const AddressContainer = styled.div`
@@ -128,11 +125,11 @@ export const ButtonUI = styled(Button)`
     width: 90vw;
     margin-bottom: "10px";
 `
-export const Footer1 =  styled.footer`
+// export const Footer1 =  styled.footer`
 
-position: fixed;
-bottom: 0,
-margin-top: 50vh;
+// position: fixed;
+// bottom: 0,
+// margin-top: 50vh;
 
 
-`
+// `
