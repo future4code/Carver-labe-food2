@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react'
+// import { ContainerPai, AddressContainer, AddressUser, Cart, InfoRestaurant, ContainerProducts, Info, Price, Footer, Payment, Button } from './styled'
 import * as C from './styled'
 import ProductCard from '../RestaurantDetail/ProductCard/ProductCard'
 import GlobalStateContext from '../../contexts/GlobalStateContext';
 import useForm from '../../hooks/useForm';
 import placeOrder from '../../services/placeOrder';
 import Footer from '../../components/Footer/Footer';
-import {prymaryColors} from "../../constants/colors"
 
 const CartPage = () => {
     let sum = 0;
@@ -122,13 +122,19 @@ const CartPage = () => {
                     </C.Cart>
                 </div>
                 <div>
-                    <C.ButtonUI onClick={purchase} variant="contained" color="primary" disabled={cart.length === 0|| form.paymentMethod === ""}>
+                    <C.ButtonUI onClick={purchase} variant="contained" color="primary" disabled={cart.length === 0 || form.paymentMethod === ""}>
                         Confirmar
                     </C.ButtonUI>
+
                 </div>
             </C.InfoCart>
-
+            {/* <footer>
             <Footer />
+            </footer> */}
+            
+            
+            
+            
         </C.ContainerPai >
     )
 }

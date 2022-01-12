@@ -52,7 +52,6 @@ const RestaurantDetail = () => {
 
     return (
         <C.Container>
-            <HeaderRestaurant />
             <C.Content>
                 <C.Main>
                     <RestaurantCard restaurants={restaurants}/>
