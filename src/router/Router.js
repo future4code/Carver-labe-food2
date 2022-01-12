@@ -23,7 +23,7 @@ const Router = () => {
                 <Route path={"/cadastrar-endereco"} element={<AndressPage />} />
                 <Route path={"/restaurante/:id"} element={<RestaurantDetail />} />
                 <Route path={"/carrinho"} element={<CartPage/>}/>
-                <Route path={"/profile"} element={<Profile/>} />
+                <Route path={"/perfil"} element={<Profile/>} />
                 <Route path="*" element={<>Not Found</>}/>
             </Routes>
         </BrowserRouter>
