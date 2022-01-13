@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from '@material-ui/core/Button';
-import { FormControlLabel } from "@material-ui/core";
+import {RadioGroup } from "@material-ui/core";
 
 export const ContainerPai = styled.div`
     display: flex;
@@ -127,8 +127,12 @@ export const ButtonUI = styled(Button)`
     margin-bottom: "10px";
 `
 
-export const Input = styled(FormControlLabel)`
-    .gDFjNd label {
-    margin: 5px 0;
-}
+export const Input = styled(RadioGroup)`
+    margin-left: -10px;
+
+    label:nth-child(2){
+        margin-top: -15px;
+    }
+
+    
 `

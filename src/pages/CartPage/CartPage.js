@@ -96,10 +96,10 @@ const CartPage = () => {
                             <p>Forma de Pagamento</p>
 
                             <FormControl component="fieldset" color="black">
-                                <RadioGroup aria-label="gender" name="paymentMethod" onChange={onChange}>
+                                <C.Input aria-label="gender" name="paymentMethod" onChange={onChange}>
                                     <FormControlLabel value="money" control={<Radio />} label="Dinheiro"/>
                                     <FormControlLabel value="creditcard" control={<Radio />} label="Cartão de Crédito" />
-                                </RadioGroup>
+                                </C.Input>
                             </FormControl>
 
 
