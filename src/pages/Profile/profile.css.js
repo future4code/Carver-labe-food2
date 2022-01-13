@@ -40,7 +40,7 @@ export const GrayText = styled.div`
     padding: 0 16px;
 `
 
-export const AdressInformation = styled(PersonalInformationProfileArea)`
+export const AddressInformation = styled(PersonalInformationProfileArea)`
     background-color: #eee;
 `
 

@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, TextField, IconButton, Toolbar, AppBar } from '@material-ui/core';
 import { Container } from "./styled";
+import useForm from "../../hooks/useForm";
+import GlobalStateContext from "../../contexts/GlobalStateContext";
+import { useNavigate } from "react-router-dom";
 
 const useStyles1 = makeStyles((theme) => ({
     menuButton: {
@@ -36,23 +39,45 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AndressPage = () => {
-    const classes1 = useStyles1();
     const classes = useStyles();
+    const {states,setters,requests} = useContext(GlobalStateContext)
+    const [form, onChange] = useForm(
+        states.user.address ||
+        {
+            street: "",
+            number: "",
+            neighbourhood: "",
+            city: "",
+            state: "",
+            complement: ""
+        }
+        )
+        const [loading, setLoading] = useState(false)
+        const [values, setValues] = useState({
+            name: '',
+            email: '',
+            password: '',
+        });
+    const navigate = useNavigate()
 
-    const [values, setValues] = React.useState({
-        name: '',
-        email: '',
-        password: '',
-        showPassword: false,
-    });
+    const title = states.user.address? <></> : <p>Meu endereço</p>
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
     };
 
+    const handleSubmit = (event) =>{
+        event.preventDefault()
+        setLoading(true)
+        
+        requests.putAdress(form,setLoading,navigate)
+
+    }
+
+
     return (
         <Container>
-            <header>
+            {/* <header>
                 <div>
                     <AppBar position="static">
                         <Toolbar>
@@ -62,78 +87,91 @@ const AndressPage = () => {
                         </Toolbar>
                     </AppBar>
                 </div>
-            </header>
+            </header> */}
+            {
+                loading
+                ?<h1>Atualizando</h1>
+                :<>
+                    {title}
 
-            <p>Meu endereço</p>
+                    <form className={classes.root} noValidate autoComplete="on" onSubmit={handleSubmit}>
 
-            <form className={classes.root} noValidate autoComplete="off">
+                        <TextField
+                            id="filled-textarea"
+                            value={form.street}
+                            name="street"
+                            onChange={onChange}
+                            label="Logradouro"
+                            placeholder="Rua / Av."
+                            multiline
+                            variant="outlined"
+                            required
+                        />
+                        <TextField
+                            id="outlined-number"
+                            label="Número"
+                            type="number"
+                            variant="outlined"
+                            value={form.number}
+                            name="number"
+                            onChange={onChange}
+                            placeholder="Número"
+                            required
+                        />
 
-                <TextField
-                    id="filled-textarea"
-                    value={values.name}
-                    onChange={handleChange('name')}
-                    label="Logradouro"
-                    placeholder="Rua / Av."
-                    multiline
-                    variant="outlined"
-                    required
-                />
-                <TextField
-                    id="outlined-number"
-                    label="Número"
-                    type="number"
-                    variant="outlined"
-                    value={values.amount}
-                    onChange={handleChange('amount')}
-                    placeholder="Número"
-                    required
-                />
-
-                <TextField
-                    id="filled-textarea"
-                    value={values.name}
-                    onChange={handleChange('name')}
-                    label="Complemento"
-                    placeholder="Apto. / Bloco"
-                    variant="outlined"
-                    
-                />
-                <TextField
-                    id="filled-textarea"
-                    value={values.name}
-                    onChange={handleChange('name')}
-                    label="Bairro"
-                    placeholder="Bairro"
-                    multiline
-                    variant="outlined"
-                    required
-                />
-                <TextField
-                    id="filled-textarea"
-                    value={values.name}
-                    onChange={handleChange('name')}
-                    label="Cidade"
-                    placeholder="Cidade"
-                    multiline
-                    variant="outlined"
-                    required
-                />
-                <TextField
-                    id="filled-textarea"
-                    value={values.name}
-                    onChange={handleChange('name')}
-                    label="Estado"
-                    placeholder="Ex: DF"
-                    multiline
-                    variant="outlined"
-                    required
-                />
-                <>
-                    <Button variant="contained" color="primary" className={classes.withoutLabel} >
-                        Salvar
-                    </Button>
+                        <TextField
+                            id="filled-textarea"
+                            value={form.complement}
+                            name="complement"
+                            onChange={onChange}
+                            label="Complemento"
+                            placeholder="Apto. / Bloco"
+                            variant="outlined"
+                            
+                        />
+                        <TextField
+                            id="filled-textarea"
+                            value={form.neighbourhood}
+                            name="neighbourhood"
+                            onChange={handleChange('name')}
+                            label="Bairro"
+                            placeholder="Bairro"
+                            multiline
+                            variant="outlined"
+                            required
+                        />
+                        <TextField
+                            id="filled-textarea"
+                            value={form.city}
+                            name="city"
+                            onChange={onChange}
+                            label="Cidade"
+                            placeholder="Cidade"
+                            multiline
+                            variant="outlined"
+                            required
+                        />
+                        <TextField
+                            id="filled-textarea"
+                            value={form.state}
+                            name="state"
+                            onChange={onChange}
+                            label="Estado"
+                            placeholder="Ex: DF"
+                            multiline
+                            variant="outlined"
+                            required
+                        />
+                        <>
+                            <Button variant="contained" color="primary" className={classes.withoutLabel} type="submit" >
+                                Salvar
+                            </Button>
+                        </>
+                    </form >
                 </>
-            </form >
+
+
+            }
         </Container>
     )
 }
