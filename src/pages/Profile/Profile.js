@@ -1,15 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AddressInformation, ButtonContainer, GrayText, Line, OrderDate, OrderHistoryArea, OrderHistoryCard, OrderHistoryTitleCard, OrderTotalCost, PersonalInformationProfileArea, ProfilePageContainer } from './profile.css.js'
 import IconButton from '@material-ui/core/IconButton';
-
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import GlobalStateContext from '../../contexts/GlobalStateContext.js';
 import { getFullAddress } from '../../services/services.js';
 import { useNavigate } from 'react-router-dom';
-import Footer from "../../components/Footer/Footer"
-import { Footer1 } from '../CartPage/styled.js';
-
 
 export default function Profile() {
     const {states, setters, requests} = useContext(GlobalStateContext)
@@ -22,8 +18,10 @@ export default function Profile() {
             setAddress(res.data.address)
             setters.setUser({...states.user, address: res.data.address})
             setLoading(false)
+            console.log(res.data.address)
         })
     }, [])
+
     return (
         <ProfilePageContainer>
             <PersonalInformationProfileArea>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from '@material-ui/core/Button';
+import { FormControlLabel } from "@material-ui/core";
 
 export const ContainerPai = styled.div`
     display: flex;
@@ -125,11 +126,9 @@ export const ButtonUI = styled(Button)`
     width: 90vw;
     margin-bottom: "10px";
 `
-// export const Footer1 =  styled.footer`
 
-// position: fixed;
-// bottom: 0,
-// margin-top: 50vh;
-
-
-// `
+export const Input = styled(FormControlLabel)`
+    .gDFjNd label {
+    margin: 5px 0;
+}
+`

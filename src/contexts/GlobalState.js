@@ -4,8 +4,8 @@ import GlobalStateContext from "./GlobalStateContext";
 
 const GlobalState = (props) => {
 
-    const [restaurant, setRestaurant] = useState({});
-    const [cart, setCart] = useState([]);
+    const [restaurant, setRestaurant] = useState({})
+    const [cart, setCart] = useState([])
     const [user, setUser] = useState([])
 
     const requestSignup = (body,navigate,setLoading) => {
