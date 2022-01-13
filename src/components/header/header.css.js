@@ -41,7 +41,6 @@ header{
     div{
         display: flex;
         p{
-            font-weight: bold;
             margin-left: 20vw;
         }
         h4{
