@@ -233,22 +233,6 @@ const SeachPage = () => {
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
-                {/* <header>
-                    <div>
-                        <AppBar position="static">
-                            <Toolbar>
-                                <IconButton
-                                    edge="start"
-                                    className={classes1.menuButton}
-                                    color="inherit"
-                                    aria-label="menu"
-                                >
-                                    <ArrowBackIosIcon />
-                                </IconButton>
-                            </Toolbar>
-                        </AppBar>
-                    </div>
-                </header> */}
                 <SearchContainer>
                     <SeachContainer color="transparent" position="static">
                         <Toolbar>
