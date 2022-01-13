@@ -127,14 +127,7 @@ const CartPage = () => {
                     </C.ButtonUI>
 
                 </div>
-            </C.InfoCart>
-            {/* <footer>
-            <Footer />
-            </footer> */}
-            
-            
-            
-            
+            </C.InfoCart>          
         </C.ContainerPai >
     )
 }

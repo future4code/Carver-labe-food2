@@ -30,7 +30,7 @@ const Footer = () => {
 
 
     return (
-        <footer>
+      <footer>
             {
                 location.pathname === "/home" || location.pathname === "/carrinho" || location.pathname === "/perfil" ?
                     <AppBar className={classes.root} position="fixed">
@@ -42,7 +42,9 @@ const Footer = () => {
 
                     </AppBar> : <></>
             }
+
         </footer>
+
     )
 }
 

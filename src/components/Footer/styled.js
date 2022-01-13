@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 
-export const Footer1 =  styled.footer`
+// export const Container = styled.div`
+//    margin: 16vw;
+// `
 
-position: absolute;
-bottom: 0,
-/* margin-top: 50vh; */
+// export const Footer1 = styled.footer`
 
-`
+//     position: absolute;
+//     bottom: 0;
+// `
 
 

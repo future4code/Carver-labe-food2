@@ -55,10 +55,6 @@ export default function Profile() {
                     <OrderTotalCost>Total R$67,00</OrderTotalCost>
                 </OrderHistoryCard>
             </OrderHistoryArea>
-            {/* <Footer1>
-            <Footer/>
-            </Footer1> */}
-            
         </ProfilePageContainer>
     )
 }
