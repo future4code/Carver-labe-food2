@@ -16,7 +16,7 @@ export default function useRequestData(url,initialData) {
             setData(res.data)
         })
         .catch((err)=>{
-            alert(err.response.data.message)
+            alert(err)
         })
     }, [url])
 

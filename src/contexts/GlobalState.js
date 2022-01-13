@@ -13,13 +13,16 @@ const GlobalState = (props) => {
         "logoUrl": "http://soter.ninja/futureFoods/logos/habibs.jpg",
         "deliveryTime": 60,
         "category": "Árabe"
-      },)
-    const [cart, setCart] = useState([])
+    })
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || [])
     const [user, setUser] = useState([])
     const [addressUser, setAddressUser] = useState({})
 
+    useEffect(() => {
+       localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
-    const requestSignup = (body, navigate, setLoading) => {
+      const requestSignup = (body, navigate, setLoading) => {
         signUp(body, setUser, navigate, setLoading)
 
     }
