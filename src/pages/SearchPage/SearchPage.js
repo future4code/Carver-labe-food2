@@ -10,8 +10,8 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { IconButton, CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
 import styled from "styled-components";
 import { Text, TabsStyled, UnderTextCard,  ContainerCardUnderText, SeachContainer, DivStyled } from "./styled";
-import ImageCard from '../../assests/image.png'
 import GlobalStateContext from "../../contexts/GlobalStateContext";
+import { goToRestaurantDetails } from "../../router/coordinator";
 
 const useStyles1 = makeStyles((theme) => ({
     menuButton: {
@@ -204,7 +204,7 @@ const SeachPage = () => {
      const card=cardFilter.map((restaurant)=>{
         
          return ( 
-         <Card className={classes2.root}>
+         <Card key={restaurant.id}  onClick={()=> goToRestaurantDetails(navigate,restaurant.id)} className={classes2.root}>
             <CardActionArea>
                 <CardMedia
                     className={classes2.media}
@@ -217,7 +217,8 @@ const SeachPage = () => {
                     </Typography>
                     < ContainerCardUnderText className={classes2.text} gutterBottom variant="body2" color="primary">     
                     <UnderTextCard gutterBottom variant="caption" color="initial" >
-                   {restaurant.deliveryTime}
+                   {`${restaurant.deliveryTime} min`}
+                   
                     </UnderTextCard>
                     <UnderTextCard gutterBottom variant="caption" color="initial" >
                      {`Frete R$ ${restaurant.shipping.toFixed(2)}`}

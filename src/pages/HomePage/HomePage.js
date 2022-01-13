@@ -20,6 +20,7 @@ import ImageCard from '../../assests/image.png'
 import Header from "../../components/header/Header";
 import Footer from "../../components/Footer/Footer";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
+import { goToSearch, goToRestaurantDetails } from "../../router/coordinator";
 
 
 
@@ -278,7 +279,7 @@ const HomePage = () => {
         index=index+1
 
         return (
-                <Text label={tab} {...a11yProps(index)} />
+                <Text key={index} label={tab} {...a11yProps(index)} />
         )
         
     })
@@ -290,11 +291,11 @@ const HomePage = () => {
     
         return filter.map((restaurant)=>{
             return(
-                <Card className={classes2.root}>
+                <Card key={restaurant.id} onClick={()=> goToRestaurantDetails(navigate,restaurant.id)} className={classes2.root}>
                 <CardActionArea>
                     <CardMedia
                         className={classes2.media}
-                        image={ImageCard}
+                        image={restaurant.logoUrl}
                         title={restaurant.name}
                     />
                     <CardContent className={classes2.content}>
@@ -321,12 +322,12 @@ const HomePage = () => {
     const tabspanel=tabs.map((tabs)=>{
         index2=index2+1
         return ( 
-        <TabPanel value={value} index={index2}>
+        <TabPanel key={index2} value={value} index={index2}>
             {filterRestaurants(tabs.props.label)}
         </TabPanel>
         )
     })
-    console.log(value)
+  
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
@@ -344,12 +345,13 @@ const HomePage = () => {
                                         input: classes.inputInput
                                     }}
                                     inputProps={{ "aria-label": "search" }}
+                                    onClick={() => goToSearch(navigate)}
                                 />
                             </div>
                         </Toolbar>
                     </SeachContainer>
                 </SearchContainer>
-                <div className={classes1.MuiTabRoot99}>
+                <div >
                     <TabsStyled
                         textColor="primary"
                         value={value}
