@@ -2,7 +2,7 @@ import axios from "axios";
 import { BASE_URL } from "../constants/urls";
 
 
-export const login = (body,navigate, setLoading, setState) => {
+export const login = (body, navigate, setLoading, setState) => {
     const url = BASE_URL + '/login'
 
     const request = axios.post(url, body)
@@ -13,17 +13,17 @@ export const login = (body,navigate, setLoading, setState) => {
         setLoading(false)
         // navigate('/cadastrar-endereco')
         navigate('/perfil')
-    }).catch((err)=>{
+    }).catch((err) => {
         alert(err.response.data.message)
         setLoading(false)
     })
 }
 
-export const signUp = (body, setter, navigate,setLoading) => {
+export const signUp = (body, setter, navigate, setLoading) => {
 
     const url = BASE_URL + '/signup'
 
-    
+
     const request = axios.post(url, body)
 
     request.then(res => {
@@ -32,14 +32,14 @@ export const signUp = (body, setter, navigate,setLoading) => {
         setter(res.data.user)
         navigate('/cadastrar-endereco')
         setLoading(false)
-        
-    }).catch(err=>{
+
+    }).catch(err => {
         setLoading(false)
         alert(err.response.data.message)
     })
 }
 
-export const addAdress = (body,setLoading,setUser,navigate) => {
+export const addAdress = (body, setLoading, setUser, navigate) => {
     const url = BASE_URL + '/address'
     const token = localStorage.getItem('token')
 
@@ -51,9 +51,9 @@ export const addAdress = (body,setLoading,setUser,navigate) => {
     request.then((res) => {
         localStorage.setItem('token', res.data.token)
         setUser(res.data.user)
-        alert("Endereço Atualizado com sucesso!") 
+        alert("Endereço Atualizado com sucesso!")
         setLoading(false)
-        navigate('/home',{replace:true})
+        navigate('/home', { replace: true })
     }).catch(err => {
         alert(err.response)
         console.log(err)
@@ -61,20 +61,20 @@ export const addAdress = (body,setLoading,setUser,navigate) => {
 
 }
 
-export const getFullAddress = async() => {
+export const getFullAddress = async () => {
     const url = BASE_URL + '/profile/address'
     const token = localStorage.getItem('token')
 
-    try{
-        const request = await axios.get(url,{
-            headers:{
-                auth:token
+    try {
+        const request = await axios.get(url, {
+            headers: {
+                auth: token
             }
         })
 
         return request
 
-    }catch(err) {
+    } catch (err) {
         alert(err)
     }
 
@@ -96,7 +96,7 @@ export const placeOrder = (body, restaurantId) => {
     })
 }
 
-export const updateProfile = (body, setLoading,navigate,setUser) => {
+export const updateProfile = (body, setLoading, navigate, setUser) => {
     const url = BASE_URL + `/profile`
     const token = localStorage.getItem('token')
 
@@ -135,8 +135,7 @@ export const getRestaurants = () => {
 
 }
 
-export const getProfile = () => {
-
+export const getProfile = (setAddressUser) => {
     const url = BASE_URL + '/profile'
     const token = localStorage.getItem('token')
 
@@ -147,7 +146,7 @@ export const getProfile = () => {
     })
 
     request.then(res => {
-        return res.data
+        setAddressUser(res.data.user)
     }).catch(err => {
         alert(err.response.data.message)
     })

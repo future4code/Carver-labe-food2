@@ -2,21 +2,20 @@ import React, { useState, useContext } from "react";
 import * as C from "./styled";
 import ConfirmDialog from "../ConfirmDialog/ConfirmDialog";
 import GlobalStateContext from "../../../contexts/GlobalStateContext";
-import logo from '../../../assests/logo-preta.png'
 
-const ProductCard = ({ photo, id, name, description, price, amount, restaurant }) => {
+const ProductCard = ({ photo, id, name, description, price, quantify, restaurant }) => {
     const { states, setters, requests } = useContext(GlobalStateContext)
     const [open, setOpen] = useState(false);
-    const product = { photo, id, name, description, price, amount, restaurant }
+    const product = { photo, id, name, description, price, quantify, restaurant }
 
     const addCart = () => {
         setOpen(true);
     }
 
-    if (amount === "request") {
+    if (quantify === "request") {
         const index = states.cart.findIndex((item) => item.name === name);
         if (index !== -1) {
-            amount = states.cart[index].amount;
+            quantify = states.cart[index].quantify;
         }
     }
 
@@ -27,10 +26,10 @@ const ProductCard = ({ photo, id, name, description, price, amount, restaurant }
 
         let newCart = [...states.cart];
 
-        if (newCart[position].amount === 1) {
+        if (newCart[position].quantify === 1) {
             newCart.splice(position, 1);
         } else {
-            newCart[position].amount -= 1;
+            newCart[position].quantify -= 1;
         }
 
         setters.setCart(newCart);
@@ -47,9 +46,9 @@ const ProductCard = ({ photo, id, name, description, price, amount, restaurant }
                 <C.DescInfo>{description}</C.DescInfo>
                 <C.DescPrice>R$ {price} </C.DescPrice>
             </C.InfosContainer>
-            {amount > 0 ?
+            {quantify > 0 ?
                 <>
-                    <C.AmountCart color={"green"}>{amount}</C.AmountCart>
+                    <C.AmountCart color={"green"}>{quantify}</C.AmountCart>
                     <C.ButtonCart color={"red"} onClick={removeItem}>remover</C.ButtonCart>
                 </>
                 :

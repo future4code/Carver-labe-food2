@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { AppBar, BottomNavigationAction, BottomNavigation } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
@@ -21,7 +21,7 @@ const Footer = () => {
     const location = useLocation()
     const history = useNavigate()
     const classes = useStyles();
-    
+
     const [value, setValue] = React.useState(0);
 
     useEffect(() => {
@@ -38,11 +38,10 @@ const Footer = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    console.log(value)
 
 
     return (
-      <footer>
+        <footer>
             {
                 location.pathname === "/home" || location.pathname === "/carrinho" || location.pathname === "/perfil" ?
                     <AppBar className={classes.root} position="fixed">

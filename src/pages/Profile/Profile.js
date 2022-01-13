@@ -18,7 +18,6 @@ export default function Profile() {
             setAddress(res.data.address)
             setters.setUser({...states.user, address: res.data.address})
             setLoading(false)
-            console.log(res.data.address)
         })
     }, [])
 

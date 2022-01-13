@@ -7,29 +7,31 @@ import DialogContent from '@material-ui/core/DialogContent';
 import GlobalStateContext from '../../../contexts/GlobalStateContext';
 
 const ConfirmDialog = (props) => {
-    const [amount, setAmount] = useState(0);
+    const [quantify, setQuantify] = useState(0);
     const { states, setters, requests } = useContext(GlobalStateContext)
 
     const onChange = (e) => {
-        setAmount(e.target.value);
+        setQuantify(e.target.value);
     }
 
     const handleClose = () => {
         props.setOpen(false);
-        console.log(amount);
     };
 
+    console.log(states.cart)
+
     const item = props.product;
+    
     const addItem = () => {
         setters.setRestaurant(props.product.restaurant)
         const index = states.cart.findIndex((i) => i.id === props.product.id);
         const newCart = [...states.cart];
         if (index === -1) {
-            const cartItem = { ...item, amount: Number(amount) };
+            const cartItem = { ...item, quantify: Number(quantify) };
             newCart.push(cartItem);
             setters.setCart(newCart);
         } else {
-            newCart[index].amount += Number(amount);
+            newCart[index].quantify += Number(quantify);
             setters.setCart(newCart);
         }
     };
