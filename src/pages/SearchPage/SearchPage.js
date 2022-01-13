@@ -1,28 +1,17 @@
-import React, { useContext } from "react"
+import React,{useContext} from "react"
 import { useNavigate } from "react-router-dom"
 import { Button } from "@material-ui/core"
 import theme from "../../constants/theme"
 import { ThemeProvider } from '@material-ui/styles';
 import InputBase from "@material-ui/core/InputBase";
-import { makeStyles } from '@material-ui/core/styles';
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import {  makeStyles } from '@material-ui/core/styles';
 import SearchIcon from "@material-ui/icons/Search";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { IconButton, CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
 import styled from "styled-components";
-import PropTypes from "prop-types";
-import { Text, TabsStyled, UnderTextCard, ContainerCardUnderText, SeachContainer } from "./styled";
+import { Text, TabsStyled, UnderTextCard,  ContainerCardUnderText, SeachContainer, DivStyled } from "./styled";
 import ImageCard from '../../assests/image.png'
-import Header from "../../components/header/Header";
-import Footer from "../../components/Footer/Footer";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
-
-
-
 
 const useStyles1 = makeStyles((theme) => ({
     menuButton: {
@@ -30,38 +19,26 @@ const useStyles1 = makeStyles((theme) => ({
     }
 }));
 
-const useStylesScrollableTabs = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-        width: "100%",
-        backgroundColor: theme.palette.background.paper,
-        textColor: "primary",
 
-    }
-}));
 
-const useStylesBottomNavigation = makeStyles({
-    root: {
-        width: "100%"
-    },
-
-});
-
-const useStylesCard = makeStyles({
-    root: {
+const useStylesCard= makeStyles({
+    root:{
         maxWidth: 368,
-        marginBottom: 12,
+        marginBottom:12,
     },
     media: {
         height: 113,
     },
-    content: {
-        height: 36
+    content:{
+        height:36
     },
-    text: {
-        marginBottom: 0
+    text:{
+        marginBottom:0
     }
 });
+
+
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -116,50 +93,25 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+
+
 const SearchContainer = styled.div`
   margin: 12px 12px 16px 16px;
 `;
 
-function TabPanel(props) {
-    const { children, value, index, ...other } = props;
-
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`scrollable-prevent-tabpanel-${index}`}
-            aria-labelledby={`scrollable-prevent-tab-${index}`}
-            {...other}
-        >
-            {value === index && (
-                <Box p={3}>
-                    <Typography>{children}</Typography>
-                </Box>
-            )}
-        </div>
-    );
-}
-
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.any.isRequired,
-    value: PropTypes.any.isRequired
-};
 
 
-function a11yProps(index) {
-    return {
-        id: `scrollable-prevent-tab-${index}`,
-        "aria-controls": `scrollable-prevent-tabpanel-${index}`
-    };
-}
-const HomePage = () => {
+
+const SeachPage = () => {
     const navigate = useNavigate()
     const classes = useStyles();
-    const classes1 = useStylesScrollableTabs();
-    const classes2 = useStylesCard()
-    const [value, setValue] = React.useState(0);
-    const restaurant = [{
+    const classes1 = useStyles1();
+    const classes2=useStylesCard()
+    const [valueBottom, setValueBottom] = React.useState(0);
+    const [value, setValue] = React.useState("");
+    const [loading, setLoading] = React.useState(true)
+    const {states,setters,requests}= useContext(GlobalStateContext)
+    const restaurant=[ {
         "id": "1",
         "category": "Árabe",
         "description": "Habib's é uma rede de restaurantes de comida rápida brasileira especializada em culinária árabe, os restaurantes vendem mais de 600 milhões de esfirras por ano. A empresa emprega 22 mil colaboradores e tem 421 unidades distribuídas em mais de cem municípios em 20 unidades federativas.",
@@ -228,105 +180,56 @@ const HomePage = () => {
         "shipping": 4,
         "deliveryTime": 40,
         "address": "Rua Dorival Caymmi, 149 - Alto dos Ibirás"
-    },
-    {
-        "id": "7",
-        "address": "Avenida das Andorinhas, 333 - Sta. Efigênia",
-        "category": "Petiscos",
-        "deliveryTime": 20,
-        "logoUrl": "https://firebasestorage.googleapis.com/v0/b/missao-newton.appspot.com/o/futureFoodsRestaurants%2Fbotecodeportal.jpg?alt=media&token=9b85ef89-0a4b-4390-84b1-858c1d3aafa1",
-        "name": "Boteco de Portal",
-        "shipping": 18,
-        "description": "O bar tem um cardápio recheado de petiscos que acompanham o chope para o bate-papo num ambiente agradável.Amigos e amigas, temos o prazer de convidar vocês para conhecer nosso espaço!"
-    },
-    {
-        "id": "8",
-        "address": "Rua Visconde de Mauá, 990 - Centro",
-        "name": "Chun-Li",
-        "logoUrl": "https://firebasestorage.googleapis.com/v0/b/missao-newton.appspot.com/o/futureFoodsRestaurants%2Fchun-li.jpg?alt=media&token=363418d5-247a-4690-a048-e2633e1346b5",
-        "description": "Restaurante chinês com pratos típicos em diversos tamanhos, bebidas, ambiente moderno e opções para levar.",
-        "category": "Asiática",
-        "shipping": 17,
-        "deliveryTime": 30
-    },
-    {
-        "id": "9",
-        "logoUrl": "https://firebasestorage.googleapis.com/v0/b/missao-newton.appspot.com/o/futureFoodsRestaurants%2Fmexicanissimo.png?alt=media&token=c30a24af-4fce-47d8-9b9f-af7098e2dabe",
-        "address": "Largo dos Jaguarés, 12 - Nova Bragança",
-        "shipping": 3,
-        "name": "Mexicaníssimo",
-        "deliveryTime": 20,
-        "category": "Mexicana",
-        "description": "Falar em Mexicaníssimo é falar em comer uma comida tradicional e original mexicana! Diferentemente dos restaurantes tex-mex, aqui você encontra um menu completo tradicionalmente mexicano e com opções para vegetarianos e veganos."
     }]
 
+
     const handleChange = (event, newValue) => {
-        setValue(newValue);
+      
+        setValue(event.target.value)
+        console.log(event.target.value.length)
+        if(event.target.value.length==0  ){
+            setLoading(true)
+        }
+        
+        setTimeout(()=>setLoading(false),1.0*1000)
+       
     };
 
 
-    const scrollable = restaurant.map((restaurant) => {
-        return restaurant.category
-    })
-    const scrollableNotRepeated = scrollable.filter(function (el, i) {
-        return scrollable.indexOf(el) === i;
-    })
-
+    const cardFilter= restaurant.filter((restaurant) => {
+        return restaurant.name.toLowerCase().includes(value.toLowerCase()) 
+      })
  
-    let index=0
-    const tabs = scrollableNotRepeated.map((tab) => {
-        index=index+1
 
-        return (
-                <Text label={tab} {...a11yProps(index)} />
-        )
+     const card=cardFilter.map((restaurant)=>{
         
-    })
+         return ( 
+         <Card className={classes2.root}>
+            <CardActionArea>
+                <CardMedia
+                    className={classes2.media}
+                    image={restaurant.logoUrl}
+                    title={restaurant.name}
+                />
+                <CardContent className={classes2.content}>
+                    <Typography className={classes2.text} gutterBottom variant="body2" color="primary">
+                   {  restaurant.name}
+                    </Typography>
+                    < ContainerCardUnderText className={classes2.text} gutterBottom variant="body2" color="primary">     
+                    <UnderTextCard gutterBottom variant="caption" color="initial" >
+                   {restaurant.deliveryTime}
+                    </UnderTextCard>
+                    <UnderTextCard gutterBottom variant="caption" color="initial" >
+                     {`Frete R$ ${restaurant.shipping.toFixed(2)}`}
+                    </UnderTextCard>
+                    </ ContainerCardUnderText>
+                </CardContent>
+            </CardActionArea>
+        </Card>
 
-    const filterRestaurants=(category)=>{
-       const filter= restaurant.filter((rest)=>{
-            return rest.category===category
-        })
-    
-        return filter.map((restaurant)=>{
-            return(
-                <Card className={classes2.root}>
-                <CardActionArea>
-                    <CardMedia
-                        className={classes2.media}
-                        image={ImageCard}
-                        title={restaurant.name}
-                    />
-                    <CardContent className={classes2.content}>
-                        <Typography className={classes.text} gutterBottom variant="body2" color="primary">
-                           {restaurant.name}
-                        </Typography>
-                        < ContainerCardUnderText className={classes2.text} gutterBottom variant="body2" color="primary">
-                            <UnderTextCard gutterBottom variant="caption" color="initial" >
-                                {`${restaurant.deliveryTime} min`}
-                            </UnderTextCard>
-                            <UnderTextCard gutterBottom variant="caption" color="initial" >
-                               {` frete R$: ${restaurant.shipping},00`}
-                            </UnderTextCard>
-                        </ ContainerCardUnderText>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-            )
-        })
-    }
+         )
+     })
 
-    let index2=-1
-
-    const tabspanel=tabs.map((tabs)=>{
-        index2=index2+1
-        return ( 
-        <TabPanel value={value} index={index2}>
-            {filterRestaurants(tabs.props.label)}
-        </TabPanel>
-        )
-    })
-    console.log(value)
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
@@ -338,35 +241,29 @@ const HomePage = () => {
                                     <SearchIcon />
                                 </div>
                                 <InputBase
+                                    value={value}
                                     placeholder="Restaurante"
                                     classes={{
                                         root: classes.inputRoot,
                                         input: classes.inputInput
                                     }}
+                                    onChange={handleChange}
                                     inputProps={{ "aria-label": "search" }}
                                 />
+                              
                             </div>
                         </Toolbar>
                     </SeachContainer>
                 </SearchContainer>
-                <div className={classes1.MuiTabRoot99}>
-                    <TabsStyled
-                        textColor="primary"
-                        value={value}
-                        onChange={handleChange}
-                        variant="scrollable"
-                        scrollButtons="off"
-                        aria-label="scrollable prevent tabs example"
-                        indicatorColor="transparent"
-
-                    >
-                     {tabs}
-                    </TabsStyled>
-                    {tabspanel}
-                
+               <DivStyled>
+                {value === ""? 
+                <p> Busque por nome de restaurante</p>: 
+                 loading? 
+                  <p>Carregando...</p>
+                 :                       
+                  cardFilter.length? card: <p> Não encontramos :(</p> }
+                  </DivStyled>
                 </div>
-            </div>
-        </ThemeProvider>
-    );
-}
-export default HomePage
+                </ThemeProvider>
+    )}
+    export default SeachPage
