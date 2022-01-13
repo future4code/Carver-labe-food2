@@ -290,17 +290,17 @@ const HomePage = () => {
                         <BottomNavigation
                             value={valueBottom}
                             onChange={(event, newValue) => {
-                                setValueBottom(newValue);
+                            setValueBottom(newValue);
                             }}
                             showLabels
                             className={classes3.root}
                         >
                             <BottomNavigationAction
-                                selected={false}
+                                
                                 icon={<HomeOutlinedIcon fontSize="large" />} />
 
                             <BottomNavigationAction
-
+                                
                                 icon={<ShoppingCartOutlinedIcon fontSize="large" />}
                             />
                             <BottomNavigationAction

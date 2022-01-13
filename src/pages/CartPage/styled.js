@@ -3,15 +3,16 @@ import styled from "styled-components";
 export const ContainerPai = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 100%;
 `
 
-export const Cabecalho = styled.div`
-    height: 64px;
+export const InfoCart = styled.div`
+    min-height: 85.5vh;
     width: 100%;
-    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 `
 
 export const AddressContainer = styled.div`
@@ -28,12 +29,20 @@ export const AddressUser = styled.p`
     font-size: 16px;
     color: #b8b8b8;
 `
+export const EmptyCart = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 83px;
+`
+
 
 export const Cart = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 16px;
+    padding: 5px 16px 16px 16px;
+    height: auto;
 `
 
 export const InfoRestaurant = styled.div`
@@ -57,15 +66,6 @@ export const ContainerProducts = styled.div`
     padding: 8px 0;
     
 `
-
-export const CardProduto = styled.div`
-    height: 112px;
-    border-radius: 8px;
-    border: solid 1px #b8b8b8;
-    background-color: #b8b8b8;
-    margin-bottom: 8px;
-`
-
 export const Info = styled.div`
     width: 328px;
     height: 60px;
@@ -89,7 +89,7 @@ export const Price = styled.div`
 `
 
 export const Payment = styled.div`
-    height: 89px;
+    /* height: 89px; */
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -97,6 +97,7 @@ export const Payment = styled.div`
     p{
         border-bottom: 1px solid black;
         padding: 5px;
+        margin-bottom: 10px;
     }
 
     form{
@@ -110,17 +111,18 @@ export const Payment = styled.div`
         margin-right: 10px;
     }
 
+    label{
+        margin: 5px 0;
+    }
+
 `
 
 export const Button = styled.button`
     height: 42px;
     border-radius: 2px;
     background-color: #5cb646;
+    font-weight: bold;
+    width: 90vw;
+    margin-bottom: 1vh;
 `
 
-export const Footer = styled.div`
-    height: 49px;
-    width: 100%;
-    background-color: black;
-    bottom: 0;
-`

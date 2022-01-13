@@ -19,12 +19,14 @@ const App = () => {
 // `;
 
   return (
-    <GlobalState>
-      {/* <GlobalStyle/> */}
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      {/* <GlobalStyle /> */}
+      <GlobalState>
         <Router />
-      </ThemeProvider>
-    </GlobalState>
+      </GlobalState>
+
+    </ThemeProvider>
+
   )
 }
 
