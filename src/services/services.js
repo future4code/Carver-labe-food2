@@ -5,18 +5,14 @@ import { BASE_URL } from "../constants/urls";
 export const login = (body,navigate, setLoading, setState) => {
     const url = BASE_URL + '/login'
 
-    const request = axios.post(url, body, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
+    const request = axios.post(url, body)
 
     request.then((res) => {
         localStorage.setItem('token', res.data.token)
         setState(res.data.user)
         setLoading(false)
         // navigate('/cadastrar-endereco')
-        navigate('/profile')
+        navigate('/perfil')
     }).catch((err)=>{
         alert(err.response.data.message)
         setLoading(false)
@@ -28,12 +24,7 @@ export const signUp = (body, setter, navigate,setLoading) => {
     const url = BASE_URL + '/signup'
 
     
-    const request = axios.post(url, body, {
-        headers: {
-
-            'Content-Type': 'application/json'
-        }
-    })
+    const request = axios.post(url, body)
 
     request.then(res => {
         localStorage.setItem('token', res.data.token)
@@ -54,8 +45,7 @@ export const addAdress = (body,setLoading,setUser,navigate) => {
 
     const request = axios.put(url, body, {
         headers: {
-            auth: token,
-            'Content-Type': 'application/json'
+            auth: token
         }
     })
     request.then((res) => {
@@ -96,8 +86,7 @@ export const placeOrder = (body, restaurantId) => {
 
     const request = axios.put(url, body, {
         headers: {
-            auth: token,
-            'Content-Type': 'application/json'
+            auth: token
         }
     })
     request.then(res => {
@@ -113,8 +102,7 @@ export const updateProfile = (body, setLoading,navigate,setUser) => {
 
     const request = axios.put(url, body, {
         headers: {
-            auth: token,
-            'Content-Type': 'application/json'
+            auth: token
         }
     })
     request.then(res => {
@@ -135,8 +123,26 @@ export const getRestaurants = () => {
 
     const request = axios.get(url, {
         headers: {
-            auth: token,
-            'Content-Type': 'application/json'
+            auth: token
+        }
+    })
+
+    request.then(res => {
+        return res.data
+    }).catch(err => {
+        alert(err.response.data.message)
+    })
+
+}
+
+export const getProfile = () => {
+
+    const url = BASE_URL + '/profile'
+    const token = localStorage.getItem('token')
+
+    const request = axios.get(url, {
+        headers: {
+            auth: token
         }
     })
 
@@ -155,8 +161,7 @@ export const getRestaurantsDetails = async (restaurantId, token) => {
     try {
         const request = await axios.get(url, {
             headers: {
-                auth: token,
-                'Content-Type': 'application/json'
+                auth: token
             }
         })
         return request.data;
@@ -172,8 +177,7 @@ export const getActiveOrder = () => {
 
     const request = axios.get(url, {
         headers: {
-            auth: token,
-            'Content-Type': 'application/json'
+            auth: token
         }
     })
 
@@ -189,8 +193,7 @@ export const getOrderHistory = () => {
 
     const request = axios.get(url, {
         headers: {
-            auth: token,
-            'Content-Type': 'application/json'
+            auth: token
         }
     })
 

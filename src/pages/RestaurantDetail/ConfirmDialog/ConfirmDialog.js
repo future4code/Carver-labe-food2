@@ -8,7 +8,7 @@ import GlobalStateContext from '../../../contexts/GlobalStateContext';
 
 const ConfirmDialog = (props) => {
     const [amount, setAmount] = useState(0);
-     const [cart, setCart, restaurant, setRestaurant] = useContext(GlobalStateContext);
+    const { states, setters, requests } = useContext(GlobalStateContext)
 
     const onChange = (e) => {
         setAmount(e.target.value);
@@ -21,16 +21,16 @@ const ConfirmDialog = (props) => {
 
     const item = props.product;
     const addItem = () => {
-        setRestaurant(props.product.restaurant)
-        const index = cart.findIndex((i) => i.id === props.product.id);
-        const newCart = [...cart];
+        setters.setRestaurant(props.product.restaurant)
+        const index = states.cart.findIndex((i) => i.id === props.product.id);
+        const newCart = [...states.cart];
         if (index === -1) {
             const cartItem = { ...item, amount: Number(amount) };
             newCart.push(cartItem);
-            setCart(newCart);
+            setters.setCart(newCart);
         } else {
             newCart[index].amount += Number(amount);
-            setCart(newCart);
+            setters.setCart(newCart);
         }
     };
 

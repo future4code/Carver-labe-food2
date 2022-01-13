@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { AppBar, BottomNavigationAction, BottomNavigation } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
@@ -24,9 +24,21 @@ const Footer = () => {
     
     const [value, setValue] = React.useState(0);
 
+    useEffect(() => {
+        if (location.pathname === "/home") {
+            setValue(0)
+        } else if (location.pathname === "/carrinho") {
+            setValue(1)
+        } else if (location.pathname === "/perfil") {
+            setValue(2)
+        }
+
+    }, [])
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    console.log(value)
 
 
     return (
@@ -39,7 +51,6 @@ const Footer = () => {
                             <BottomNavigationAction icon={<ShoppingCartOutlinedIcon fontSize="large" />} onClick={() => goToCart(history)} />
                             <BottomNavigationAction icon={<PersonOutlineOutlinedIcon fontSize="large" />} onClick={() => goToProfile(history)} />
                         </BottomNavigation>
-
                     </AppBar> : <></>
             }
 

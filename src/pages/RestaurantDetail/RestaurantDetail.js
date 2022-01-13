@@ -9,7 +9,8 @@ import { useParams } from "react-router-dom";
 import { getRestaurantsDetails } from "../../services/services";
 
 const RestaurantDetail = () => {
-    const [cart, setCart] = useContext(GlobalStateContext);
+    // const [cart, setCart] = useContext(GlobalStateContext);
+    const { states, setters, requests } = useContext(GlobalStateContext)
     const [rest, setRest] = useState("");
     const params = useParams();
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkE3VkU1N2ZiQ1Ezam4wYWZYWFZEIiwibmFtZSI6IlplIiwiZW1haWwiOiJyb2RvbGZvQGpvZ2FuYWRhLmNvbS5iciIsImNwZiI6IjQyNC4yNDIuNDI0LTI0IiwiaGFzQWRkcmVzcyI6dHJ1ZSwiYWRkcmVzcyI6IlIuIEFmb25zbyBCcmF6LCAxNzcsIDcxIC0gVmlsYSBOLiBDb25jZWnDp8OjbyIsImlhdCI6MTY0MjAxMzQzMn0.KF4vpoQmDiBnA-OFLljj29Ctw6LG0g-HcddH_l5p4rk"
@@ -19,7 +20,7 @@ const RestaurantDetail = () => {
         .then((res) => {
             setRest(res);
         });
-    }, [cart]);
+    }, [states.cart]);
 
     let organizedProducts = [];
     rest && rest.restaurant.products.map((item) => {
