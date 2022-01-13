@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AppBar, Toolbar, BottomNavigationAction, BottomNavigation } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
@@ -63,9 +63,21 @@ const Footer = () => {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
+    useEffect(() => {
+        if (location.pathname === "/home") {
+            setValue(0)
+        } else if (location.pathname === "/carrinho") {
+            setValue(1)
+        } else if (location.pathname === "/perfil") {
+            setValue(2)
+        }
+
+    }, [])
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    console.log(value)
 
     //   const handleChange = () => {
     //     if(value === "recents"){
@@ -124,11 +136,10 @@ const Footer = () => {
                 location.pathname === "/home" || location.pathname === "/carrinho" || location.pathname === "/perfil" ?
                     <AppBar className={classes.root} position="fixed">
                         <BottomNavigation value={value} onChange={handleChange} showLabels >
-                            <BottomNavigationAction icon={<HomeOutlinedIcon fontSize="large" onClick={() => goToHome(history)} />} />
-                            <BottomNavigationAction icon={<ShoppingCartOutlinedIcon fontSize="large" onClick={() => goToCart(history)} />} />
-                            <BottomNavigationAction icon={<PersonOutlineOutlinedIcon fontSize="large" onClick={() => goToProfile(history)} />} />
+                            <BottomNavigationAction icon={<HomeOutlinedIcon fontSize="large" />} onClick={() => goToHome(history)} />
+                            <BottomNavigationAction icon={<ShoppingCartOutlinedIcon fontSize="large" />} onClick={() => goToCart(history)} />
+                            <BottomNavigationAction icon={<PersonOutlineOutlinedIcon fontSize="large" />} onClick={() => goToProfile(history)} />
                         </BottomNavigation>
-
                     </AppBar> : <></>
             }
         </>
