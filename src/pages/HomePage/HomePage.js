@@ -1,36 +1,21 @@
-import React, { useContext } from "react"
+import React from "react"
 import { useNavigate } from "react-router-dom"
-import { Button } from "@material-ui/core"
 import theme from "../../constants/theme"
 import { ThemeProvider } from '@material-ui/styles';
 import InputBase from "@material-ui/core/InputBase";
 import { makeStyles } from '@material-ui/core/styles';
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import SearchIcon from "@material-ui/icons/Search";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import { IconButton, CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
+import { CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Text, TabsStyled, UnderTextCard, ContainerCardUnderText, SeachContainer } from "./styled";
-import ImageCard from '../../assests/image.png'
-import Header from "../../components/header/Header";
-import Footer from "../../components/Footer/Footer";
-import GlobalStateContext from "../../contexts/GlobalStateContext";
 import { goToSearch, goToRestaurantDetails } from "../../router/coordinator";
 import useRequestData from "../../hooks/useRequestData";
-import { BASE_URL } from "../../constants/urls";
 
 
 
-const useStyles1 = makeStyles((theme) => ({
-    menuButton: {
-        marginRight: theme.spacing(2)
-    }
-}));
+
+
 
 const useStylesScrollableTabs = makeStyles((theme) => ({
     root: {
@@ -42,12 +27,6 @@ const useStylesScrollableTabs = makeStyles((theme) => ({
     }
 }));
 
-const useStylesBottomNavigation = makeStyles({
-    root: {
-        width: "100%"
-    },
-
-});
 
 const useStylesCard = makeStyles({
     root: {
