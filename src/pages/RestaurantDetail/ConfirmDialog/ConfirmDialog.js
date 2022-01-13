@@ -23,7 +23,6 @@ const ConfirmDialog = (props) => {
     const item = props.product;
     
     const addItem = () => {
-        setters.setRestaurant(props.product.restaurant)
         const index = states.cart.findIndex((i) => i.id === props.product.id);
         const newCart = [...states.cart];
         if (index === -1) {
