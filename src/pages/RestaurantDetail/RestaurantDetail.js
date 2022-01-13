@@ -41,7 +41,7 @@ const RestaurantDetail = () => {
             for (let i = 0; i < organizedProducts.length; i++) {
                 array.push(<TitleProductCard key={Math.random()} title={organizedProducts[i].name} />);
                 organizedProducts[i].products.map((item, id) => {
-                    array.push(<ProductCard key={Math.random()} photo={item.photoUrl} id={item.id} name={item.name} description={item.description} price={item.price.toFixed(2).replace(".", ",")} amount={"request"} restaurant={rest.restaurant} />);
+                    array.push(<ProductCard key={Math.random()} photo={item.photoUrl} id={item.id} name={item.name} description={item.description} price={item.price.toFixed(2).replace(".", ",")} quantify={"request"} restaurant={rest.restaurant} />);
                 });
             }
             return array;

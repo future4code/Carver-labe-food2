@@ -1,7 +1,7 @@
 import React from 'react'
 import { HeaderContainer, HeaderTitle, HeaderTitleArea } from './header.css'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { goToReturn } from '../../router/coordinator'
+import { goToHome, goToLogin, goToProfile, goToRegister, goToReturn } from '../../router/coordinator'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { makeStyles } from '@material-ui/core/styles';
 import { IconButton, Toolbar, AppBar } from '@material-ui/core';
@@ -39,7 +39,6 @@ const Header = () => {
     const history = useNavigate()
     const location = useLocation()
     const token = localStorage.getItem("token")
-    console.log(token)
     // <HeaderContainer>
     //     <HeaderTitleArea>
     //         <HeaderTitle>
@@ -63,7 +62,7 @@ const Header = () => {
                             <AppBar position="static">
                                 <Toolbar>
                                     <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                        <ArrowBackIosIcon onClick={() => goToReturn(history)} />
+                                        <ArrowBackIosIcon onClick={() => goToLogin(history)} />
                                     </IconButton>
                                 </Toolbar>
                             </AppBar>
@@ -74,7 +73,7 @@ const Header = () => {
                                     <AppBar position="static">
                                         <Toolbar>
                                             <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                                <ArrowBackIosIcon onClick={() => goToReturn(history)} />
+                                                <ArrowBackIosIcon onClick={() => goToRegister(history)} />
                                             </IconButton>
                                             <p>Endereço</p>
                                         </Toolbar>
@@ -84,7 +83,7 @@ const Header = () => {
                                     <AppBar position="static">
                                         <Toolbar>
                                             <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                                <ArrowBackIosIcon onClick={() => goToReturn(history)} />
+                                                <ArrowBackIosIcon onClick={() => goToProfile(history)} />
                                             </IconButton>
                                         </Toolbar>
                                     </AppBar>
@@ -94,7 +93,7 @@ const Header = () => {
                                     <AppBar position="static">
                                         <Toolbar>
                                             <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                                <ArrowBackIosIcon onClick={() => goToReturn(history)} />
+                                                <ArrowBackIosIcon onClick={() => goToHome(history)} />
                                             </IconButton>
                                             <p>Busca</p>
                                         </Toolbar>
@@ -121,7 +120,7 @@ const Header = () => {
                                                 <AppBar position="static">
                                                     <Toolbar>
                                                         <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                                            <ArrowBackIosIcon onClick={() => goToReturn(history)} />
+                                                            <ArrowBackIosIcon onClick={() => goToProfile(history)} />
                                                         </IconButton>
                                                         <p>Editar</p>
                                                     </Toolbar>
@@ -134,7 +133,7 @@ const Header = () => {
                                                 <AppBar position="static">
                                                     <Toolbar>
                                                         <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                                            <ArrowBackIosIcon onClick={() => goToReturn(history)} />
+                                                            <ArrowBackIosIcon onClick={() => goToHome(history)} />
                                                         </IconButton>
                                                         <p>Restaurante</p>
                                                     </Toolbar>

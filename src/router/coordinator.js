@@ -20,7 +20,3 @@ export const goToCart = (history) => {
 
 export const goToProfile = (history) =>{
     history("/perfil")
-}
-export const goToReturn = (history) => {
-    history(-1)
-}

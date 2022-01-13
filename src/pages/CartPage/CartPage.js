@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import * as C from './styled'
 import ProductCard from '../RestaurantDetail/ProductCard/ProductCard'
 import GlobalStateContext from '../../contexts/GlobalStateContext';
@@ -14,21 +14,11 @@ const CartPage = () => {
     const { states, setters, requests } = useContext(GlobalStateContext)
     const [form, onChange] = useForm({ paymentMethod: "" })
     const productsRequisitions = []
-    console.log(getProfile())
+    const [addressUser, setAddressUser] = useState({})
 
-    // REPRESENTAÇÃO DAS INFORMAÇÕES DO PERFIL
-
-    // const [profileUser, setProfileUser] = useState(
-    //     {
-    //         "user": {
-    //             "id": "De8UACSFgFySnKdXm5hI",
-    //             "name": "Astrodev",
-    //             "email": "astrodev@future4.com",
-    //             "cpf": "111.111.111-11",
-    //             "hasAddress": true,
-    //             "address": "R. Afonso Braz, 177 - Vila N. Conceição"
-    //         }
-    //     })
+    useEffect(() => {
+        getProfile(setAddressUser)
+    }, [])
 
 
     // FUNÇÃO DE COLOCAR VIRGULA E DUAS CASAS DECIMAIS
@@ -50,26 +40,22 @@ const CartPage = () => {
         placeOrder(body, states.restaurant.id)
     }
 
-
-    console.log(states.cart)
-    console.log(states.restaurant)
-
     // MAP PRA RENDERIZAR OS CARDS DO CARRINHO
 
     const CardProduct = states.cart.map((product) => {
 
         // SOMAR AS INFORMAÇÕES E MULTIPLICAR OS PRODUTOS PELAS QUANTIDADES
-        sum += Number(product.price.replace(",", ".")) * product.amount
-        const price = (Number(product.price.replace(",", ".")) * product.amount)
+        sum += Number(product.price.replace(",", ".")) * product.quantify
+        const price = (Number(product.price.replace(",", ".")) * product.quantify)
 
         //PUSHAR PARA O ARRAY PRODUCTS OBJETO COM ID E QUANTIFY
         productsRequisitions.push({
             id: product.id,
-            quantity: product.amount
+            quantity: product.quantify
         })
 
         return (
-            <ProductCard photo={product.photoUrl} id={product.id} name={product.name} description={product.description} price={changeAccent(price)} amount={product.amount} />
+            <ProductCard photo={product.photoUrl} id={product.id} name={product.name} description={product.description} price={changeAccent(price)} quantify={product.quantify} />
         )
     })
 
@@ -81,7 +67,7 @@ const CartPage = () => {
                 <div>
                     <C.AddressContainer>
                         <C.AddressUser>Endereço de entrega</C.AddressUser>
-                        <p></p>
+                        <p>{addressUser && addressUser.address}</p>
                     </C.AddressContainer>
 
                     <C.Cart>
