@@ -125,11 +125,3 @@ export const ButtonUI = styled(Button)`
     width: 90vw;
     margin-bottom: "10px";
 `
-// export const Footer1 =  styled.footer`
-
-// position: fixed;
-// bottom: 0,
-// margin-top: 50vh;
-
-
-// `

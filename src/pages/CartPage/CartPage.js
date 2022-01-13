@@ -1,15 +1,16 @@
 import React, { useContext, useState } from 'react'
-// import { ContainerPai, AddressContainer, AddressUser, Cart, InfoRestaurant, ContainerProducts, Info, Price, Footer, Payment, Button } from './styled'
 import * as C from './styled'
 import ProductCard from '../RestaurantDetail/ProductCard/ProductCard'
 import GlobalStateContext from '../../contexts/GlobalStateContext';
 import useForm from '../../hooks/useForm';
 import placeOrder from '../../services/placeOrder';
-import Footer from '../../components/Footer/Footer';
+import { FormControl, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
+
+
 
 const CartPage = () => {
     let sum = 0;
-    const [cart, setCart, restaurant, setRestaurant] = useContext(GlobalStateContext)
+    const [cart, , restaurant, ] = useContext(GlobalStateContext)
     const [form, onChange] = useForm({ paymentMethod: "" })
     const productsRequisitions = []
 
@@ -103,18 +104,12 @@ const CartPage = () => {
                         <C.Payment>
                             <p>Forma de Pagamento</p>
 
-
-                            <form name='paymentMethod' value={form} onChange={onChange}>
-                                <label>
-                                    <input name="paymentMethod" type='radio' value="money" />
-                                    Dinheiro
-                                </label>
-
-                                <label>
-                                    <input name="paymentMethod" type='radio' value="creditcard" />
-                                    Cartão de Crédito
-                                </label>
-                            </form>
+                            <FormControl component="fieldset" color="black">
+                                <RadioGroup aria-label="gender" name="paymentMethod" onChange={onChange}>
+                                    <FormControlLabel value="money" control={<Radio />} label="Dinheiro"/>
+                                    <FormControlLabel value="creditcard" control={<Radio />} label="Cartão de Crédito" />
+                                </RadioGroup>
+                            </FormControl>
 
 
                         </C.Payment>
@@ -127,7 +122,7 @@ const CartPage = () => {
                     </C.ButtonUI>
 
                 </div>
-            </C.InfoCart>          
+            </C.InfoCart>
         </C.ContainerPai >
     )
 }
