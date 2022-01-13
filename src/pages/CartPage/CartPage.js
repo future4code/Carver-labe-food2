@@ -55,7 +55,7 @@ const CartPage = () => {
         })
 
         return (
-            <ProductCard photo={product.photoUrl} id={product.id} name={product.name} description={product.description} price={changeAccent(price)} quantify={product.quantify} />
+            <ProductCard photo={product.photo} id={product.id} name={product.name} description={product.description} price={changeAccent(price)} quantify={product.quantify} />
         )
     })
 
@@ -97,7 +97,7 @@ const CartPage = () => {
 
                             <FormControl component="fieldset" color="black">
                                 <RadioGroup aria-label="gender" name="paymentMethod" onChange={onChange}>
-                                    <FormControlLabel  value="money" control={<Radio />} label="Dinheiro"/>
+                                    <FormControlLabel value="money" control={<Radio />} label="Dinheiro"/>
                                     <FormControlLabel value="creditcard" control={<Radio />} label="Cartão de Crédito" />
                                 </RadioGroup>
                             </FormControl>
