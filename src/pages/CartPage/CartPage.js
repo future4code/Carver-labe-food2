@@ -5,28 +5,30 @@ import GlobalStateContext from '../../contexts/GlobalStateContext';
 import useForm from '../../hooks/useForm';
 import placeOrder from '../../services/placeOrder';
 import { FormControl, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
+import { getProfile } from '../../services/services';
 
 
 
 const CartPage = () => {
     let sum = 0;
-    const [cart, , restaurant, ] = useContext(GlobalStateContext)
+    const { states, setters, requests } = useContext(GlobalStateContext)
     const [form, onChange] = useForm({ paymentMethod: "" })
     const productsRequisitions = []
+    console.log(getProfile())
 
     // REPRESENTAÇÃO DAS INFORMAÇÕES DO PERFIL
 
-    const [profileUser, setProfileUser] = useState(
-        {
-            "user": {
-                "id": "De8UACSFgFySnKdXm5hI",
-                "name": "Astrodev",
-                "email": "astrodev@future4.com",
-                "cpf": "111.111.111-11",
-                "hasAddress": true,
-                "address": "R. Afonso Braz, 177 - Vila N. Conceição"
-            }
-        })
+    // const [profileUser, setProfileUser] = useState(
+    //     {
+    //         "user": {
+    //             "id": "De8UACSFgFySnKdXm5hI",
+    //             "name": "Astrodev",
+    //             "email": "astrodev@future4.com",
+    //             "cpf": "111.111.111-11",
+    //             "hasAddress": true,
+    //             "address": "R. Afonso Braz, 177 - Vila N. Conceição"
+    //         }
+    //     })
 
 
     // FUNÇÃO DE COLOCAR VIRGULA E DUAS CASAS DECIMAIS
@@ -45,13 +47,16 @@ const CartPage = () => {
             paymentMethod: form.paymentMethod
         }
 
-        placeOrder(body, restaurant.id)
+        placeOrder(body, states.restaurant.id)
     }
 
 
+    console.log(states.cart)
+    console.log(states.restaurant)
+
     // MAP PRA RENDERIZAR OS CARDS DO CARRINHO
 
-    const CardProduct = cart.map((product) => {
+    const CardProduct = states.cart.map((product) => {
 
         // SOMAR AS INFORMAÇÕES E MULTIPLICAR OS PRODUTOS PELAS QUANTIDADES
         sum += Number(product.price.replace(",", ".")) * product.amount
@@ -76,16 +81,16 @@ const CartPage = () => {
                 <div>
                     <C.AddressContainer>
                         <C.AddressUser>Endereço de entrega</C.AddressUser>
-                        <p>{profileUser.user.address}</p>
+                        <p></p>
                     </C.AddressContainer>
 
                     <C.Cart>
-                        {cart.length < 1 ? <C.EmptyCart> Carrinho vazio </C.EmptyCart> : <>
+                        {states.cart.length < 1 ? <C.EmptyCart> Carrinho vazio </C.EmptyCart> : <>
                             <C.InfoRestaurant>
-                                <span> {restaurant.name} </span>
+                                <span> {states.restaurant.name} </span>
 
-                                <p>{restaurant.address}</p>
-                                <p> {restaurant.deliveryTime} - {restaurant.deliveryTime + 10} min </p>
+                                <p>{states.restaurant.address}</p>
+                                <p> {states.restaurant.deliveryTime} - {states.restaurant.deliveryTime + 10} min </p>
                             </C.InfoRestaurant>
 
                             <C.ContainerProducts>
@@ -95,10 +100,10 @@ const CartPage = () => {
 
 
                         <C.Info>
-                            <div>Frete R${cart.length < 1 ? <> 0,00 </> : changeAccent(restaurant.shipping)}</div>
+                            <div>Frete R${states.cart.length < 1 ? <> 0,00 </> : changeAccent(states.restaurant.shipping)}</div>
                             <C.Price>
                                 <p>SUBTOTAL</p>
-                                <span>R${cart.length < 1 ? <> 0,00 </> : (changeAccent(sum + restaurant.shipping))}</span>
+                                <span>R${states.cart.length < 1 ? <> 0,00 </> : (changeAccent(sum + states.restaurant.shipping))}</span>
                             </C.Price>
                         </C.Info>
                         <C.Payment>
@@ -106,7 +111,7 @@ const CartPage = () => {
 
                             <FormControl component="fieldset" color="black">
                                 <RadioGroup aria-label="gender" name="paymentMethod" onChange={onChange}>
-                                    <FormControlLabel value="money" control={<Radio />} label="Dinheiro"/>
+                                    <FormControlLabel  value="money" control={<Radio />} label="Dinheiro"/>
                                     <FormControlLabel value="creditcard" control={<Radio />} label="Cartão de Crédito" />
                                 </RadioGroup>
                             </FormControl>
@@ -117,7 +122,7 @@ const CartPage = () => {
                     </C.Cart>
                 </div>
                 <div>
-                    <C.ButtonUI onClick={purchase} variant="contained" color="primary" disabled={cart.length === 0 || form.paymentMethod === ""}>
+                    <C.ButtonUI onClick={purchase} variant="contained" color="primary" disabled={states.cart.length === 0 || form.paymentMethod === ""}>
                         Confirmar
                     </C.ButtonUI>
 

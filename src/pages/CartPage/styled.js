@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from '@material-ui/core/Button';
+import { FormControlLabel } from "@material-ui/core";
 
 export const ContainerPai = styled.div`
     display: flex;
@@ -124,4 +125,10 @@ export const ButtonUI = styled(Button)`
     background-color: #5cb646;
     width: 90vw;
     margin-bottom: "10px";
+`
+
+export const Input = styled(FormControlLabel)`
+    .gDFjNd label {
+    margin: 5px 0;
+}
 `

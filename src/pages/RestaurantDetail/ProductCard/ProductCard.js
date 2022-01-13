@@ -5,7 +5,7 @@ import GlobalStateContext from "../../../contexts/GlobalStateContext";
 import logo from '../../../assests/logo-preta.png'
 
 const ProductCard = ({ photo, id, name, description, price, amount, restaurant }) => {
-    const [cart, setCart] = useContext(GlobalStateContext);
+    const { states, setters, requests } = useContext(GlobalStateContext)
     const [open, setOpen] = useState(false);
     const product = { photo, id, name, description, price, amount, restaurant }
 
@@ -14,18 +14,18 @@ const ProductCard = ({ photo, id, name, description, price, amount, restaurant }
     }
 
     if (amount === "request") {
-        const index = cart.findIndex((item) => item.name === name);
+        const index = states.cart.findIndex((item) => item.name === name);
         if (index !== -1) {
-            amount = cart[index].amount;
+            amount = states.cart[index].amount;
         }
     }
 
     const removeItem = () => {
-        const position = cart.findIndex((item) => {
+        const position = states.cart.findIndex((item) => {
             return item.id === id;
         });
 
-        let newCart = [...cart];
+        let newCart = [...states.cart];
 
         if (newCart[position].amount === 1) {
             newCart.splice(position, 1);
@@ -33,7 +33,7 @@ const ProductCard = ({ photo, id, name, description, price, amount, restaurant }
             newCart[position].amount -= 1;
         }
 
-        setCart(newCart);
+        setters.setCart(newCart);
     };
 
     return (
