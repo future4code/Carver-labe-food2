@@ -39,7 +39,6 @@ const Footer = () => {
         setValue(newValue);
     };
 
-
     return (
         <footer>
             {
@@ -52,9 +51,7 @@ const Footer = () => {
                         </BottomNavigation>
                     </AppBar> : <></>
             }
-
         </footer>
-
     )
 }
 

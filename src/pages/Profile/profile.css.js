@@ -96,3 +96,8 @@ export const OrderTotalCost = styled.h6`
     font-weight: bold;
     letter-spacing: -0.39px;
 `
+
+export const BotaoLogout = styled.div`
+position: relative;
+margin-left: 30vw;
+`
