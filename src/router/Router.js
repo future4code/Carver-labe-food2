@@ -15,7 +15,7 @@ import SeachPage from "../pages/SearchPage/SearchPage";
 const Router = () => {
     return (
         <BrowserRouter>
-            {/* <Header/> */}
+            <Header/>
             <Routes>
                 <Route path={"/"} element={<InitialPage />} />
                 <Route path={"/home"} element={<HomePage />} />
