@@ -25,13 +25,16 @@ const useStyles1 = makeStyles((theme) => ({
 const useStylesCard= makeStyles({
     root:{
         maxWidth: 368,
+        minWidth:320,
         marginBottom:12,
     },
     media: {
         height: 113,
+    
     },
     content:{
-        height:36
+        height:64,
+        margin:0
     },
     text:{
         marginBottom:0

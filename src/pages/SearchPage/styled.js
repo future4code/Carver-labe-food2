@@ -21,6 +21,12 @@ export const DivStyled=styled.div`
     align-items: center;
     div{
         width:90%;
+    button{
+        div{
+            width:100%
+        }
     }
+    }
+
 
 `
