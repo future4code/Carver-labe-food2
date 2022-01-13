@@ -58,7 +58,7 @@ const useStylesCard = makeStyles({
         height: 113,
     },
     content: {
-        height: 36
+        height: 64
     },
     text: {
         marginBottom: 0
