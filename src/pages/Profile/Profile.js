@@ -87,12 +87,12 @@ export default function Profile() {
                 </OrderHistoryCard>
 
                 < BotaoLogout>
-                <Button variant="contained" color="primary" onClick={clear}>
-                    Logout
-                </Button>
-            </ BotaoLogout>
+                    <Button variant="contained" color="primary" onClick={clear}>
+                        Logout
+                    </Button>
+                </ BotaoLogout>
             </OrderHistoryArea>
-            
+
         </ProfilePageContainer>
     )
 }
