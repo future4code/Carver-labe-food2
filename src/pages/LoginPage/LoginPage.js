@@ -167,7 +167,7 @@ const LoginPage = () => {
                                 <Button variant="contained" color="primary" className={classes.withoutLabel} type="submit">
                                     Entrar
                                 </Button>
-                                <Button color="#000000" className={classes.botao}>
+                                <Button color="#000000" className={classes.botao} onClick={() => goToRegister(navigate)}>
                                     Não possui cadastro? Clique aqui
                                 </Button>
                             </>
