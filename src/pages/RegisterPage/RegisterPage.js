@@ -112,6 +112,7 @@ const RegisterPage = () => {
 
     return (
         <Container>
+
             {
                 loading 
                 ? <>
@@ -131,10 +132,79 @@ const RegisterPage = () => {
                         </div>
                     </header> */}
 
-                    <CardMedia
-                        component="img"
-                        image={Logo}
-                        alt="pokemons"
+                 
+
+            <CardMedia
+                component="img"
+                image={Logo}
+                alt="pokemons"
+            />
+            <p>Cadastrar</p>
+            <form className={classes.root} noValidate={false} autoComplete="on" onSubmit={handleSubmit}>
+
+                <TextField
+                    id="filled-textarea"
+                    value={form.name}
+                    onChange={onChange}
+                    label="Nome"
+                    placeholder="Nome e sobrenome"
+                    variant="outlined"
+                    name="name"
+                    required
+                />
+
+                <TextField
+                    type="email"
+                    id="filled-textarea"
+                    name="email"
+                    value={form.email}
+                    onChange={onChange}
+                    label="E-mail"
+                    placeholder="email@email.com"
+                    multiline
+                    variant="outlined"
+                    required
+                />
+
+                <TextField
+                    id="outlined-number"
+                    label="CPF"
+                    type="texte"
+                    variant="outlined"
+                    name="cpf"
+                    value={form.cpf}
+                    onChange={onChange}
+                    placeholder="000.000.000-00"
+                    mask={'[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}'}
+                    inputProps={{pattern:'[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}'}}
+                    showMask
+                    required
+                />
+              
+                <FormControl required className={clsx(classes.margin, classes.textField)} variant="outlined">
+                    <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
+                    <OutlinedInput
+                        id="outlined-adornment-password"
+                        placeholder="Minimo 6 caracteres"
+                        type={values.showPassword ? 'text' : 'password'}
+                        name="password"
+                        value={form.password}
+                        onChange={onChange}
+                        endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    edge="end"
+                                >
+                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                            </InputAdornment>
+                        }
+                        labelWidth={70}
+                        required
+
                     />
                     {   
                         states.user.name

@@ -1,11 +1,11 @@
 import React from "react";
-import ImageCentral from "../../../assets/RestaurantDetail/image.png";
 import * as C from "./styled";
 
-const RestaurantCard = ({ restaurants }) => {
+const RestaurantCard = ({ rest }) => {
     return (
         <C.CardRestaurantContainer>
-                <img src={ImageCentral} alt="Capa" />
+            {rest && <>
+                <img src={rest.logoUrl} alt="Capa" />
                 <C.InfosCard>
                     <C.Title>Bullguer Vila Madalena</C.Title>
                     <C.Desc>Burguer</C.Desc>
@@ -15,6 +15,8 @@ const RestaurantCard = ({ restaurants }) => {
                     </C.DescInline>
                     <C.Desc>R. Fradique Coutinho, 1136 - Vila Madalena</C.Desc>
                 </C.InfosCard>
+            </>
+            }
         </C.CardRestaurantContainer>
     )
 }

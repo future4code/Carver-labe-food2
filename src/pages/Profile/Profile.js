@@ -7,6 +7,8 @@ import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import GlobalStateContext from '../../contexts/GlobalStateContext.js';
 import { getFullAddress } from '../../services/services.js';
 import { useNavigate } from 'react-router-dom';
+import Footer from "../../components/Footer/Footer"
+import { Footer1 } from '../CartPage/styled.js';
 
 
 export default function Profile() {
@@ -79,7 +81,6 @@ export default function Profile() {
                     <OrderTotalCost>Total R$67,00</OrderTotalCost>
                 </OrderHistoryCard>
             </OrderHistoryArea>
-
         </ProfilePageContainer>
     )
 }

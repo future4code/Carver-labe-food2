@@ -3,6 +3,7 @@ import { addAdress, login, signUp, updateProfile } from "../services/services";
 import GlobalStateContext from "./GlobalStateContext";
 
 const GlobalState = (props) => {
+
     const [restaurant, setRestaurant] = useState({});
     const [cart, setCart] = useState([]);
     const [user, setUser] = useState([])
@@ -27,6 +28,7 @@ const GlobalState = (props) => {
     const states = {restaurant, cart ,user}
     const setters = {setRestaurant, setCart, setUser}
     const requests = {requestSignup,putAdress,requestLogin,requestUpdateProfile}
+
 
 
     return(

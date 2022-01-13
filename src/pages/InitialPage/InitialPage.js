@@ -4,6 +4,7 @@ import { CardMedia } from '@material-ui/core';
 import LogoImg from '../../assests/logo.png'
 import { useNavigate } from 'react-router-dom';
 
+
 const InitialPage = () => {
   const navigate = useNavigate()
   
@@ -11,12 +12,14 @@ const InitialPage = () => {
     setTimeout(()=> navigate('/login'),2000)
   },[])
 
+
   return (
     <ContainerInitialPage>
       <CardMedia
         component="img"
         image={LogoImg}
         alt="pokemons"
+        onClick={() => goToHome(history)}
       />
 
     </ContainerInitialPage>

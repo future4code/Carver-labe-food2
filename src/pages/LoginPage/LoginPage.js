@@ -5,9 +5,10 @@ import { Container } from "./styled";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import { Visibility, VisibilityOff } from '@material-ui/icons';
 import useForm from "../../hooks/useForm";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
+import { ChangeHistory, Visibility, VisibilityOff } from '@material-ui/icons';
+import { goToRegister } from "../../router/coordinator";
 import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -36,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginPage = () => {
     const classes = useStyles();
+
     const[form, onChange] = useForm(
         {
             email: "madreyv@gmail.com",
@@ -45,6 +47,7 @@ const LoginPage = () => {
     const {states, setters, requests} = useContext(GlobalStateContext)
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
+
 
     const [values, setValues] = React.useState({
         showPassword: false,
@@ -75,11 +78,45 @@ const LoginPage = () => {
                 alt="pokemons"
             />
 
+
             {
                 loading
                 ?<>
                     <CircularProgress />
                     <h1>Carregando</h1>
+
+                <FormControl required className={clsx(classes.margin, classes.textField)} variant="outlined">
+                    <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
+                    <OutlinedInput
+                        id="outlined-adornment-password"
+                        placeholder="Minimo 6 caracteres"
+                        type={values.showPassword ? 'text' : 'password'}
+                        value={values.password}
+                        onChange={handleChange('password')}
+                        endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    edge="end"
+                                >
+                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                            </InputAdornment>
+                        }
+                        labelWidth={70}
+                        required
+                    />
+                </FormControl>
+                <>
+                    <Button variant="contained" color="primary" className={classes.withoutLabel} >
+                        Entrar
+                    </Button>
+                    <Button color="#000000" className={classes.botao} onClick={() => goToRegister(history)}>
+                        Não possui cadastro? Clique aqui
+                    </Button>
+
                 </>
                 :<>
                         <p>Entrar</p>

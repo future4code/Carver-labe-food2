@@ -1,44 +1,19 @@
 import React, { useContext, useState } from 'react'
-import { ContainerPai, Cabecalho, AddressContainer, AddressUser, Cart, InfoRestaurant, ContainerProducts, CardProduto, Info, Price, Footer, Payment, Button } from './styled'
+// import { ContainerPai, AddressContainer, AddressUser, Cart, InfoRestaurant, ContainerProducts, Info, Price, Footer, Payment, Button } from './styled'
+import * as C from './styled'
 import ProductCard from '../RestaurantDetail/ProductCard/ProductCard'
 import GlobalStateContext from '../../contexts/GlobalStateContext';
+import useForm from '../../hooks/useForm';
+import placeOrder from '../../services/placeOrder';
+import Footer from '../../components/Footer/Footer';
 
 const CartPage = () => {
     let sum = 0;
-    const [cart, setCart] = useContext(GlobalStateContext)
-    const [restaurant, setRestaurant] = useState({
-        "id": "1",
-        "description": "Habib's é uma rede de restaurantes de comida rápida brasileira especializada em culinária árabe, os restaurantes vendem mais de 600 milhões de esfirras por ano. A empresa emprega 22 mil colaboradores e tem 421 unidades distribuídas em mais de cem municípios em 20 unidades federativas.",
-        "shipping": 6,
-        "address": "Rua das Margaridas, 110 - Jardim das Flores",
-        "name": "Habibs",
-        "logoUrl": "http://soter.ninja/futureFoods/logos/habibs.jpg",
-        "deliveryTime": 60,
-        "category": "Árabe"
-    })
+    const [cart, setCart, restaurant, setRestaurant] = useContext(GlobalStateContext)
+    const [form, onChange] = useForm({ paymentMethod: "" })
+    const productsRequisitions = []
 
-    const [products, setProducts] = useState([
-        {
-            id: "CnKdjU6CyKakQDGHzNln",
-            category: "Salgado",
-            price: "1",
-            photoUrl: "https://static-images.ifood.com.br/image/upload/f_auto,t_high/pratos/65c38aa8-b094-413d-9a80-ddc256bfcc78/201907031404_66194495.jpg",
-            name: "Bibsfiha carne",
-            description: "Esfiha deliciosa, receita secreta do Habibs.",
-            amount: 1
-
-        },
-        {
-            id: "KJqMl2DxeShkSBevKVre",
-            photoUrl: "https://www.sushimanscwb.com.br/wp-content/uploads/2018/10/1579_REFRIGERANTE_LATA_-_350ml_17d2e336feb44a2696fd6cf852c41b50-1.jpeg",
-            name: "Refrigerante",
-            description: "Coca cola, Sprite ou Guaraná",
-            category: "Bebida",
-            price: "4",
-            amount: 5
-        }
-    ])
-
+    // REPRESENTAÇÃO DAS INFORMAÇÕES DO PERFIL
 
     const [profileUser, setProfileUser] = useState(
         {
@@ -52,67 +27,108 @@ const CartPage = () => {
             }
         })
 
-    const CardProduct = cart.map((product) => {
-        sum += Number(product.price.replace(",", ".")) * product.amount
 
+    // FUNÇÃO DE COLOCAR VIRGULA E DUAS CASAS DECIMAIS
+
+    const changeAccent = (number) => {
+        return number.toFixed(2).replace(".", ",")
+    }
+
+
+    // FUNÇÃO DE CONCLUIR A COMPRA
+
+    const purchase = () => {
+
+        const body = {
+            products: productsRequisitions,
+            paymentMethod: form.paymentMethod
+        }
+
+        placeOrder(body, restaurant.id)
+    }
+
+
+    // MAP PRA RENDERIZAR OS CARDS DO CARRINHO
+
+    const CardProduct = cart.map((product) => {
+
+        // SOMAR AS INFORMAÇÕES E MULTIPLICAR OS PRODUTOS PELAS QUANTIDADES
+        sum += Number(product.price.replace(",", ".")) * product.amount
         const price = (Number(product.price.replace(",", ".")) * product.amount)
 
+        //PUSHAR PARA O ARRAY PRODUCTS OBJETO COM ID E QUANTIFY
+        productsRequisitions.push({
+            id: product.id,
+            quantity: product.amount
+        })
+
         return (
-            <ProductCard photo={product.photoUrl} id={product.id} name={product.name} description={product.description} price={price.toFixed(2).replace(".", ",")} amount={product.amount} />
+            <ProductCard photo={product.photoUrl} id={product.id} name={product.name} description={product.description} price={changeAccent(price)} amount={product.amount} />
         )
     })
 
 
 
     return (
-        <ContainerPai>
-            {/* <Cabecalho /> */}
+        <C.ContainerPai>
+            <C.InfoCart>
+                <div>
+                    <C.AddressContainer>
+                        <C.AddressUser>Endereço de entrega</C.AddressUser>
+                        <p>{profileUser.user.address}</p>
+                    </C.AddressContainer>
 
-            <AddressContainer>
-                <AddressUser>Endereço de entrega</AddressUser>
-                <p>{profileUser.user.address}</p>
-            </AddressContainer>
+                    <C.Cart>
+                        {cart.length < 1 ? <C.EmptyCart> Carrinho vazio </C.EmptyCart> : <>
+                            <C.InfoRestaurant>
+                                <span> {restaurant.name} </span>
 
-            <Cart>
+                                <p>{restaurant.address}</p>
+                                <p> {restaurant.deliveryTime} - {restaurant.deliveryTime + 10} min </p>
+                            </C.InfoRestaurant>
 
-                <InfoRestaurant>
-                    <span> {restaurant.name} </span>
+                            <C.ContainerProducts>
+                                {CardProduct}
+                            </C.ContainerProducts>
+                        </>}
 
-                    <p>{restaurant.address}</p>
-                    <p> {restaurant.deliveryTime} - {restaurant.deliveryTime + 10} min </p>
-                </InfoRestaurant>
 
-                <ContainerProducts>
-                    {CardProduct}
-                </ContainerProducts>
+                        <C.Info>
+                            <div>Frete R${cart.length < 1 ? <> 0,00 </> : changeAccent(restaurant.shipping)}</div>
+                            <C.Price>
+                                <p>SUBTOTAL</p>
+                                <span>R${cart.length < 1 ? <> 0,00 </> : (changeAccent(sum + restaurant.shipping))}</span>
+                            </C.Price>
+                        </C.Info>
+                        <C.Payment>
+                            <p>Forma de Pagamento</p>
 
-                <Info>
-                    <div>Frete R${restaurant.shipping.toFixed(2).replace(".", ",")}</div>
-                    <Price>
-                        <p>SUBTOTAL</p>
-                        <span>R${(sum + restaurant.shipping).toFixed(2)}</span>
-                    </Price>
-                </Info>
-                <Payment>
-                    <p>Forma de Pagamento</p>
-                    <form>
-                        <label>
-                            <input name="pay" type='radio' />
-                            Dinheiro
-                        </label>
 
-                        <label>
-                            <input name="pay" type='radio' />
-                            Cartão de Crédito
-                        </label>
-                    </form>
-                </Payment>
-                <Button>
-                    Confirmar
-                </Button>
-            </Cart>
-            <Footer />
-        </ContainerPai>
+                            <form name='paymentMethod' value={form} onChange={onChange}>
+                                <label>
+                                    <input name="paymentMethod" type='radio' value="money" />
+                                    Dinheiro
+                                </label>
+
+                                <label>
+                                    <input name="paymentMethod" type='radio' value="creditcard" />
+                                    Cartão de Crédito
+                                </label>
+                            </form>
+
+
+                        </C.Payment>
+
+                    </C.Cart>
+                </div>
+                <div>
+                    <C.ButtonUI onClick={purchase} variant="contained" color="primary" disabled={cart.length === 0 || form.paymentMethod === ""}>
+                        Confirmar
+                    </C.ButtonUI>
+
+                </div>
+            </C.InfoCart>          
+        </C.ContainerPai >
     )
 }
 

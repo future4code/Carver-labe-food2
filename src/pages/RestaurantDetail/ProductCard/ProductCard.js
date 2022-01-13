@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import * as C from "./styled";
 import ConfirmDialog from "../ConfirmDialog/ConfirmDialog";
 import GlobalStateContext from "../../../contexts/GlobalStateContext";
+import logo from '../../../assests/logo-preta.png'
 
 const ProductCard = ({ photo, id, name, description, price, amount, restaurant }) => {
     const [cart, setCart] = useContext(GlobalStateContext);
@@ -31,12 +32,16 @@ const ProductCard = ({ photo, id, name, description, price, amount, restaurant }
         } else {
             newCart[position].amount -= 1;
         }
+
         setCart(newCart);
     };
 
     return (
         <C.CardProductContainer>
-            <img src={photo} alt={name} />
+            <img src={photo} alt={name} onError={({ currentTarget }) => {
+                currentTarget.onerror = null; // prevents looping
+                currentTarget.src = "https://www.bodoquena.tur.br/files/icone-lanche_ecf6496d.png";
+            }} />
             <C.InfosContainer>
                 <C.TitleInfo>{name}</C.TitleInfo>
                 <C.DescInfo>{description}</C.DescInfo>
