@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-    height: 49px;
-    width: 100%;
-    position: sticky;
-    background-color: black;
-    bottom: 0;
-`
+// export const Container = styled.div`
+//    margin: 16vw;
+// `
+
+// export const Footer1 = styled.footer`
+
+//     position: absolute;
+//     bottom: 0;
+// `
+
+

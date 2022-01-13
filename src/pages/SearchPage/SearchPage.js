@@ -108,7 +108,9 @@ const SeachPage = () => {
     const classes2=useStylesCard()
     const [valueBottom, setValueBottom] = React.useState(0);
     const [value, setValue] = React.useState("");
-    const [cart, setCart, restaurant, setRestaurant] = useContext(GlobalStateContext)
+    const {states,setters,requests}= useContext(GlobalStateContext)
+    
+    console.log(states.restaurant)
     console.log(restaurant)
     const handleChange = (event, newValue) => {
         console.log(event.target.value)

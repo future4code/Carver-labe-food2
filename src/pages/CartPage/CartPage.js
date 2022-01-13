@@ -122,13 +122,12 @@ const CartPage = () => {
                     </C.Cart>
                 </div>
                 <div>
-                    <C.Button onClick={purchase}>
+                    <C.ButtonUI onClick={purchase} variant="contained" color="primary" disabled={cart.length === 0 || form.paymentMethod === ""}>
                         Confirmar
-                    </C.Button>
-                </div>
-            </C.InfoCart>
+                    </C.ButtonUI>
 
-            <Footer />
+                </div>
+            </C.InfoCart>          
         </C.ContainerPai >
     )
 }

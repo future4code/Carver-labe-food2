@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { Button } from "@material-ui/core"
 import theme from "../../constants/theme"
@@ -17,6 +17,11 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Text, TabsStyled, UnderTextCard,  ContainerCardUnderText, SeachContainer } from "./styled";
 import ImageCard from '../../assests/image.png'
+import Header from "../../components/header/Header";
+import Footer from "../../components/Footer/Footer";
+import GlobalStateContext from "../../contexts/GlobalStateContext";
+
+
 
 
 const useStyles1 = makeStyles((theme) => ({
@@ -39,7 +44,7 @@ const useStylesBottomNavigation = makeStyles({
     root: {
         width: "100%"
     },
-   
+
 });
 
 const useStylesCard= makeStyles({
@@ -154,10 +159,10 @@ const HomePage = () => {
     const classes1 = useStyles1();
     const classes2 = useStylesScrollableTabs();
     const classes3 = useStylesBottomNavigation();
-    const classes4=useStylesCard()
+    const classes4 = useStylesCard()
     const [valueBottom, setValueBottom] = React.useState(0);
     const [value, setValue] = React.useState(0);
-
+ 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -165,22 +170,6 @@ const HomePage = () => {
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
-                <header>
-                    <div>
-                        <AppBar position="static">
-                            <Toolbar>
-                                <IconButton
-                                    edge="start"
-                                    className={classes1.menuButton}
-                                    color="inherit"
-                                    aria-label="menu"
-                                >
-                                    <ArrowBackIosIcon />
-                                </IconButton>
-                            </Toolbar>
-                        </AppBar>
-                    </div>
-                </header>
                 <SearchContainer>
                     <SeachContainer color="transparent" position="static">
                         <Toolbar>
@@ -284,8 +273,8 @@ const HomePage = () => {
                         Item Seven
                     </TabPanel>
                 </div>
-              
-                <AppBar position="fixed" color="transparent" className={classes.appBar}>
+
+                {/* <AppBar position="fixed" color="transparent" className={classes.appBar}>
                     <Toolbar>
                         <BottomNavigation
                             value={valueBottom}
@@ -309,7 +298,8 @@ const HomePage = () => {
                             />
                         </BottomNavigation>
                     </Toolbar>
-                </AppBar>
+                </AppBar> */}
+                {/* <Footer /> */}
             </div>
         </ThemeProvider>
     );

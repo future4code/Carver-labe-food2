@@ -40,13 +40,14 @@ export const GrayText = styled.div`
     padding: 0 16px;
 `
 
-export const AdressInformation = styled(PersonalInformationProfileArea)`
+export const AddressInformation = styled(PersonalInformationProfileArea)`
     background-color: #eee;
 `
 
 export const OrderHistoryArea = styled.div`
     padding: 16px;
     width: 91vw;
+    margin-bottom: 12vw;
 
     h5{
         margin: 0 0 8px;
