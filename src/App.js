@@ -24,7 +24,6 @@ const App = () => {
       <GlobalState>
         <Router />
       </GlobalState>
-
     </ThemeProvider>
 
   )
