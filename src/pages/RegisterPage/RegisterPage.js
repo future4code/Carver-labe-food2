@@ -320,7 +320,10 @@ const RegisterPage = () => {
                             :"criar"}
                             </Button>
                         </>
+                        </form >
+                        </FormControl>
                     </form >
+                  
                 </>
             }
 

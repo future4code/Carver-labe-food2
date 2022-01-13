@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-export const goToProfile
-=======
 export const goToHome = (history) => {
     history("/home")
 }
@@ -27,4 +24,3 @@ export const goToProfile = (history) =>{
 export const goToReturn = (history) => {
     history(-1)
 }
->>>>>>> 4ff537236e09585b00ac7f0725d58a12bbe46a1e

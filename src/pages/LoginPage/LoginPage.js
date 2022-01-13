@@ -113,10 +113,11 @@ const LoginPage = () => {
                     <Button variant="contained" color="primary" className={classes.withoutLabel} >
                         Entrar
                     </Button>
-                    <Button color="#000000" className={classes.botao} onClick={() => goToRegister(history)}>
+                    <Button color="#000000" className={classes.botao} onClick={() => goToRegister(navigate)}>
                         Não possui cadastro? Clique aqui
                     </Button>
 
+                </>
                 </>
                 :<>
                         <p>Entrar</p>
@@ -170,10 +171,11 @@ const LoginPage = () => {
                             </>
                         </form >
                  </>
-                
+               
             }
-
-        </Container>
+        </Container>   
+       
+       
     )
 }
 

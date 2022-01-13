@@ -13,3 +13,14 @@ export const SeachContainer= styled(AppBar)`
 box-shadow:none;
 border: 1px solid #b8b8b8;
 `
+export const DivStyled=styled.div` 
+    width:100%;
+    display:flex;
+    padding:0;
+    flex-direction: column;
+    align-items: center;
+    div{
+        width:90%;
+    }
+
+`
