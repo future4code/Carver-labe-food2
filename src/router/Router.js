@@ -26,7 +26,7 @@ const Router = () => {
                 <Route path={"/restaurante/:id"} element={<RestaurantDetail />} />
                 <Route path={"/carrinho"} element={<CartPage />} />
                 <Route path={"/perfil"} element={<Profile />} />
-                <Route path={"/search"} element={<SeachPage />} />
+                <Route path={"/busca"} element={<SeachPage />} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
             <Footer />
