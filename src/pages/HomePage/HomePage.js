@@ -1,36 +1,16 @@
-import React, { useContext } from "react"
+import React from "react"
 import { useNavigate } from "react-router-dom"
-import { Button } from "@material-ui/core"
 import theme from "../../constants/theme"
 import { ThemeProvider } from '@material-ui/styles';
 import InputBase from "@material-ui/core/InputBase";
 import { makeStyles } from '@material-ui/core/styles';
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import SearchIcon from "@material-ui/icons/Search";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import { IconButton, CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
-import styled from "styled-components";
+import { CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
-import { Text, TabsStyled, UnderTextCard, ContainerCardUnderText, SeachContainer } from "./styled";
-import ImageCard from '../../assests/image.png'
-import Header from "../../components/header/Header";
-import Footer from "../../components/Footer/Footer";
-import GlobalStateContext from "../../contexts/GlobalStateContext";
+import { Text, TabsStyled, UnderTextCard, ContainerCardUnderText, SeachContainer, SearchContainer1 } from "./styled";
 import { goToSearch, goToRestaurantDetails } from "../../router/coordinator";
 import useRequestData from "../../hooks/useRequestData";
-import { BASE_URL } from "../../constants/urls";
 
-
-
-const useStyles1 = makeStyles((theme) => ({
-    menuButton: {
-        marginRight: theme.spacing(2)
-    }
-}));
 
 const useStylesScrollableTabs = makeStyles((theme) => ({
     root: {
@@ -42,12 +22,6 @@ const useStylesScrollableTabs = makeStyles((theme) => ({
     }
 }));
 
-const useStylesBottomNavigation = makeStyles({
-    root: {
-        width: "100%"
-    },
-
-});
 
 const useStylesCard = makeStyles({
     root: {
@@ -96,11 +70,10 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center"
     },
     inputRoot: {
-        // color: 'inherit',
+    
     },
     inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create("width"),
         width: "100%",
@@ -118,9 +91,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const SearchContainer = styled.div`
-  margin: 12px 12px 16px 16px;
-`;
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -235,7 +205,7 @@ const HomePage = () => {
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
-                <SearchContainer>
+                <SearchContainer1>
                     <SeachContainer color="transparent" position="static">
                         <Toolbar>
                             <div className={classes.search}>
@@ -254,7 +224,7 @@ const HomePage = () => {
                             </div>
                         </Toolbar>
                     </SeachContainer>
-                </SearchContainer>
+                </SearchContainer1>
                 <div >
                     <TabsStyled
                         textColor="primary"

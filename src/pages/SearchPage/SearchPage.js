@@ -1,13 +1,11 @@
 import React,{useContext} from "react"
 import { useNavigate } from "react-router-dom"
-import { Button } from "@material-ui/core"
 import theme from "../../constants/theme"
 import { ThemeProvider } from '@material-ui/styles';
 import InputBase from "@material-ui/core/InputBase";
 import {  makeStyles } from '@material-ui/core/styles';
 import SearchIcon from "@material-ui/icons/Search";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import { IconButton, CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
+import { CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
 import styled from "styled-components";
 import { Text, TabsStyled, UnderTextCard,  ContainerCardUnderText, SeachContainer, DivStyled } from "./styled";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
@@ -25,13 +23,16 @@ const useStyles1 = makeStyles((theme) => ({
 const useStylesCard= makeStyles({
     root:{
         maxWidth: 368,
+        minWidth:320,
         marginBottom:12,
     },
     media: {
         height: 113,
+    
     },
     content:{
-        height:36
+        height:64,
+        margin:0
     },
     text:{
         marginBottom:0
