@@ -12,9 +12,10 @@ import { getProfile } from '../../services/services';
 const CartPage = () => {
     let sum = 0;
     const { states, setters, requests } = useContext(GlobalStateContext)
-    const [form, onChange] = useForm({ paymentMethod: "" })
+    const [form, onChange, cleanFields] = useForm({ paymentMethod: "" })
     const productsRequisitions = []
     const [addressUser, setAddressUser] = useState({})
+    
 
     useEffect(() => {
         getProfile(setAddressUser)
@@ -37,7 +38,9 @@ const CartPage = () => {
             paymentMethod: form.paymentMethod
         }
 
-        placeOrder(body, states.restaurant.id)
+        placeOrder(body, states.cart[0].restaurant.id)
+        setters.setCart([])
+        cleanFields()
     }
 
     // MAP PRA RENDERIZAR OS CARDS DO CARRINHO
@@ -55,7 +58,7 @@ const CartPage = () => {
         })
 
         return (
-            <ProductCard photo={product.photoUrl} id={product.id} name={product.name} description={product.description} price={changeAccent(price)} quantify={product.quantify} />
+            <ProductCard photo={product.photo} id={product.id} name={product.name} description={product.description} price={changeAccent(price)} quantify={product.quantify} />
         )
     })
 
@@ -73,10 +76,9 @@ const CartPage = () => {
                     <C.Cart>
                         {states.cart.length < 1 ? <C.EmptyCart> Carrinho vazio </C.EmptyCart> : <>
                             <C.InfoRestaurant>
-                                <span> {states.restaurant.name} </span>
-
-                                <p>{states.restaurant.address}</p>
-                                <p> {states.restaurant.deliveryTime} - {states.restaurant.deliveryTime + 10} min </p>
+                                <span> {states.cart[0].restaurant.name} </span>
+                                <p>{states.cart[0].restaurant.address}</p>
+                                <p> {states.cart[0].restaurant.deliveryTime} - {states.cart[0].restaurant.deliveryTime + 10} min </p>
                             </C.InfoRestaurant>
 
                             <C.ContainerProducts>
@@ -86,20 +88,20 @@ const CartPage = () => {
 
 
                         <C.Info>
-                            <div>Frete R${states.cart.length < 1 ? <> 0,00 </> : changeAccent(states.restaurant.shipping)}</div>
+                            <div>Frete R${states.cart.length < 1 ? <> 0,00 </> : changeAccent(states.cart[0].restaurant.shipping)}</div>
                             <C.Price>
                                 <p>SUBTOTAL</p>
-                                <span>R${states.cart.length < 1 ? <> 0,00 </> : (changeAccent(sum + states.restaurant.shipping))}</span>
+                                <span>R${states.cart.length < 1 ? <> 0,00 </> : (changeAccent(sum + states.cart[0].restaurant.shipping))}</span>
                             </C.Price>
                         </C.Info>
                         <C.Payment>
                             <p>Forma de Pagamento</p>
 
                             <FormControl component="fieldset" color="black">
-                                <RadioGroup aria-label="gender" name="paymentMethod" onChange={onChange}>
-                                    <FormControlLabel  value="money" control={<Radio />} label="Dinheiro"/>
+                                <C.Input aria-label="gender" name="paymentMethod" onChange={onChange}>
+                                    <FormControlLabel value="money" control={<Radio />} label="Dinheiro"/>
                                     <FormControlLabel value="creditcard" control={<Radio />} label="Cartão de Crédito" />
-                                </RadioGroup>
+                                </C.Input>
                             </FormControl>
 
 

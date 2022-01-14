@@ -21,3 +21,7 @@ export const goToCart = (history) => {
 export const goToProfile = (history) =>{
     history("/perfil")
 }
+
+export const goToSearch=(history)=>{
+    history("/search")
+}

@@ -12,7 +12,7 @@ export const login = (body, navigate, setLoading, setState) => {
         setState(res.data.user)
         setLoading(false)
         // navigate('/cadastrar-endereco')
-        navigate('/perfil')
+        navigate('/home')
     }).catch((err) => {
         alert(err.response.data.message)
         setLoading(false)
