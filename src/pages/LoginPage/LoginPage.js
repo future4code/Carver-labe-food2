@@ -44,7 +44,7 @@ const LoginPage = () => {
             password: ""
         }
     )
-    const { states, setters, requests } = useContext(GlobalStateContext)
+    const { requests } = useContext(GlobalStateContext)
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
 
@@ -52,10 +52,6 @@ const LoginPage = () => {
     const [values, setValues] = React.useState({
         showPassword: false,
     });
-
-    const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-    };
 
     const handleClickShowPassword = () => {
         setValues({ ...values, showPassword: !values.showPassword });
