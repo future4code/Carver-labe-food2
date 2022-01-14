@@ -20,8 +20,7 @@ export default function Profile() {
     useProtectedPages()
 
     const clear = () => {
-        localStorage.removeItem('token')
-        localStorage.removeItem('user')
+        localStorage.clear()
         goToLogin(navigate)
     }
 
