@@ -3,7 +3,6 @@ import { message } from "antd";
 
 export const notify = (type, msg) => {
   if (type === "success") {
-      console.log("ae")
        message.success(msg);
   } else if (type === "error") {
         message.error(msg);

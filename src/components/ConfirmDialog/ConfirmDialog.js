@@ -18,8 +18,6 @@ const ConfirmDialog = (props) => {
         props.setOpen(false);
     };
 
-    console.log(states.cart)
-
     const item = props.product;
 
     const addItem = () => {
