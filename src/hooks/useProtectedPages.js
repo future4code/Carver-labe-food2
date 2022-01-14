@@ -1,22 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import GlobalStateContext from '../contexts/GlobalStateContext'
 
-export default function useProtectedPages(user) {
+export default function useProtectedPages() {
     const navigate = useNavigate()
+    const token = localStorage.getItem('token')
+    const { states } = useContext(GlobalStateContext)
 
-    useEffect(()=>{
-        const token = localStorage.getItem('token')
-        if(!token){
-            navigate('/login')
-        }else{
-            if(!user.hasAddress){
-                navigate('/cadastrar-endereco')
-            }
+    useEffect(() => {
+
+        if (!token) {
+            navigate("/login")
+        } else if(!states.user.hasAddress){
+            navigate("/cadastrar-endereco")
         }
-    },[navigate])
-    return (
-        <div>
-            
-        </div>
-    )
+    }, [])
+
 }

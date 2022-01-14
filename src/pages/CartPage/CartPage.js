@@ -5,6 +5,7 @@ import useForm from '../../hooks/useForm';
 import { getProfile, placeOrder } from '../../services/services';
 import * as C from './styled'
 import { FormControl, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
+import useProtectedPages from '../../hooks/useProtectedPages';
 
 const CartPage = () => {
     let sum = 0;
@@ -12,6 +13,7 @@ const CartPage = () => {
     const [form, onChange, cleanFields] = useForm({ paymentMethod: "" })
     const productsRequisitions = []
     const [addressUser, setAddressUser] = useState({})
+    useProtectedPages()
 
 
     useEffect(() => {

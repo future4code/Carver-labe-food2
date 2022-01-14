@@ -12,7 +12,6 @@ export const login = (body, navigate, setLoading, setState) => {
         localStorage.setItem('token', res.data.token)
         setState(res.data.user)
         setLoading(false)
-        // navigate('/cadastrar-endereco')
         navigate('/home')
     }).catch((err) => {
         notify("error", err.response.data.message)
@@ -184,7 +183,7 @@ export const getFullAddress = async () => {
         return request
 
     } catch (err) {
-        notify("error", err.response.data.message)
+        notify("error", "É necessário cadastrar um endereço!")
     }
 
 }

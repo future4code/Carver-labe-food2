@@ -9,13 +9,16 @@ import { useNavigate } from 'react-router-dom';
 import CardOrderHistory from '../../components/CardOrderHistory/CardOrderHistory.js';
 import { goToLogin } from '../../router/coordinator.js';
 import { Button } from '@material-ui/core';
+import { notify } from '../../constants/notify';
+import useProtectedPages from '../../hooks/useProtectedPages';
 
 export default function Profile() {
     const { states, setters } = useContext(GlobalStateContext)
-    const [address, setAddress] = useState()
+    const [address, setAddress] = useState({})
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
     const [orderHistory, setOrderHistory] = useState([])
+    useProtectedPages()
 
     const clear = () => {
         localStorage.removeItem('token')
@@ -25,9 +28,11 @@ export default function Profile() {
 
     useEffect(() => {
         getFullAddress().then(res => {
-            setAddress(res.data.address)
+            setAddress(res.data.address || {})
             setters.setUser({ ...states.user, address: res.data.address })
             setLoading(false)
+        }).catch((error) => {
+            navigate("/cadastrar-endereco")
         })
 
         getOrderHistory(setOrderHistory)

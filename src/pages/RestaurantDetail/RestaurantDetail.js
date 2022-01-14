@@ -6,11 +6,13 @@ import ProductCard from "../../components//ProductCard/ProductCard";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
 import { useParams } from "react-router-dom";
 import { getRestaurantsDetails } from "../../services/services";
+import useProtectedPages from "../../hooks/useProtectedPages";
 
 const RestaurantDetail = () => {
     const { states, setters, requests } = useContext(GlobalStateContext)
     const [rest, setRest] = useState("");
     const params = useParams();
+    useProtectedPages()
 
     useEffect(() => {
         getRestaurantsDetails(params.id)

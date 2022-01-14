@@ -10,6 +10,7 @@ import GlobalStateContext from "../../contexts/GlobalStateContext";
 import { ChangeHistory, Visibility, VisibilityOff } from '@material-ui/icons';
 import { goToRegister } from "../../router/coordinator";
 import { useNavigate } from "react-router-dom";
+import useUnprotectedPage from "../../hooks/useUnProtectedPage";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginPage = () => {
     const classes = useStyles();
+    useUnprotectedPage()
 
     const [form, onChange] = useForm(
         {
