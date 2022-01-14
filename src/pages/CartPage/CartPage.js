@@ -1,21 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
-import * as C from './styled'
 import ProductCard from '../../components/ProductCard/ProductCard';
 import GlobalStateContext from '../../contexts/GlobalStateContext';
 import useForm from '../../hooks/useForm';
-import placeOrder from '../../services/placeOrder';
+import { getProfile, placeOrder } from '../../services/services';
+import * as C from './styled'
 import { FormControl, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
-import { getProfile } from '../../services/services';
-
-
 
 const CartPage = () => {
     let sum = 0;
-    const { states, setters, requests } = useContext(GlobalStateContext)
+    const { states, setters } = useContext(GlobalStateContext)
     const [form, onChange, cleanFields] = useForm({ paymentMethod: "" })
     const productsRequisitions = []
     const [addressUser, setAddressUser] = useState({})
-    
+
 
     useEffect(() => {
         getProfile(setAddressUser)
@@ -58,7 +55,7 @@ const CartPage = () => {
         })
 
         return (
-            <ProductCard photo={product.photo} id={product.id} name={product.name} description={product.description} price={changeAccent(price)} quantify={product.quantify} />
+            <ProductCard photo={product.photo} id={product.id} name={product.name} description={product.description} price={changeAccent(price)} quantify={product.quantify} key={product.id}/>
         )
     })
 
@@ -98,10 +95,10 @@ const CartPage = () => {
                             <p>Forma de Pagamento</p>
 
                             <FormControl component="fieldset" color="black">
-                                <C.Input aria-label="gender" name="paymentMethod" onChange={onChange}>
-                                    <FormControlLabel value="money" control={<Radio />} label="Dinheiro"/>
+                                <RadioGroup aria-label="gender" name="paymentMethod" onChange={onChange}>
+                                    <FormControlLabel value="money" control={<Radio />} label="Dinheiro" />
                                     <FormControlLabel value="creditcard" control={<Radio />} label="Cartão de Crédito" />
-                                </C.Input>
+                                </RadioGroup>
                             </FormControl>
 
 

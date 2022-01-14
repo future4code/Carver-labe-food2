@@ -18,7 +18,6 @@ export default function CardOrderHistory({order}) {
         arrayMes[10] = "Novembro";
         arrayMes[11] = "Dezembro";
         const date = new Date(order.createdAt)
-        console.log("Date" + date)
         return(`${date.getDate()} ${arrayMes[date.getUTCMonth()]} ${date.getFullYear()}`)
     }
 

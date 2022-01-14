@@ -20,6 +20,7 @@ export default function Profile() {
 
     const clear = () => {
         localStorage.removeItem('token')
+        localStorage.removeItem('user')
         goToLogin(navigate)
     }
 
@@ -35,7 +36,6 @@ export default function Profile() {
     }, [])
 
     const loadCards = () => {
-        console.log(orderHistory)
         return orderHistory !== [] 
         ? orderHistory.map((order) => {
             return <CardOrderHistory order={order} />

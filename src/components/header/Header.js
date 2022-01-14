@@ -19,7 +19,6 @@ const Header = () => {
     const token = localStorage.getItem("token")
 
     const homeHeader = () => {
-        console.log("entrou")
         return (
             <Container>
                 <header>
@@ -79,8 +78,8 @@ const Header = () => {
                         : <header>
                             <AppBar position="static">
                                 <Toolbar>
-                                    <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                        <ArrowBackIosIcon onClick={() => goToLogin(history)} />
+                                    <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu" onClick={() => goToLogin(history)}>
+                                        <ArrowBackIosIcon />
                                     </IconButton>
                                 </Toolbar>
                             </AppBar>
@@ -96,8 +95,8 @@ const Header = () => {
                 <header>
                     <AppBar position="static">
                         <Toolbar>
-                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                <ArrowBackIosIcon onClick={() => goToHome(history)} />
+                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu" onClick={() => goToHome(history)} >
+                                <ArrowBackIosIcon/>
                             </IconButton>
                             <p>Busca</p>
                         </Toolbar>
@@ -153,8 +152,8 @@ const Header = () => {
                 <header>
                     <AppBar position="static">
                         <Toolbar>
-                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                <ArrowBackIosIcon onClick={() => goToHome(history)} />
+                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu" onClick={() => goToHome(history)}>
+                                <ArrowBackIosIcon />
                             </IconButton>
                             <p>Restaurante</p>
                         </Toolbar>

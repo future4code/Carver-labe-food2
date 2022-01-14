@@ -5,7 +5,7 @@ import GlobalStateContext from "./GlobalStateContext";
 const GlobalState = (props) => {
 
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || [])
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || null)
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || [])
     const [addressUser, setAddressUser] = useState({})
 
     useEffect(() => {
@@ -33,7 +33,6 @@ const GlobalState = (props) => {
     const states = { cart, user, addressUser }
     const setters = { setCart, setUser, setAddressUser }
     const requests = { requestSignup, putAdress, requestLogin, requestUpdateProfile }
-    console.log(user)
 
 
     return (

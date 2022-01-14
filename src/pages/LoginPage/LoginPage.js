@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import { Button, CardMedia, TextField, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl } from "@material-ui/core";
-import Logo from '../../assests/logo-preta.png'
+import Logo from '../../assets/logo-preta.png'
 import { Container } from "./styled";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
