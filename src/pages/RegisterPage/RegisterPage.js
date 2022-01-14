@@ -54,7 +54,8 @@ const RegisterPage = () => {
     const [values, setValues] = useState({
         password: '',
         showPassword: false,
-        error: false
+        error: false,
+        errorLegth: false
     });
 
     const handleChange = (prop) => (event) => {
@@ -75,7 +76,15 @@ const RegisterPage = () => {
             setValues({ ...values, error: true })
         } else {
             setValues({ ...values, error: false })
+        }
+    }
 
+    const handleLengthPassword = (e) => {
+        console.log('Aqui')
+        if(form.password.length < 6){
+            setValues({ ...values, errorLegth: true })
+        }else {
+            setValues({ ...values, errorLegth: false })
         }
     }
 
@@ -85,7 +94,7 @@ const RegisterPage = () => {
             setLoading(true)
             requests.requestUpdateProfile(form, setLoading, navigate)
         } else {
-            if (values.password === form.password) {
+            if (values.password == form.password && form.password.length >= 6) {
                 setLoading(true)
                 requests.requestSignup(form, navigate, setLoading)
             }
@@ -153,7 +162,10 @@ const RegisterPage = () => {
                                     ? <></>
                                     : <>
                                         <FormControl required className={clsx(classes.margin, classes.textField)} variant="outlined">
-                                            <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
+                                            <InputLabel 
+                                            htmlFor="outlined-adornment-password"
+                                            error={values.errorLegth}
+                                            >Senha</InputLabel>
                                             <OutlinedInput
                                                 id="outlined-adornment-password"
                                                 placeholder="Minimo 6 caracteres"
@@ -161,6 +173,8 @@ const RegisterPage = () => {
                                                 name="password"
                                                 value={form.password}
                                                 onChange={onChange}
+                                                onKeyUp={handleLengthPassword}
+                                                error={values.errorLegth}
                                                 endAdornment={
                                                     <InputAdornment position="end">
                                                         <IconButton
@@ -176,6 +190,7 @@ const RegisterPage = () => {
                                                 labelWidth={70}
                                                 required
                                             />
+                                            {values.errorLegth ? <FormHelperText>A senha precisa ter no mínimo 6 caracteres</FormHelperText> : <></>}
                                         </FormControl>
                                         <FormControl required className={clsx(classes.margin, classes.textField)} variant="outlined">
                                             <InputLabel
