@@ -5,7 +5,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import InputBase from "@material-ui/core/InputBase";
 import {  makeStyles } from '@material-ui/core/styles';
 import SearchIcon from "@material-ui/icons/Search";
-import { IconButton, CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
+import { CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
 import styled from "styled-components";
 import { Text, TabsStyled, UnderTextCard,  ContainerCardUnderText, SeachContainer, DivStyled } from "./styled";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
