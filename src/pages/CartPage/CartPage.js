@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import * as C from './styled'
-import ProductCard from '../RestaurantDetail/ProductCard/ProductCard'
+import ProductCard from '../../components/ProductCard/ProductCard';
 import GlobalStateContext from '../../contexts/GlobalStateContext';
 import useForm from '../../hooks/useForm';
 import placeOrder from '../../services/placeOrder';

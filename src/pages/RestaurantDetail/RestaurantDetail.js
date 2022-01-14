@@ -1,22 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import * as C from "./styled";
-import HeaderRestaurant from "../RestaurantDetail/HeaderRestaurant/HeaderRestaurant";
-import RestaurantCard from "./RestaurantCard/RestaurantCard";
-import TitleProductCard from "./TitleProductCard/TitleProductCard";
-import ProductCard from "./ProductCard/ProductCard";
+import RestaurantCard from "../../components//RestaurantCard/RestaurantCard";
+import TitleProductCard from "../../components//TitleProductCard/TitleProductCard";
+import ProductCard from "../../components//ProductCard/ProductCard";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
 import { useParams } from "react-router-dom";
 import { getRestaurantsDetails } from "../../services/services";
 
 const RestaurantDetail = () => {
-    // const [cart, setCart] = useContext(GlobalStateContext);
     const { states, setters, requests } = useContext(GlobalStateContext)
     const [rest, setRest] = useState("");
     const params = useParams();
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkE3VkU1N2ZiQ1Ezam4wYWZYWFZEIiwibmFtZSI6IlplIiwiZW1haWwiOiJyb2RvbGZvQGpvZ2FuYWRhLmNvbS5iciIsImNwZiI6IjQyNC4yNDIuNDI0LTI0IiwiaGFzQWRkcmVzcyI6dHJ1ZSwiYWRkcmVzcyI6IlIuIEFmb25zbyBCcmF6LCAxNzcsIDcxIC0gVmlsYSBOLiBDb25jZWnDp8OjbyIsImlhdCI6MTY0MjAxMzQzMn0.KF4vpoQmDiBnA-OFLljj29Ctw6LG0g-HcddH_l5p4rk"
 
     useEffect(() => {
-        getRestaurantsDetails(params.id, token)
+        getRestaurantsDetails(params.id)
         .then((res) => {
             setRest(res);
         });
@@ -51,7 +49,7 @@ const RestaurantDetail = () => {
         <C.Container>
             <C.Content>
                 <C.Main>
-                    <RestaurantCard rest={rest.restaurant} />
+                    <RestaurantCard rest={rest && rest.restaurant} />
                     {rest && listProducts()}
                 </C.Main>
             </C.Content>
