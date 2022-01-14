@@ -91,7 +91,7 @@ const RegisterPage = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        if (states.user !== null && states.user.name !== 0) {
+        if (states.user.name) {
             setLoading(true)
             requests.requestUpdateProfile(form, setLoading, navigate)
         } else {
@@ -99,12 +99,6 @@ const RegisterPage = () => {
                 setLoading(true)
                 console.log("Aqui")
                 requests.requestSignup(form, navigate, setLoading)
-                onChange({
-                    name: ' ',
-                    email: '',
-                    password: '',
-                    cpf: ''
-                })
             }
         }
 

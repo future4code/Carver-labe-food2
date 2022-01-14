@@ -1,5 +1,6 @@
 import axios from "axios"
 import { BASE_URL } from "../constants/urls"
+import { notify } from "../constants/notify";
 
 const placeOrder = (body, restaurantId) => {
     const token = localStorage.getItem('token')
@@ -12,12 +13,12 @@ const placeOrder = (body, restaurantId) => {
 
     }).then(res => {
 
-        alert("O pedido foi enviado!")
+        notify("success", "O pedido foi enviado!")
         return res.data.user
         
     }).catch(err => {
 
-        alert(err.response.data.message)
+        notify("error", err.response.data.message);
 
     })
 

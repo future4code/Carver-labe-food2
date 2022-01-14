@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { notify } from '../constants/notify'
 
 export default function useRequestData(url,initialData) {
     const [data,setData] = useState(initialData)
@@ -16,7 +17,7 @@ export default function useRequestData(url,initialData) {
             setData(res.data)
         })
         .catch((err)=>{
-            alert(err)
+            notify("error", err.response.data.message)
         })
     }, [url])
 

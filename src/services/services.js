@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "../constants/urls";
-
+import { notify } from "../constants/notify";
 
 export const login = (body, navigate, setLoading, setState) => {
     const url = BASE_URL + '/login'
@@ -14,15 +14,16 @@ export const login = (body, navigate, setLoading, setState) => {
         // navigate('/cadastrar-endereco')
         navigate('/home')
     }).catch((err) => {
-        alert(err.response.data.message)
+        notify("error", err.response.data.message)
         setLoading(false)
     })
 }
 
 export const signUp = (body, setter, navigate, setLoading) => {
 
+    console.log(body)
     const url = BASE_URL + '/signup'
-
+    console.log(url)
 
     const request = axios.post(url, body)
 
@@ -35,7 +36,8 @@ export const signUp = (body, setter, navigate, setLoading) => {
 
     }).catch(err => {
         setLoading(false)
-        alert(err.response.data.message)
+        console.log(err.response)
+        notify("error", err.response.data.message)
     })
 }
 
@@ -51,12 +53,12 @@ export const addAdress = (body, setLoading, setUser, navigate) => {
     request.then((res) => {
         localStorage.setItem('token', res.data.token)
         setUser(res.data.user)
-        alert("Endereço Atualizado com sucesso!")
         setLoading(false)
+        notify("success", "Endereço atualizado com sucesso!")
         navigate('/home', { replace: true })
     }).catch(err => {
-        alert(err.response)
-        console.log(err)
+        notify("error", err.response.data.message)
+        setLoading(false)
     })
 
 }
@@ -75,7 +77,7 @@ export const getFullAddress = async () => {
         return request
 
     } catch (err) {
-        alert(err)
+        notify("error", err.response.data.message)
     }
 
 }
@@ -92,7 +94,7 @@ export const placeOrder = (body, restaurantId) => {
     request.then(res => {
         return res.data
     }).catch(err => {
-        alert(err.response.data.message)
+        notify("error", err.response.data.message)
     })
 }
 
@@ -110,7 +112,7 @@ export const updateProfile = (body, setLoading, navigate, setUser) => {
         setLoading(false)
         navigate(-1)
     }).catch(err => {
-        alert(err.response.data.message)
+        notify("error", err.response.data.message)
         setLoading(false)
     })
 
@@ -130,7 +132,7 @@ export const getRestaurants = () => {
     request.then(res => {
         return res.data
     }).catch(err => {
-        alert(err.response.data.message)
+        notify("error", err.response.data.message)
     })
 
 }
@@ -148,29 +150,29 @@ export const getProfile = (setAddressUser) => {
     request.then(res => {
         setAddressUser(res.data.user)
     }).catch(err => {
-        alert(err.response.data.message)
+        notify("error", err.response.data.message)
     })
 
 }
 
-export const getRestaurantsDetails = async (restaurantId, token) => {
+export const getRestaurantsDetails = async (restaurantId) => {
     const url = BASE_URL + `/restaurants/${restaurantId}`
-    // const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token')
 
     try {
         const request = await axios.get(url, {
             headers: {
-                auth: token
+                auth: token,
             }
         })
         return request.data;
     } catch (err) {
-        alert(err.response);
+        notify("error", err.response.data.message)
     }
 
 }
 
-export const getActiveOrder = () => {
+export const getActiveOrder = (setOrder) => {
     const url = BASE_URL + `/active-order`
     const token = localStorage.getItem('token')
 
@@ -181,24 +183,26 @@ export const getActiveOrder = () => {
     })
 
     request.then(res => {
-        return res.data
+        setOrder(res.data.order)
     }).catch(err => {
-        alert(err.response.data.message)
+        notify("error", err.response.data.message)
     })
 }
-export const getOrderHistory = () => {
+export const getOrderHistory = (setOrderHistory) => {
+    console.log('aqui')
     const url = BASE_URL + `/orders/history`
     const token = localStorage.getItem('token')
-
+    
     const request = axios.get(url, {
         headers: {
             auth: token
         }
     })
-
+    
     request.then(res => {
-        return res.data
+        console.log(res.data.orders)
+        setOrderHistory(res.data.orders)
     }).catch(err => {
-        alert(err.response.data.message)
+        notify("error", err.response.data.message)
     })
 }
