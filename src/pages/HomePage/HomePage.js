@@ -136,6 +136,7 @@ const HomePage = () => {
     
     const handleChange = (event, newValue) => {
         setValue(newValue);
+       
     };
 
 
@@ -162,7 +163,7 @@ const HomePage = () => {
        const filter= restaurant.restaurants&&restaurant.restaurants.filter((rest)=>{
             return rest.category===category
         })
-    
+       
         return filter.map((restaurant)=>{
             return(
                 <Card key={restaurant.id} onClick={()=> goToRestaurantDetails(navigate,restaurant.id)} className={classes2.root}>
@@ -234,6 +235,7 @@ const HomePage = () => {
                         scrollButtons="off"
                         aria-label="scrollable prevent tabs example"
                         indicatorColor="transparent"
+                       
 
                     >
                      {tabs}
