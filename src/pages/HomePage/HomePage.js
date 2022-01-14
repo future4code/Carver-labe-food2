@@ -1,28 +1,17 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import theme from "../../constants/theme"
 import { ThemeProvider } from '@material-ui/styles';
 import InputBase from "@material-ui/core/InputBase";
 import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from "@material-ui/icons/Search";
-import { CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
+import { CardMedia, Card, CardContent, CardActionArea, Box, Toolbar,  Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { Text, TabsStyled, UnderTextCard, ContainerCardUnderText, SeachContainer, SearchContainer1 } from "./styled";
 import { goToSearch, goToRestaurantDetails } from "../../router/coordinator";
 import useRequestData from "../../hooks/useRequestData";
 import { getActiveOrder } from "../../services/services";
 import CurrentCardOrder from '../../components/CurrentCardOrder/CurrentCardOrder.js'
-
-
-const useStylesScrollableTabs = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-        width: "100%",
-        backgroundColor: theme.palette.background.paper,
-        textColor: "primary",
-
-    }
-}));
 
 
 const useStylesCard = makeStyles({
@@ -132,7 +121,6 @@ const HomePage = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const classes = useStyles();
-    const classes1 = useStylesScrollableTabs();
     const classes2 = useStylesCard()
     const [value, setValue] = useState(0);
     const [order, setOrder] = useState(null)

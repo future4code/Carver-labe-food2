@@ -9,7 +9,7 @@ import { notify } from '../../constants/notify';
 
 const ConfirmDialog = (props) => {
     const [quantify, setQuantify] = useState(0);
-    const { states, setters, requests } = useContext(GlobalStateContext)
+    const { states, setters } = useContext(GlobalStateContext)
 
     const onChange = (e) => {
         setQuantify(e.target.value);
@@ -17,18 +17,15 @@ const ConfirmDialog = (props) => {
 
     const handleClose = () => {
         props.setOpen(false);
-    };
+    }
 
     const item = props.product;
 
     const addItem = () => {
         const index = states.cart.findIndex((i) => i.id === props.product.id);
-
         if (states.cart.length > 0 && states.cart[0].restaurant.name !== item.restaurant.name) {
-            notify("warning", "Finalize o pedido de um restaurante antes de solicitar de outro!")
-
+            notify("warning", "Finalize o pedido de um restaurante antes de solicitar de outro!");
         } else {
-
             const newCart = [...states.cart];
             if (index === -1) {
 
@@ -42,7 +39,6 @@ const ConfirmDialog = (props) => {
             }
         }
     }
-
 
     return (
         <div>
@@ -65,7 +61,6 @@ const ConfirmDialog = (props) => {
                         </C.Select>
                     </C.ContainerSelect>
                 </DialogContent>
-
                 <DialogActions>
                     <Button onClick={addItem} color="primary">
                         ADICIONAR AO CARRINHO
