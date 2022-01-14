@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, CardMedia, TextField, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl, Toolbar, AppBar, FormHelperText } from '@material-ui/core';
+import { Button, CardMedia, TextField, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl, FormHelperText } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Container } from "./styled";
 import Logo from '../../assests/logo-preta.png'
@@ -9,17 +8,9 @@ import clsx from 'clsx';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 import useForm from "../../hooks/useForm";
-import { singUp } from "../../services/services";
 import { useNavigate } from "react-router-dom";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
 
-
-const useStyles1 = makeStyles((theme) => ({
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-
-}));
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -49,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 const RegisterPage = () => {
     const classes = useStyles();
     const navigate = useNavigate()
-    const { states, setters, requests } = useContext(GlobalStateContext)
+    const { states,  requests } = useContext(GlobalStateContext)
 
     const [form, onChange] = useForm(states.user ||
     {
@@ -97,7 +88,6 @@ const RegisterPage = () => {
         } else {
             if (values.password == form.password) {
                 setLoading(true)
-                console.log("Aqui")
                 requests.requestSignup(form, navigate, setLoading)
             }
         }
@@ -224,10 +214,10 @@ const RegisterPage = () => {
                             <>
                                 <Button style={{ textTransform: "none" }} variant="contained" color="primary" type="submit" className={classes.withoutLabel} >
                                     {states.user.name
-                                        ? 'salvar'
-                                        : "criar"}
+                                        ? 'Salvar'
+                                        : "Criar"}
                                 </Button>
-                            </>
+                          </>
                         </form >
                     </>
             }

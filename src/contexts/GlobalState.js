@@ -3,7 +3,6 @@ import { addAdress, getProfile, login, signUp, updateProfile } from "../services
 import GlobalStateContext from "./GlobalStateContext";
 
 const GlobalState = (props) => {
-
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || [])
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || [])
     const [addressUser, setAddressUser] = useState({})
@@ -15,7 +14,6 @@ const GlobalState = (props) => {
 
     const requestSignup = (body, navigate, setLoading) => {
         signUp(body, setUser, navigate, setLoading)
-
     }
     
     const putAdress = (body, setLoading, navigate) => {
@@ -33,8 +31,6 @@ const GlobalState = (props) => {
     const states = { cart, user, addressUser }
     const setters = { setCart, setUser, setAddressUser }
     const requests = { requestSignup, putAdress, requestLogin, requestUpdateProfile }
-    console.log(user)
-
 
     return (
         <GlobalStateContext.Provider value={{ states, setters, requests }}>
