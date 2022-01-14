@@ -9,8 +9,8 @@ const useUnprotectedPage = () => {
     useEffect(() => {
         if (token) {
             goToHome(navigate)
-            
-        }else{
+
+        } else {
             goToLogin(navigate)
         }
 

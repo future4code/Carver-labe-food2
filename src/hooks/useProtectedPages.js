@@ -11,7 +11,7 @@ export default function useProtectedPages() {
 
         if (!token) {
             navigate("/login")
-        } else if(!states.user.hasAddress){
+        } else if (!states.user.hasAddress) {
             navigate("/cadastrar-endereco")
         }
     }, [])

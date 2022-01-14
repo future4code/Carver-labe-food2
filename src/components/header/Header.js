@@ -39,8 +39,8 @@ const Header = () => {
                     token ? <header>
                         <AppBar position="static">
                             <Toolbar>
-                                <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                    <ArrowBackIosIcon onClick={() => goToProfile(history)} />
+                                <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu" onClick={() => goToProfile(history)} >
+                                    <ArrowBackIosIcon />
                                 </IconButton>
                                 <p>Editar</p>
                             </Toolbar>
@@ -49,8 +49,8 @@ const Header = () => {
                         <header>
                             <AppBar position="static">
                                 <Toolbar>
-                                    <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                        <ArrowBackIosIcon onClick={() => goToLogin(history)} />
+                                    <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu" onClick={() => goToLogin(history)} >
+                                        <ArrowBackIosIcon />
                                     </IconButton>
                                 </Toolbar>
                             </AppBar>
@@ -68,8 +68,8 @@ const Header = () => {
                         <header>
                             <AppBar position="static">
                                 <Toolbar>
-                                    <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                        <ArrowBackIosIcon onClick={() => goToProfile(history)} />
+                                    <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu" onClick={() => goToProfile(history)} >
+                                        <ArrowBackIosIcon />
                                     </IconButton>
                                     <p>Endereço</p>
                                 </Toolbar>
@@ -96,7 +96,7 @@ const Header = () => {
                     <AppBar position="static">
                         <Toolbar>
                             <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu" onClick={() => goToHome(history)} >
-                                <ArrowBackIosIcon/>
+                                <ArrowBackIosIcon />
                             </IconButton>
                             <p>Busca</p>
                         </Toolbar>

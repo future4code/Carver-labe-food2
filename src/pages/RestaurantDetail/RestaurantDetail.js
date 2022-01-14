@@ -9,7 +9,7 @@ import { getRestaurantsDetails } from "../../services/services";
 import useProtectedPages from "../../hooks/useProtectedPages";
 
 const RestaurantDetail = () => {
-    const { states, setters, requests } = useContext(GlobalStateContext)
+    const { states } = useContext(GlobalStateContext)
     const [rest, setRest] = useState("");
     const params = useParams();
     useProtectedPages()

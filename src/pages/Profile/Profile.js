@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 import CardOrderHistory from '../../components/CardOrderHistory/CardOrderHistory.js';
 import { goToLogin } from '../../router/coordinator.js';
 import { Button } from '@material-ui/core';
-import { notify } from '../../constants/notify';
 import useProtectedPages from '../../hooks/useProtectedPages';
 
 export default function Profile() {

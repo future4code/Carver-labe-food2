@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import useForm from "../../hooks/useForm";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
-import { ChangeHistory, Visibility, VisibilityOff } from '@material-ui/icons';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { goToRegister } from "../../router/coordinator";
 import { useNavigate } from "react-router-dom";
 import useUnprotectedPage from "../../hooks/useUnProtectedPage";

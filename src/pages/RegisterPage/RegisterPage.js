@@ -6,7 +6,6 @@ import { Container } from "./styled";
 import Logo from '../../assets/logo-preta.png'
 import clsx from 'clsx';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-
 import useForm from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
 import GlobalStateContext from "../../contexts/GlobalStateContext";

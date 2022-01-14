@@ -57,7 +57,7 @@ const CartPage = () => {
         })
 
         return (
-            <ProductCard photo={product.photo} id={product.id} name={product.name} description={product.description} price={changeAccent(price)} quantify={product.quantify} key={product.id}/>
+            <ProductCard photo={product.photo} id={product.id} name={product.name} description={product.description} price={changeAccent(price)} quantify={product.quantify} key={product.id} />
         )
     })
 
