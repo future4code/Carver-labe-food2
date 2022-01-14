@@ -35,11 +35,11 @@ export default function Profile() {
     }, [])
 
     const loadCards = () => {
-        return orderHistory !== [] 
+        return orderHistory.length > 0 
         ? orderHistory.map((order) => {
             return <CardOrderHistory order={order} />
         })
-        :<>Não há pedidos!</>
+        :<p style={{ textAlign: "center", marginBottom: "10px" }}>Você não realizou nenhum pedido</p>
     }
 
     return (
