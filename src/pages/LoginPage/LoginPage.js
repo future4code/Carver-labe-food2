@@ -106,7 +106,7 @@ const LoginPage = () => {
                                 <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
                                 <OutlinedInput
                                     id="outlined-adornment-password"
-                                    placeholder="Minimo 6 caracteres"
+                                    placeholder="Mínimo: 6 caracteres"
                                     type={values.showPassword ? 'text' : 'password'}
                                     value={form.password}
                                     name='password'
