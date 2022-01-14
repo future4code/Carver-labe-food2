@@ -36,7 +36,18 @@ const Header = () => {
     const cadastroHeader = () => {
         return (
             <Container>
-                <header>
+                {
+                    token ?  <header>
+                    <AppBar position="static">
+                        <Toolbar>
+                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
+                                <ArrowBackIosIcon onClick={() => goToProfile(history)} />
+                            </IconButton>
+                            <p>Editar</p>
+                        </Toolbar>
+                    </AppBar>
+                </header> :
+                    <header>
                     <AppBar position="static">
                         <Toolbar>
                             <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
@@ -45,6 +56,7 @@ const Header = () => {
                         </Toolbar>
                     </AppBar>
                 </header>
+                }
             </Container>
         )
     }
@@ -123,23 +135,6 @@ const Header = () => {
         )
     }
 
-    const editarPerfilHeader = () => {
-        return (
-            <Container>
-                <header>
-                    <AppBar position="static">
-                        <Toolbar>
-                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                <ArrowBackIosIcon onClick={() => goToProfile(history)} />
-                            </IconButton>
-                            <p>Editar</p>
-                        </Toolbar>
-                    </AppBar>
-                </header>
-            </Container>
-        )
-    }
-
     const inicialHeader = () => {
         return (
             <></>
@@ -184,8 +179,6 @@ const Header = () => {
                 return carrinhoHeader()
             case '/perfil':
                 return perfilHeader();
-            case '/editar-perfil':
-                return editarPerfilHeader()
             case '/':
                 return inicialHeader()
             case '/login':
