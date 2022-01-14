@@ -231,8 +231,6 @@ const HomePage = () => {
                         variant="scrollable"
                         scrollButtons="off"
                         aria-label="scrollable prevent tabs example"
-                    // indicatorColor="transparent"
-
                     >
                         {tabs}
                     </TabsStyled>

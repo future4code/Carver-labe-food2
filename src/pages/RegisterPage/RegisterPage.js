@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 const RegisterPage = () => {
     const classes = useStyles();
     const navigate = useNavigate()
-    const { states,  requests } = useContext(GlobalStateContext)
+    const { states, requests } = useContext(GlobalStateContext)
 
     const [form, onChange] = useForm(states.user ||
     {
@@ -85,7 +85,7 @@ const RegisterPage = () => {
             setLoading(true)
             requests.requestUpdateProfile(form, setLoading, navigate)
         } else {
-            if (values.password == form.password) {
+            if (values.password === form.password) {
                 setLoading(true)
                 requests.requestSignup(form, navigate, setLoading)
             }
@@ -216,7 +216,7 @@ const RegisterPage = () => {
                                         ? 'Salvar'
                                         : "Criar"}
                                 </Button>
-                          </>
+                            </>
                         </form >
                     </>
             }

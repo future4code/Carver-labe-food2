@@ -11,6 +11,7 @@ import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import CartPage from "../pages/CartPage/CartPage";
 import Footer from "../components/Footer/Footer";
 import SeachPage from "../pages/SearchPage/SearchPage";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const Router = () => {
     return (
@@ -26,7 +27,7 @@ const Router = () => {
                 <Route path={"/carrinho"} element={<CartPage />} />
                 <Route path={"/perfil"} element={<Profile />} />
                 <Route path={"/search"} element={<SeachPage />} />
-                <Route path="*" element={<>Not Found</>} />
+                <Route path="*" element={<ErrorPage />} />
             </Routes>
             <Footer />
         </BrowserRouter>
