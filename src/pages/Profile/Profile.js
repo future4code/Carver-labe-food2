@@ -22,6 +22,7 @@ export default function Profile() {
     const clear = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('user')
+        setters.setUser([])
         goToLogin(navigate)
     }
 
