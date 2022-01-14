@@ -35,18 +35,23 @@ export const HeaderTitle = styled.span`
     color: #000000;
 `
 export const Container = styled.div`
-header{
-    width: 100vw;
-    background-color: white;
-    div{
-        display: flex;
-        p{
-            margin-left: 20vw;
-        }
-        h4{
-            margin-left : 34vw;  
-            font-weight: normal;
+    
+    header{
+
+        width: 100vw;
+        background-color: white;
+
+        div{
+            display: flex;
+
+            p{
+                margin-left: 20vw;
+            }
+
+            h4{
+                margin-left : 34vw;  
+                font-weight: normal;
+            }
         }
     }
-}
 `

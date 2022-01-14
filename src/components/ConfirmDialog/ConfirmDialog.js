@@ -9,7 +9,7 @@ import { notify } from '../../constants/notify';
 
 const ConfirmDialog = (props) => {
     const [quantify, setQuantify] = useState(0);
-    const { states, setters, requests } = useContext(GlobalStateContext)
+    const { states, setters } = useContext(GlobalStateContext)
 
     const onChange = (e) => {
         setQuantify(e.target.value);
@@ -28,9 +28,11 @@ const ConfirmDialog = (props) => {
         } else {
             const newCart = [...states.cart];
             if (index === -1) {
+
                 const cartItem = { ...item, quantify: Number(quantify) };
                 newCart.push(cartItem);
                 setters.setCart(newCart);
+
             } else {
                 newCart[index].quantify += Number(quantify);
                 setters.setCart(newCart);

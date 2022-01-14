@@ -3,10 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Button, CardMedia, TextField, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl, FormHelperText } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Container } from "./styled";
-import Logo from '../../assests/logo-preta.png'
+import Logo from '../../assets/logo-preta.png'
 import clsx from 'clsx';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-
 import useForm from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
 import GlobalStateContext from "../../contexts/GlobalStateContext";

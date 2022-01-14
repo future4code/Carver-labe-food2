@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { addAdress, getProfile, login, signUp, updateProfile } from "../services/services";
+import { addAdress, login, signUp, updateProfile } from "../services/services";
 import GlobalStateContext from "./GlobalStateContext";
 
 const GlobalState = (props) => {
@@ -15,7 +15,7 @@ const GlobalState = (props) => {
     const requestSignup = (body, navigate, setLoading) => {
         signUp(body, setUser, navigate, setLoading)
     }
-    
+
     const putAdress = (body, setLoading, navigate) => {
         addAdress(body, setLoading, setUser, navigate)
     }

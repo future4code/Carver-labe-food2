@@ -1,15 +1,16 @@
 import React, { useContext, useState } from "react"
 import { Button, CardMedia, TextField, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl } from "@material-ui/core";
-import Logo from '../../assests/logo-preta.png'
+import Logo from '../../assets/logo-preta.png'
 import { Container } from "./styled";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import useForm from "../../hooks/useForm";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
-import { ChangeHistory, Visibility, VisibilityOff } from '@material-ui/icons';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { goToRegister } from "../../router/coordinator";
 import { useNavigate } from "react-router-dom";
+import useUnprotectedPage from "../../hooks/useUnProtectedPage";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginPage = () => {
     const classes = useStyles();
+    useUnprotectedPage()
 
     const [form, onChange] = useForm(
         {

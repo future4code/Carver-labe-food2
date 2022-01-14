@@ -3,7 +3,7 @@ import { CurrentCardOrderContainer, CurrentOrderInformation, OrderItenTitle, Ord
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 
 
-export default function CurrentCardOrder({order}) {
+export default function CurrentCardOrder({ order }) {
 
     return (
         <CurrentCardOrderContainer>
