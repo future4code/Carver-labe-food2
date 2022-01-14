@@ -6,15 +6,10 @@ import InputBase from "@material-ui/core/InputBase";
 import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from "@material-ui/icons/Search";
 import { CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, AppBar, Typography } from "@material-ui/core";
-import styled from "styled-components";
 import PropTypes from "prop-types";
-import { Text, TabsStyled, UnderTextCard, ContainerCardUnderText, SeachContainer } from "./styled";
+import { Text, TabsStyled, UnderTextCard, ContainerCardUnderText, SeachContainer, SearchContainer1 } from "./styled";
 import { goToSearch, goToRestaurantDetails } from "../../router/coordinator";
 import useRequestData from "../../hooks/useRequestData";
-
-
-
-
 
 
 const useStylesScrollableTabs = makeStyles((theme) => ({
@@ -75,11 +70,10 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center"
     },
     inputRoot: {
-        // color: 'inherit',
+    
     },
     inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create("width"),
         width: "100%",
@@ -97,9 +91,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const SearchContainer = styled.div`
-  margin: 12px 12px 16px 16px;
-`;
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -214,7 +205,7 @@ const HomePage = () => {
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
-                <SearchContainer>
+                <SearchContainer1>
                     <SeachContainer color="transparent" position="static">
                         <Toolbar>
                             <div className={classes.search}>
@@ -233,7 +224,7 @@ const HomePage = () => {
                             </div>
                         </Toolbar>
                     </SeachContainer>
-                </SearchContainer>
+                </SearchContainer1>
                 <div >
                     <TabsStyled
                         textColor="primary"

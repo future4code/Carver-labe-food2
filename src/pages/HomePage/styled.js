@@ -46,3 +46,7 @@ export const SeachContainer= styled(AppBar)`
 box-shadow:none;
 border: 1px solid #b8b8b8;
 `
+
+export const SearchContainer1 = styled.div`
+  margin: 12px 12px 16px 16px;
+`;
