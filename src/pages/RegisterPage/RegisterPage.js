@@ -3,10 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Button, CardMedia, TextField, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl, FormHelperText } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Container } from "./styled";
-import Logo from '../../assests/logo-preta.png'
+import Logo from '../../assets/logo-preta.png'
 import clsx from 'clsx';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-
 import useForm from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
@@ -40,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 const RegisterPage = () => {
     const classes = useStyles();
     const navigate = useNavigate()
-    const { states,  requests } = useContext(GlobalStateContext)
+    const { states, requests } = useContext(GlobalStateContext)
 
     const [form, onChange] = useForm(states.user ||
     {
@@ -115,7 +114,7 @@ const RegisterPage = () => {
                         <CardMedia
                             component="img"
                             image={Logo}
-                            alt="pokemons"
+                            alt="Logo da Future Eats"
                         />
                         {
                             states.user.name
@@ -229,8 +228,8 @@ const RegisterPage = () => {
                             <>
                                 <Button style={{ textTransform: "none" }} variant="contained" color="primary" type="submit" className={classes.withoutLabel} >
                                     {states.user.name
-                                        ? 'salvar'
-                                        : "criar"}
+                                        ? 'Salvar'
+                                        : "Criar"}
                                 </Button>
                             </>
                         </form >

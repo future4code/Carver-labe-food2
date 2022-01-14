@@ -32,15 +32,15 @@ const Header = () => {
         )
     }
 
-    const cadastroHeader = () => {
+    const registerHeader = () => {
         return (
             <Container>
                 {
                     token ? <header>
                         <AppBar position="static">
                             <Toolbar>
-                                <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                    <ArrowBackIosIcon onClick={() => goToProfile(history)} />
+                                <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu" onClick={() => goToProfile(history)} >
+                                    <ArrowBackIosIcon />
                                 </IconButton>
                                 <p>Editar</p>
                             </Toolbar>
@@ -49,8 +49,8 @@ const Header = () => {
                         <header>
                             <AppBar position="static">
                                 <Toolbar>
-                                    <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                        <ArrowBackIosIcon onClick={() => goToLogin(history)} />
+                                    <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu" onClick={() => goToLogin(history)} >
+                                        <ArrowBackIosIcon />
                                     </IconButton>
                                 </Toolbar>
                             </AppBar>
@@ -60,7 +60,7 @@ const Header = () => {
         )
     }
 
-    const enderecoHeader = () => {
+    const addressHeader = () => {
         return (
             <Container>
                 {
@@ -68,8 +68,8 @@ const Header = () => {
                         <header>
                             <AppBar position="static">
                                 <Toolbar>
-                                    <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                        <ArrowBackIosIcon onClick={() => goToProfile(history)} />
+                                    <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu" onClick={() => goToProfile(history)} >
+                                        <ArrowBackIosIcon />
                                     </IconButton>
                                     <p>Endereço</p>
                                 </Toolbar>
@@ -78,8 +78,8 @@ const Header = () => {
                         : <header>
                             <AppBar position="static">
                                 <Toolbar>
-                                    <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                        <ArrowBackIosIcon onClick={() => goToLogin(history)} />
+                                    <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu" onClick={() => goToLogin(history)}>
+                                        <ArrowBackIosIcon />
                                     </IconButton>
                                 </Toolbar>
                             </AppBar>
@@ -89,14 +89,14 @@ const Header = () => {
         )
     }
 
-    const buscarHeader = () => {
+    const searchHeader = () => {
         return (
             <Container>
                 <header>
                     <AppBar position="static">
                         <Toolbar>
-                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                <ArrowBackIosIcon onClick={() => goToHome(history)} />
+                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu" onClick={() => goToHome(history)} >
+                                <ArrowBackIosIcon />
                             </IconButton>
                             <p>Busca</p>
                         </Toolbar>
@@ -106,7 +106,7 @@ const Header = () => {
         )
     }
 
-    const carrinhoHeader = () => {
+    const cartHeader = () => {
         return (
             <Container>
                 <header>
@@ -120,7 +120,7 @@ const Header = () => {
         )
     }
 
-    const perfilHeader = () => {
+    const profileHeader = () => {
         return (
             <Container>
                 <header>
@@ -134,7 +134,7 @@ const Header = () => {
         )
     }
 
-    const inicialHeader = () => {
+    const initialHeader = () => {
         return (
             <></>
         )
@@ -146,14 +146,14 @@ const Header = () => {
         )
     }
 
-    const detalhesRestauranteHeader = () => {
+    const restaurantDetailsHeader = () => {
         return (
             <Container>
                 <header>
                     <AppBar position="static">
                         <Toolbar>
-                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                <ArrowBackIosIcon onClick={() => goToHome(history)} />
+                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu" onClick={() => goToHome(history)}>
+                                <ArrowBackIosIcon />
                             </IconButton>
                             <p>Restaurante</p>
                         </Toolbar>
@@ -163,32 +163,32 @@ const Header = () => {
         )
     }
 
-    const mudarHeader = () => {
+    const changeHeader = () => {
 
         switch (location.pathname) {
             case '/home':
                 return homeHeader();
             case '/cadastro':
-                return cadastroHeader()
+                return registerHeader()
             case '/cadastrar-endereco':
-                return enderecoHeader();
+                return addressHeader();
             case '/busca':
-                return buscarHeader();
+                return searchHeader();
             case '/carrinho':
-                return carrinhoHeader()
+                return cartHeader()
             case '/perfil':
-                return perfilHeader();
+                return profileHeader();
             case '/':
-                return inicialHeader()
+                return initialHeader()
             case '/login':
                 return loginHeader()
             default:
-                return detalhesRestauranteHeader()
+                return restaurantDetailsHeader()
         }
     }
 
     return (
-        <>{mudarHeader()}</>
+        <>{changeHeader()}</>
     )
 }
 

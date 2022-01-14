@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Button from '@material-ui/core/Button';
-import {RadioGroup } from "@material-ui/core";
 
 export const ContainerPai = styled.div`
     display: flex;
@@ -9,12 +8,12 @@ export const ContainerPai = styled.div`
 `
 
 export const InfoCart = styled.div`
-    min-height: 85vh;
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    min-height: 85vh;
+    width: 100%;
     margin-bottom: 10vh;
 `
 
@@ -50,12 +49,12 @@ export const Cart = styled.div`
 `
 
 export const InfoRestaurant = styled.div`
-    height: 94px;
-    padding: 16px 0 8px 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    height: 94px;
+    padding: 16px 0 8px 0;
+   
     span{
         color: #5cb646;
     }
@@ -71,19 +70,19 @@ export const ContainerProducts = styled.div`
     
 `
 export const Info = styled.div`
-    width: 328px;
-    height: 60px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: space-around;
+    width: 328px;
+    height: 60px;
     margin-bottom: 10px;
 `
 
 export const Price = styled.div`
-    width: 100%;
     display: flex;
     justify-content: space-between;
+    width: 100%;
 
     span{
         color: #5cb646;
@@ -103,19 +102,8 @@ export const Payment = styled.div`
         margin-bottom: 10px;
     }
 
-    form{
-        height: 80%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-
-    input{
-        margin-right: 10px;
-    }
-
     label{
-        margin: 5px 0;
+        margin-bottom: -10px;
     }
 
 `
@@ -126,14 +114,4 @@ export const ButtonUI = styled(Button)`
     background-color: #5cb646;
     width: 90vw;
     margin-bottom: "10px";
-`
-
-export const Input = styled(RadioGroup)`
-    margin-left: -10px;
-
-    label:nth-child(2){
-        margin-top: -15px;
-    }
-
-    
 `

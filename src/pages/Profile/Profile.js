@@ -9,25 +9,30 @@ import { useNavigate } from 'react-router-dom';
 import CardOrderHistory from '../../components/CardOrderHistory/CardOrderHistory.js';
 import { goToLogin } from '../../router/coordinator.js';
 import { Button } from '@material-ui/core';
+import useProtectedPages from '../../hooks/useProtectedPages';
 
 export default function Profile() {
     const { states, setters } = useContext(GlobalStateContext)
-    const [address, setAddress] = useState()
+    const [address, setAddress] = useState({})
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
     const [orderHistory, setOrderHistory] = useState([])
+    useProtectedPages()
 
     const clear = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('user')
+        setters.setUser([])
         goToLogin(navigate)
     }
 
     useEffect(() => {
         getFullAddress().then(res => {
-            setAddress(res.data.address)
+            setAddress(res.data.address || {})
             setters.setUser({ ...states.user, address: res.data.address })
             setLoading(false)
+        }).catch((error) => {
+            navigate("/cadastrar-endereco")
         })
 
         getOrderHistory(setOrderHistory)
@@ -35,11 +40,11 @@ export default function Profile() {
     }, [])
 
     const loadCards = () => {
-        return orderHistory !== [] 
+        return orderHistory.length > 0 
         ? orderHistory.map((order) => {
             return <CardOrderHistory order={order} />
         })
-        :<>Não há pedidos!</>
+        :<p style={{ textAlign: "center", marginBottom: "10px" }}>Você não realizou nenhum pedido</p>
     }
 
     return (

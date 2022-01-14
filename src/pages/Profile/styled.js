@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Button } from "@material-ui/core"
 
 export const ProfilePageContainer = styled.section`
     display: flex;
@@ -16,7 +15,6 @@ export const PersonalInformationProfileArea = styled.div`
     justify-content: space-between;
     align-items: flex-start;
     padding: 16px;
-
     width: 91vw;
 
     h5{
@@ -68,6 +66,6 @@ export const Line = styled.div`
 `
 
 export const BotaoLogout = styled.div`
-position: relative;
-margin-left: 30vw;
+    position: relative;
+    margin-left: 30vw;
 `

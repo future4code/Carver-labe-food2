@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const CurrentCardOrderContainer = styled.div`
     width: 100vw;
     height: 95px;

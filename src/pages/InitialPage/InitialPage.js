@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { ContainerInitialPage } from './styled';
 import { CardMedia } from '@material-ui/core';
-import LogoImg from '../../assests/logo.png'
+import LogoImg from '../../assets/logo.png'
 import { useNavigate } from 'react-router-dom';
 import { goToHome, goToLogin } from '../../router/coordinator';
 
