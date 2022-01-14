@@ -80,7 +80,6 @@ const RegisterPage = () => {
     }
 
     const handleLengthPassword = (e) => {
-        console.log('Aqui')
         if(form.password.length < 6){
             setValues({ ...values, errorLegth: true })
         }else {
