@@ -13,7 +13,11 @@ const App = () => {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Roboto;
+    font-family: "Roboto" !important;
+  }
+
+  p, h4, h6 {
+    margin: 0;
   }
 
 `;

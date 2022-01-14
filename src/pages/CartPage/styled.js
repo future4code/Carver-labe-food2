@@ -30,6 +30,7 @@ export const AddressContainer = styled.div`
 
 export const AddressUser = styled.p`
     font-size: 16px;
+    margin-bottom: 5px;
     color: #b8b8b8;
 `
 export const EmptyCart = styled.div`
