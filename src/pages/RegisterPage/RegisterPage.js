@@ -214,10 +214,10 @@ const RegisterPage = () => {
                             <>
                                 <Button style={{ textTransform: "none" }} variant="contained" color="primary" type="submit" className={classes.withoutLabel} >
                                     {states.user.name
-                                        ? 'salvar'
-                                        : "criar"}
+                                        ? 'Salvar'
+                                        : "Criar"}
                                 </Button>
-                            </>
+                          </>
                         </form >
                     </>
             }
