@@ -4,14 +4,17 @@ import IconButton from '@material-ui/core/IconButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import GlobalStateContext from '../../contexts/GlobalStateContext.js';
-import { getFullAddress } from '../../services/services.js';
+import { getFullAddress, getOrderHistory } from '../../services/services.js';
 import { useNavigate } from 'react-router-dom';
+import CardOrderHistory from '../../components/CardOrderHistory/CardOrderHistory.js';
+import { Card } from '@material-ui/core';
 
 export default function Profile() {
     const {states, setters, requests} = useContext(GlobalStateContext)
     const [address, setAddress] = useState()
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
+    const [orderHistory, setOrderHistory] = useState([])
 
     useEffect(() => {
         getFullAddress().then(res=>{
@@ -19,7 +22,19 @@ export default function Profile() {
             setters.setUser({...states.user, address: res.data.address})
             setLoading(false)
         })
+
+        getOrderHistory(setOrderHistory)
+
     }, [])
+
+    const loadCards = () => {
+        console.log(orderHistory)
+        return orderHistory !== [] 
+        ? orderHistory.map((order) => {
+            return <CardOrderHistory order={order} />
+        })
+        :<>Não há pedidos!</>
+    }
 
     return (
         <ProfilePageContainer>
@@ -57,7 +72,14 @@ export default function Profile() {
             <OrderHistoryArea>
                 <h5>Histórico de pedidos</h5>
                 <Line/>
-                <OrderHistoryCard>
+                    {loading
+                    ?<>
+                        <CircularProgress/>
+                        <h2>Carregando...</h2>
+                    </>
+                    :loadCards()
+                }
+                {/* <OrderHistoryCard>
                     <OrderHistoryTitleCard>Bullguer Vila Madalena</OrderHistoryTitleCard>
                     <OrderDate>23 outubro 2019</OrderDate>
                     <OrderTotalCost>Total R$67,00</OrderTotalCost>
@@ -76,7 +98,7 @@ export default function Profile() {
                     <OrderHistoryTitleCard>Bullguer Vila Madalena</OrderHistoryTitleCard>
                     <OrderDate>23 outubro 2019</OrderDate>
                     <OrderTotalCost>Total R$67,00</OrderTotalCost>
-                </OrderHistoryCard>
+                </OrderHistoryCard> */}
             </OrderHistoryArea>
         </ProfilePageContainer>
     )

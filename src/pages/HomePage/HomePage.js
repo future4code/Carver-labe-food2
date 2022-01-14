@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Button } from "@material-ui/core"
 import theme from "../../constants/theme"
@@ -20,6 +20,8 @@ import ImageCard from '../../assests/image.png'
 import Header from "../../components/header/Header";
 import Footer from "../../components/Footer/Footer";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
+import CurrentCardOrder from "../../components/CurrentCardOrder/CurrentCardOrder";
+import { getActiveOrder } from "../../services/services";
 
 
 
@@ -65,7 +67,8 @@ const useStylesCard = makeStyles({
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
+        position: 'relative',
     },
     title: {
         flexGrow: 1,
@@ -158,7 +161,8 @@ const HomePage = () => {
     const classes = useStyles();
     const classes1 = useStylesScrollableTabs();
     const classes2 = useStylesCard()
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
+    const [order, setOrder] = useState(null)
     const restaurant = [{
         "id": "1",
         "category": "Árabe",
@@ -260,6 +264,10 @@ const HomePage = () => {
         "description": "Falar em Mexicaníssimo é falar em comer uma comida tradicional e original mexicana! Diferentemente dos restaurantes tex-mex, aqui você encontra um menu completo tradicionalmente mexicano e com opções para vegetarianos e veganos."
     }]
 
+    useEffect(()=>{
+        getActiveOrder(setOrder)
+    },[])
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -326,7 +334,6 @@ const HomePage = () => {
         </TabPanel>
         )
     })
-    console.log(value)
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
@@ -366,6 +373,12 @@ const HomePage = () => {
                 
                 </div>
             </div>
+            {
+                order === null
+                ?<></>
+                :<CurrentCardOrder order={order}/>
+
+            }
         </ThemeProvider>
     );
 }
