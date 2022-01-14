@@ -3,15 +3,20 @@ import { ContainerInitialPage } from './styled';
 import { CardMedia } from '@material-ui/core';
 import LogoImg from '../../assests/logo.png'
 import { useNavigate } from 'react-router-dom';
-import { goToHome } from '../../router/coordinator';
+import { goToHome, goToLogin } from '../../router/coordinator';
 
 const InitialPage = () => {
   const navigate = useNavigate()
+  const token = localStorage.getItem('token')
   
   useEffect(()=>{
-    setTimeout(()=> navigate('/login'),2000)
+    if (token === null){
+      setTimeout(()=> goToLogin(navigate),2000)
+    }else{
+      setTimeout(()=> goToHome(navigate),2000)
+    }
+    
   },[])
-
 
   return (
     <ContainerInitialPage>
@@ -19,7 +24,6 @@ const InitialPage = () => {
         component="img"
         image={LogoImg}
         alt="pokemons"
-        onClick={() => goToHome(navigate)}
       />
 
     </ContainerInitialPage>

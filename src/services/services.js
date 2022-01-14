@@ -12,7 +12,7 @@ export const login = (body, navigate, setLoading, setState) => {
         setState(res.data.user)
         setLoading(false)
         // navigate('/cadastrar-endereco')
-        navigate('/perfil')
+        navigate('/home')
     }).catch((err) => {
         notify("error", err.response.data.message)
         setLoading(false)
@@ -169,7 +169,7 @@ export const getRestaurantsDetails = async (restaurantId) => {
 
 }
 
-export const getActiveOrder = () => {
+export const getActiveOrder = (setOrder) => {
     const url = BASE_URL + `/active-order`
     const token = localStorage.getItem('token')
 
@@ -180,23 +180,25 @@ export const getActiveOrder = () => {
     })
 
     request.then(res => {
-        return res.data
+        setOrder(res.data.order)
     }).catch(err => {
         notify("error", err.response.data.message)
     })
 }
-export const getOrderHistory = () => {
+export const getOrderHistory = (setOrderHistory) => {
+    console.log('aqui')
     const url = BASE_URL + `/orders/history`
     const token = localStorage.getItem('token')
-
+    
     const request = axios.get(url, {
         headers: {
             auth: token
         }
     })
-
+    
     request.then(res => {
-        return res.data
+        console.log(res.data.orders)
+        setOrderHistory(res.data.orders)
     }).catch(err => {
         notify("error", err.response.data.message)
     })

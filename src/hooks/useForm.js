@@ -8,5 +8,10 @@ export default function useForm(initialState) {
         setForm({...form, [name]:value})
         console.log(form)
     }
-    return [form, onChange]
+
+    const cleanFields = () => {
+        setForm(initialState)
+    }
+
+    return [form, onChange, cleanFields]
 }
