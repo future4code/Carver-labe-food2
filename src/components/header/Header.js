@@ -32,7 +32,7 @@ const Header = () => {
         )
     }
 
-    const cadastroHeader = () => {
+    const registerHeader = () => {
         return (
             <Container>
                 {
@@ -60,7 +60,7 @@ const Header = () => {
         )
     }
 
-    const enderecoHeader = () => {
+    const addressHeader = () => {
         return (
             <Container>
                 {
@@ -89,7 +89,7 @@ const Header = () => {
         )
     }
 
-    const buscarHeader = () => {
+    const searchHeader = () => {
         return (
             <Container>
                 <header>
@@ -106,7 +106,7 @@ const Header = () => {
         )
     }
 
-    const carrinhoHeader = () => {
+    const cartHeader = () => {
         return (
             <Container>
                 <header>
@@ -120,7 +120,7 @@ const Header = () => {
         )
     }
 
-    const perfilHeader = () => {
+    const profileHeader = () => {
         return (
             <Container>
                 <header>
@@ -134,7 +134,7 @@ const Header = () => {
         )
     }
 
-    const inicialHeader = () => {
+    const initialHeader = () => {
         return (
             <></>
         )
@@ -146,7 +146,7 @@ const Header = () => {
         )
     }
 
-    const detalhesRestauranteHeader = () => {
+    const restaurantDetailsHeader = () => {
         return (
             <Container>
                 <header>
@@ -163,32 +163,32 @@ const Header = () => {
         )
     }
 
-    const mudarHeader = () => {
+    const changeHeader = () => {
 
         switch (location.pathname) {
             case '/home':
                 return homeHeader();
             case '/cadastro':
-                return cadastroHeader()
+                return registerHeader()
             case '/cadastrar-endereco':
-                return enderecoHeader();
+                return addressHeader();
             case '/busca':
-                return buscarHeader();
+                return searchHeader();
             case '/carrinho':
-                return carrinhoHeader()
+                return cartHeader()
             case '/perfil':
-                return perfilHeader();
+                return profileHeader();
             case '/':
-                return inicialHeader()
+                return initialHeader()
             case '/login':
                 return loginHeader()
             default:
-                return detalhesRestauranteHeader()
+                return restaurantDetailsHeader()
         }
     }
 
     return (
-        <>{mudarHeader()}</>
+        <>{changeHeader()}</>
     )
 }
 
