@@ -6,7 +6,6 @@ export default function useForm(initialState) {
     const onChange = (e) => {
         const {name, value} = e.target
         setForm({...form, [name]:value})
-        console.log(form)
     }
 
     const cleanFields = () => {

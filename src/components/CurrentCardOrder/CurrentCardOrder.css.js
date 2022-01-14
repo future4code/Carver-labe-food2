@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const CurrentCardOrderContainer = styled.div`
-    width: 86vw;
+    width: 100vw;
     height: 95px;
     padding: 24px;
     background-color: #5cb646;

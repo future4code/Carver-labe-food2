@@ -1,12 +1,10 @@
 import React from 'react'
 import { CurrentCardOrderContainer, CurrentOrderInformation, OrderItenTitle, OrderTotal } from './CurrentCardOrder.css'
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 
 
 export default function CurrentCardOrder({order}) {
-    console.log(order)
+
     return (
         <CurrentCardOrderContainer>
             <QueryBuilderIcon />

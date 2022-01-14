@@ -21,8 +21,9 @@ export const login = (body, navigate, setLoading, setState) => {
 
 export const signUp = (body, setter, navigate, setLoading) => {
 
+    console.log(body)
     const url = BASE_URL + '/signup'
-
+    console.log(url)
 
     const request = axios.post(url, body)
 
@@ -35,6 +36,7 @@ export const signUp = (body, setter, navigate, setLoading) => {
 
     }).catch(err => {
         setLoading(false)
+        console.log(err.response)
         notify("error", err.response.data.message)
     })
 }
@@ -56,6 +58,7 @@ export const addAdress = (body, setLoading, setUser, navigate) => {
         navigate('/home', { replace: true })
     }).catch(err => {
         notify("error", err.response.data.message)
+        setLoading(false)
     })
 
 }

@@ -13,8 +13,9 @@ const placeOrder = (body, restaurantId) => {
 
     }).then(res => {
 
+        notify("success", "O pedido foi enviado!")
         return res.data.user
-
+        
     }).catch(err => {
 
         notify("error", err.response.data.message);

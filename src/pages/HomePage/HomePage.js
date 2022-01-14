@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import theme from "../../constants/theme"
 import { ThemeProvider } from '@material-ui/styles';
 import InputBase from "@material-ui/core/InputBase";
@@ -130,6 +130,7 @@ function a11yProps(index) {
 }
 const HomePage = () => {
     const navigate = useNavigate()
+    const location = useLocation()
     const classes = useStyles();
     const classes1 = useStylesScrollableTabs();
     const classes2 = useStylesCard()
@@ -139,7 +140,7 @@ const HomePage = () => {
     
     useEffect(()=>{
         getActiveOrder(setOrder)
-    },[])
+    },[location.pathname])
     
     const handleChange = (event, newValue) => {
         setValue(newValue);

@@ -33,7 +33,7 @@ const Footer = () => {
             setValue(2)
         }
 
-    }, [])
+    }, [location.pathname])
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
