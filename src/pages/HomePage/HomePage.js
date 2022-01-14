@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import theme from "../../constants/theme"
 import { ThemeProvider } from '@material-ui/styles';
@@ -10,6 +10,8 @@ import PropTypes from "prop-types";
 import { Text, TabsStyled, UnderTextCard, ContainerCardUnderText, SeachContainer, SearchContainer1 } from "./styled";
 import { goToSearch, goToRestaurantDetails } from "../../router/coordinator";
 import useRequestData from "../../hooks/useRequestData";
+import { getActiveOrder } from "../../services/services";
+import CurrentCardOrder from '../../components/CurrentCardOrder/CurrentCardOrder.js'
 
 
 const useStylesScrollableTabs = makeStyles((theme) => ({
@@ -41,7 +43,8 @@ const useStylesCard = makeStyles({
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
+        position: 'relative',
     },
     title: {
         flexGrow: 1,
@@ -130,9 +133,13 @@ const HomePage = () => {
     const classes = useStyles();
     const classes1 = useStylesScrollableTabs();
     const classes2 = useStylesCard()
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
+    const [order, setOrder] = useState(null)
     const restaurant=useRequestData('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants',[])
-
+    
+    useEffect(()=>{
+        getActiveOrder(setOrder)
+    },[])
     
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -242,6 +249,12 @@ const HomePage = () => {
                 
                 </div>
             </div>
+            {
+                order === null
+                ?<></>
+                :<CurrentCardOrder order={order}/>
+
+            }
         </ThemeProvider>
     );
 }

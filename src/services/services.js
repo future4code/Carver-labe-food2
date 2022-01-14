@@ -170,7 +170,7 @@ export const getRestaurantsDetails = async (restaurantId, token) => {
 
 }
 
-export const getActiveOrder = () => {
+export const getActiveOrder = (setOrder) => {
     const url = BASE_URL + `/active-order`
     const token = localStorage.getItem('token')
 
@@ -181,24 +181,26 @@ export const getActiveOrder = () => {
     })
 
     request.then(res => {
-        return res.data
+        setOrder(res.data.order)
     }).catch(err => {
         alert(err.response.data.message)
     })
 }
-export const getOrderHistory = () => {
+export const getOrderHistory = (setOrderHistory) => {
+    console.log('aqui')
     const url = BASE_URL + `/orders/history`
     const token = localStorage.getItem('token')
-
+    
     const request = axios.get(url, {
         headers: {
             auth: token
         }
     })
-
+    
     request.then(res => {
-        return res.data
+        console.log(res.data.orders)
+        setOrderHistory(res.data.orders)
     }).catch(err => {
-        alert(err.response.data.message)
+        alert(err.response)
     })
 }
