@@ -17,7 +17,7 @@ const GlobalState = (props) => {
         signUp(body, setUser, navigate, setLoading)
 
     }
-
+    
     const putAdress = (body, setLoading, navigate) => {
         addAdress(body, setLoading, setUser, navigate)
     }

@@ -12,8 +12,9 @@ const placeOrder = (body, restaurantId) => {
 
     }).then(res => {
 
+        alert("O pedido foi enviado!")
         return res.data.user
-
+        
     }).catch(err => {
 
         alert(err.response.data.message)
