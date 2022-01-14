@@ -105,7 +105,7 @@ const RegisterPage = () => {
                         <CardMedia
                             component="img"
                             image={Logo}
-                            alt="pokemons"
+                            alt="Logo da Future Eats"
                         />
                         {
                             states.user.name
