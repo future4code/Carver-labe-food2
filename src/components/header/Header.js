@@ -1,10 +1,10 @@
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { goToHome, goToLogin, goToProfile, goToRegister, goToReturn } from '../../router/coordinator'
+import { goToHome, goToLogin, goToProfile } from '../../router/coordinator'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { makeStyles } from '@material-ui/core/styles';
 import { IconButton, Toolbar, AppBar } from '@material-ui/core';
-import { Container } from './header.css';
+import { Container } from './styled';
 
 const useStyles1 = makeStyles((theme) => ({
     menuButton: {
@@ -17,7 +17,7 @@ const Header = () => {
     const history = useNavigate()
     const location = useLocation()
     const token = localStorage.getItem("token")
-   
+
     const homeHeader = () => {
         console.log("entrou")
         return (
@@ -37,25 +37,25 @@ const Header = () => {
         return (
             <Container>
                 {
-                    token ?  <header>
-                    <AppBar position="static">
-                        <Toolbar>
-                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                <ArrowBackIosIcon onClick={() => goToProfile(history)} />
-                            </IconButton>
-                            <p>Editar</p>
-                        </Toolbar>
-                    </AppBar>
-                </header> :
-                    <header>
-                    <AppBar position="static">
-                        <Toolbar>
-                            <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
-                                <ArrowBackIosIcon onClick={() => goToLogin(history)} />
-                            </IconButton>
-                        </Toolbar>
-                    </AppBar>
-                </header>
+                    token ? <header>
+                        <AppBar position="static">
+                            <Toolbar>
+                                <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
+                                    <ArrowBackIosIcon onClick={() => goToProfile(history)} />
+                                </IconButton>
+                                <p>Editar</p>
+                            </Toolbar>
+                        </AppBar>
+                    </header> :
+                        <header>
+                            <AppBar position="static">
+                                <Toolbar>
+                                    <IconButton edge="start" className={classes1.menuButton} color="inherit" aria-label="menu">
+                                        <ArrowBackIosIcon onClick={() => goToLogin(history)} />
+                                    </IconButton>
+                                </Toolbar>
+                            </AppBar>
+                        </header>
                 }
             </Container>
         )
@@ -165,10 +165,10 @@ const Header = () => {
     }
 
     const mudarHeader = () => {
-        
+
         switch (location.pathname) {
             case '/home':
-               return homeHeader();
+                return homeHeader();
             case '/cadastro':
                 return cadastroHeader()
             case '/cadastrar-endereco':
@@ -184,7 +184,7 @@ const Header = () => {
             case '/login':
                 return loginHeader()
             default:
-               return detalhesRestauranteHeader()  
+                return detalhesRestauranteHeader()
         }
     }
 

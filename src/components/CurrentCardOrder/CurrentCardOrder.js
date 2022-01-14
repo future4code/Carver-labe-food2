@@ -1,5 +1,5 @@
 import React from 'react'
-import { CurrentCardOrderContainer, CurrentOrderInformation, OrderItenTitle, OrderTotal } from './CurrentCardOrder.css'
+import { CurrentCardOrderContainer, CurrentOrderInformation, OrderItenTitle, OrderTotal } from './styled'
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 
 

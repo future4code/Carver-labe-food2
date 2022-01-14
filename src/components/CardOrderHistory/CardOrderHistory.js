@@ -1,5 +1,5 @@
 import React from "react";
-import { OrderHistoryCard, OrderHistoryTitleCard,OrderDate,OrderTotalCost } from "./CardOrderHistory.css";
+import { OrderHistoryCard, OrderHistoryTitleCard,OrderDate,OrderTotalCost } from "./styled"
 
 export default function CardOrderHistory({order}) {
     

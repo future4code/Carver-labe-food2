@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AddressInformation, ButtonContainer, GrayText, Line, OrderDate, OrderHistoryArea, OrderHistoryCard, OrderHistoryTitleCard, OrderTotalCost, PersonalInformationProfileArea, ProfilePageContainer, BotaoLogout } from './profile.css.js'
+import { AddressInformation, ButtonContainer, GrayText, Line, OrderHistoryArea, PersonalInformationProfileArea, ProfilePageContainer, BotaoLogout } from './styled'
 import IconButton from '@material-ui/core/IconButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
@@ -12,12 +12,11 @@ import { goToLogin } from '../../router/coordinator.js';
 import { Button } from '@material-ui/core';
 
 export default function Profile() {
-    const { states, setters, requests } = useContext(GlobalStateContext)
+    const { states, setters } = useContext(GlobalStateContext)
     const [address, setAddress] = useState()
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
     const [orderHistory, setOrderHistory] = useState([])
-    const token = localStorage.getItem('token')
 
     const clear = () => {
         localStorage.removeItem('token')
