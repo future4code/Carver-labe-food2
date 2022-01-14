@@ -6,13 +6,6 @@ import useForm from "../../hooks/useForm";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
 import { useNavigate } from "react-router-dom";
 
-// const useStyles1 = makeStyles((theme) => ({
-//     menuButton: {
-//         marginRight: theme.spacing(2),
-//     },
-
-// }));
-
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
@@ -52,18 +45,9 @@ const AndressPage = () => {
         }
     )
     const [loading, setLoading] = useState(false)
-    // const [values, setValues] = useState({
-    //     name: '',
-    //     email: '',
-    //     password: '',
-    // });
     const navigate = useNavigate()
 
     const title = states.user.address ? <></> : <p>Meu endereço</p>
-
-    // const handleChange = (prop) => (event) => {
-    //     setValues({ ...values, [prop]: event.target.value });
-    // };
 
     const handleSubmit = (event) => {
         event.preventDefault()

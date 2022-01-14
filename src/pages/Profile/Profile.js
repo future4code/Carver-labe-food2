@@ -7,7 +7,6 @@ import GlobalStateContext from '../../contexts/GlobalStateContext.js';
 import { getFullAddress, getOrderHistory } from '../../services/services.js';
 import { useNavigate } from 'react-router-dom';
 import CardOrderHistory from '../../components/CardOrderHistory/CardOrderHistory.js';
-import { Card } from '@material-ui/core';
 import { goToLogin } from '../../router/coordinator.js';
 import { Button } from '@material-ui/core';
 
@@ -20,6 +19,7 @@ export default function Profile() {
 
     const clear = () => {
         localStorage.removeItem('token')
+        localStorage.removeItem('user')
         goToLogin(navigate)
     }
 
@@ -35,7 +35,6 @@ export default function Profile() {
     }, [])
 
     const loadCards = () => {
-        console.log(orderHistory)
         return orderHistory !== [] 
         ? orderHistory.map((order) => {
             return <CardOrderHistory order={order} />
@@ -66,7 +65,7 @@ export default function Profile() {
                     </>
                     : <AddressInformation>
                         <GrayText>Endereço cadastrado</GrayText>
-                        <h5>{`${address.neighbourhood}, ${address.number} - ${address.city}`}</h5>
+                        <h5>{`${address.street}, ${address.number}${" " + address.complement + " -" || "-"} ${address.neighbourhood}  - ${address.city}`}</h5>
                         <ButtonContainer onClick={() => navigate('/cadastrar-endereco')}>
                             <IconButton aria-label="delete">
                                 <CreateOutlinedIcon />

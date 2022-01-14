@@ -21,9 +21,7 @@ export const login = (body, navigate, setLoading, setState) => {
 
 export const signUp = (body, setter, navigate, setLoading) => {
 
-    console.log(body)
     const url = BASE_URL + '/signup'
-    console.log(url)
 
     const request = axios.post(url, body)
 
@@ -36,7 +34,6 @@ export const signUp = (body, setter, navigate, setLoading) => {
 
     }).catch(err => {
         setLoading(false)
-        console.log(err.response)
         notify("error", err.response.data.message)
     })
 }
@@ -189,7 +186,6 @@ export const getActiveOrder = (setOrder) => {
     })
 }
 export const getOrderHistory = (setOrderHistory) => {
-    console.log('aqui')
     const url = BASE_URL + `/orders/history`
     const token = localStorage.getItem('token')
     
@@ -200,7 +196,6 @@ export const getOrderHistory = (setOrderHistory) => {
     })
     
     request.then(res => {
-        console.log(res.data.orders)
         setOrderHistory(res.data.orders)
     }).catch(err => {
         notify("error", err.response.data.message)

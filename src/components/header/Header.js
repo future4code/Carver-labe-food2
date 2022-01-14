@@ -19,7 +19,6 @@ const Header = () => {
     const token = localStorage.getItem("token")
 
     const homeHeader = () => {
-        console.log("entrou")
         return (
             <Container>
                 <header>
