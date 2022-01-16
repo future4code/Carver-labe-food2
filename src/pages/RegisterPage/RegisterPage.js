@@ -1,25 +1,15 @@
 import React, { useContext, useState } from "react";
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, CardMedia, TextField, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl, Toolbar, AppBar, FormHelperText } from '@material-ui/core';
+import { Button, CardMedia, TextField, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl, FormHelperText } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Container } from "./styled";
-import Logo from '../../assests/logo-preta.png'
+import Logo from '../../assets/logo-preta.png'
 import clsx from 'clsx';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-
 import useForm from "../../hooks/useForm";
-import { singUp } from "../../services/services";
 import { useNavigate } from "react-router-dom";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
 
-
-const useStyles1 = makeStyles((theme) => ({
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-
-}));
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -49,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 const RegisterPage = () => {
     const classes = useStyles();
     const navigate = useNavigate()
-    const { states, setters, requests } = useContext(GlobalStateContext)
+    const { states, requests } = useContext(GlobalStateContext)
 
     const [form, onChange] = useForm(states.user ||
     {
@@ -64,7 +54,8 @@ const RegisterPage = () => {
     const [values, setValues] = useState({
         password: '',
         showPassword: false,
-        error: false
+        error: false,
+        errorLegth: false
     });
 
     const handleChange = (prop) => (event) => {
@@ -85,26 +76,26 @@ const RegisterPage = () => {
             setValues({ ...values, error: true })
         } else {
             setValues({ ...values, error: false })
+        }
+    }
 
+    const handleLengthPassword = (e) => {
+        if(form.password.length < 6){
+            setValues({ ...values, errorLegth: true })
+        }else {
+            setValues({ ...values, errorLegth: false })
         }
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        if (states.user !== null && states.user.name !== 0) {
+        if (states.user.name) {
             setLoading(true)
             requests.requestUpdateProfile(form, setLoading, navigate)
         } else {
-            if (values.password == form.password) {
+            if (values.password == form.password && form.password.length >= 6) {
                 setLoading(true)
-                console.log("Aqui")
                 requests.requestSignup(form, navigate, setLoading)
-                onChange({
-                    name: ' ',
-                    email: '',
-                    password: '',
-                    cpf: ''
-                })
             }
         }
 
@@ -122,7 +113,7 @@ const RegisterPage = () => {
                         <CardMedia
                             component="img"
                             image={Logo}
-                            alt="pokemons"
+                            alt="Logo da Future Eats"
                         />
                         {
                             states.user.name
@@ -170,7 +161,10 @@ const RegisterPage = () => {
                                     ? <></>
                                     : <>
                                         <FormControl required className={clsx(classes.margin, classes.textField)} variant="outlined">
-                                            <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
+                                            <InputLabel 
+                                            htmlFor="outlined-adornment-password"
+                                            error={values.errorLegth}
+                                            >Senha</InputLabel>
                                             <OutlinedInput
                                                 id="outlined-adornment-password"
                                                 placeholder="Minimo 6 caracteres"
@@ -178,6 +172,8 @@ const RegisterPage = () => {
                                                 name="password"
                                                 value={form.password}
                                                 onChange={onChange}
+                                                onKeyUp={handleLengthPassword}
+                                                error={values.errorLegth}
                                                 endAdornment={
                                                     <InputAdornment position="end">
                                                         <IconButton
@@ -193,6 +189,7 @@ const RegisterPage = () => {
                                                 labelWidth={70}
                                                 required
                                             />
+                                            {values.errorLegth ? <FormHelperText>A senha precisa ter no mínimo 6 caracteres</FormHelperText> : <></>}
                                         </FormControl>
                                         <FormControl required className={clsx(classes.margin, classes.textField)} variant="outlined">
                                             <InputLabel
@@ -230,8 +227,8 @@ const RegisterPage = () => {
                             <>
                                 <Button style={{ textTransform: "none" }} variant="contained" color="primary" type="submit" className={classes.withoutLabel} >
                                     {states.user.name
-                                        ? 'salvar'
-                                        : "criar"}
+                                        ? 'Salvar'
+                                        : "Criar"}
                                 </Button>
                             </>
                         </form >

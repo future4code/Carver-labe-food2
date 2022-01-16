@@ -1,15 +1,16 @@
 import React, { useContext, useState } from "react"
 import { Button, CardMedia, TextField, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl } from "@material-ui/core";
-import Logo from '../../assests/logo-preta.png'
+import Logo from '../../assets/logo-preta.png'
 import { Container } from "./styled";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import useForm from "../../hooks/useForm";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
-import { ChangeHistory, Visibility, VisibilityOff } from '@material-ui/icons';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { goToRegister } from "../../router/coordinator";
 import { useNavigate } from "react-router-dom";
+import useUnprotectedPage from "../../hooks/useUnProtectedPage";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -37,14 +38,15 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginPage = () => {
     const classes = useStyles();
+    useUnprotectedPage()
 
     const [form, onChange] = useForm(
         {
-            email: "madreyv@gmail.com",
-            password: "123456"
+            email: "",
+            password: ""
         }
     )
-    const { states, setters, requests } = useContext(GlobalStateContext)
+    const { requests } = useContext(GlobalStateContext)
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
 
@@ -52,10 +54,6 @@ const LoginPage = () => {
     const [values, setValues] = React.useState({
         showPassword: false,
     });
-
-    const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-    };
 
     const handleClickShowPassword = () => {
         setValues({ ...values, showPassword: !values.showPassword });
@@ -86,40 +84,6 @@ const LoginPage = () => {
                     <>
                         <CircularProgress />
                         <h1>Carregando</h1>
-
-                        <FormControl required className={clsx(classes.margin, classes.textField)} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
-                            <OutlinedInput
-                                id="outlined-adornment-password"
-                                placeholder="Minimo 6 caracteres"
-                                type={values.showPassword ? 'text' : 'password'}
-                                value={values.password}
-                                onChange={handleChange('password')}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            edge="end"
-                                        >
-                                            {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                                labelWidth={70}
-                                required
-                            />
-                        </FormControl>
-                        <>
-                            <Button variant="contained" color="primary" className={classes.withoutLabel} >
-                                Entrar
-                            </Button>
-                            <Button color="#000000" className={classes.botao} onClick={() => goToRegister(navigate)}>
-                                Não possui cadastro? Clique aqui
-                            </Button>
-
-                        </>
                     </>
                     : <>
                         <p>Entrar</p>
@@ -142,11 +106,11 @@ const LoginPage = () => {
                                 <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
                                 <OutlinedInput
                                     id="outlined-adornment-password"
-                                    placeholder="Minimo 6 caracteres"
+                                    placeholder="Mínimo: 6 caracteres"
                                     type={values.showPassword ? 'text' : 'password'}
                                     value={form.password}
                                     name='password'
-                                    onChange={onchange}
+                                    onChange={onChange}
                                     endAdornment={
                                         <InputAdornment position="end">
                                             <IconButton
@@ -175,9 +139,9 @@ const LoginPage = () => {
 
                     </>
             }
-        </Container>   
-       
-       
+        </Container>
+
+
     )
 }
 

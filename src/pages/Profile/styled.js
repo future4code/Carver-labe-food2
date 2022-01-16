@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Button } from "@material-ui/core"
 
 export const ProfilePageContainer = styled.section`
     display: flex;
@@ -16,7 +15,6 @@ export const PersonalInformationProfileArea = styled.div`
     justify-content: space-between;
     align-items: flex-start;
     padding: 16px;
-
     width: 91vw;
 
     h5{
@@ -67,37 +65,7 @@ export const Line = styled.div`
     border-bottom: 1px solid  black;
 `
 
-export const OrderHistoryCard = styled.div`
-    padding: 16px;
-    border-radius: 8px;
-    border: solid 1px #b8b8b8;
-    margin-bottom: 8px;
-`
-
-export const OrderDate = styled.h6`
-    font-size: 12px;
-    font-weight: normal;
-    letter-spacing: -0.29px;
-    color: #000000;
-    margin: 0 0 9px;
-
-`
-export const OrderHistoryTitleCard = styled.h6`
-    margin: 0 0 9px;
-    font-size: 16px;
-    font-weight: normal;
-    letter-spacing: -0.39px;
-    color: #5cb646;
-`
-
-export const OrderTotalCost = styled.h6`
-    margin: 7px 0 0;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: -0.39px;
-`
-
 export const BotaoLogout = styled.div`
-position: relative;
-margin-left: 30vw;
+    position: relative;
+    margin-left: 30vw;
 `

@@ -1,68 +1,55 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# FUTURE EATS
+## Projeto Future Eats
+### Surge: https://useless-island.surge.sh/
 
-## Available Scripts
+### O que é:
+Future Eats é uma aplicação mobile-first que simula um marketplace de vendas e entregas de refeições pela internet. Projeto final desenvolvido por um grupo de estudantes no término do módulo de Front-end. O layout do projeto é uma reprodução do design criado por Camila Mizutani baseado no UberEats.
 
-In the project directory, you can run:
+### Como usar: 
+1) Cadastre uma conta ou faça login;
+2) Explore os restaurantes;
+3) Faça um pedido e visualize-o no carrinho;
+4) Edite suas informações de perfil e confira seu histórico de pedidos;
+5) Vá para Home e veja um banner de seu pedido em andamento. Quando ele chegar, sumirá a notificação de sua tela;
 
-### `npm start`
+### Principais funcionalidades:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Autenticação e Verificação;
+- Renderização de listas e categorização de restaurantes;
+- Filtro;
+- Adição e remoção de produtos no carrinho;
+- Mudança de página através de rotas;
+- Estado Global e armazenamento no LocalStorage;
+- Requisições via API;
+- Footer e Header componentizados;
+- Hooks Personalizados;
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Tecnologias utilizadas:
+* React.js (Hooks, Context....)
+* Biblioteca Axios
+* Biblioteca Styled Components
+* Biblioteca Material UI
+* Biblioteca AntD
+* React Router 6.2.1
+* API LABEFOOD
 
-### `npm test`
+### Nome dos integrantes:
+- Anna Isabella Gomes Quaranta
+- José Rodolfo Valério Costa
+- Madreyv Gomes
+- Soraia Aparecida Chaves Cordeiro Lima
+- Yanikisia Kathlyn Barbosa Cavalcante
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Imagens da aplicação mobile, inspirado no design de Camila Mizutani:
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![image](https://media.discordapp.net/attachments/913923827623415859/931653010524885092/Captura_de_Tela_44.png?width=264&height=468)
+![image](https://media.discordapp.net/attachments/913923827623415859/931654504343027752/unknown.png?width=264&height=467)
+![image](https://media.discordapp.net/attachments/913923827623415859/931653742510604288/Captura_de_Tela_50.png?width=266&height=468)
+![image](https://media.discordapp.net/attachments/913923827623415859/931653051125735444/Captura_de_Tela_46.png?width=260&height=467)
+![image](https://media.discordapp.net/attachments/913923827623415859/931655246948757574/unknown.png?width=264&height=467)
+![image](https://media.discordapp.net/attachments/913923827623415859/931653087351930890/Captura_de_Tela_47.png?width=266&height=467)
+![image](https://media.discordapp.net/attachments/913923827623415859/931655610607501452/unknown.png?width=267&height=468)
+![image](https://media.discordapp.net/attachments/913923827623415859/931655925557764186/unknown.png?width=261&height=468)
+![image](https://media.discordapp.net/attachments/913923827623415859/931656341376880690/unknown.png?width=263&height=468)
+![image](https://media.discordapp.net/attachments/913923827623415859/931656451775160320/unknown.png?width=262&height=468)
+![image](https://media.discordapp.net/attachments/913923827623415859/931664098620477472/unknown.png?width=265&height=468)

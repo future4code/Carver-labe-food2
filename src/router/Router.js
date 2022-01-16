@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "../components/header/Header";
 import HomePage from '../pages/HomePage/HomePage'
 import Profile from "../pages/Profile/Profile";
@@ -11,11 +11,12 @@ import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import CartPage from "../pages/CartPage/CartPage";
 import Footer from "../components/Footer/Footer";
 import SeachPage from "../pages/SearchPage/SearchPage";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const Router = () => {
     return (
         <BrowserRouter>
-            <Header/>
+            <Header />
             <Routes>
                 <Route path={"/"} element={<InitialPage />} />
                 <Route path={"/home"} element={<HomePage />} />
@@ -23,12 +24,12 @@ const Router = () => {
                 <Route path={"/cadastro"} element={<RegisterPage />} />
                 <Route path={"/cadastrar-endereco"} element={<AndressPage />} />
                 <Route path={"/restaurante/:id"} element={<RestaurantDetail />} />
-                <Route path={"/carrinho"} element={<CartPage/>}/>
-                <Route path={"/perfil"} element={<Profile/>} />
-                <Route path={"/search"} element={<SeachPage/>} />
-                <Route path="*" element={<>Not Found</>}/>
+                <Route path={"/carrinho"} element={<CartPage />} />
+                <Route path={"/perfil"} element={<Profile />} />
+                <Route path={"/busca"} element={<SeachPage />} />
+                <Route path="*" element={<ErrorPage />} />
             </Routes>
-            <Footer/>
+            <Footer />
         </BrowserRouter>
     )
 }

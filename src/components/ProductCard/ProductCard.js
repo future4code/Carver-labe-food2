@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import * as C from "./styled";
 import ConfirmDialog from "../ConfirmDialog/ConfirmDialog";
-import GlobalStateContext from "../../../contexts/GlobalStateContext";
+import GlobalStateContext from "../../contexts/GlobalStateContext";
 
 const ProductCard = ({ photo, id, name, description, price, quantify, restaurant }) => {
-    const { states, setters, requests } = useContext(GlobalStateContext)
+    const { states, setters } = useContext(GlobalStateContext)
     const [open, setOpen] = useState(false);
     const product = { photo, id, name, description, price, quantify, restaurant }
 

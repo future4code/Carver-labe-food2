@@ -23,5 +23,5 @@ export const goToProfile = (history) =>{
 }
 
 export const goToSearch=(history)=>{
-    history("/search")
+    history("/busca")
 }
