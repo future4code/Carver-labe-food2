@@ -6,8 +6,8 @@ import InputBase from "@material-ui/core/InputBase";
 import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from "@material-ui/icons/Search";
 import { CardMedia, Card, CardContent, CardActionArea, Toolbar, Typography } from "@material-ui/core";
-import styled from "styled-components";
-import { UnderTextCard, ContainerCardUnderText, SeachContainer, DivStyled } from "./styled";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { UnderTextCard, ContainerCardUnderText, SeachContainer, DivStyled, SeachContainer1,  CardContainer } from "./styled";
 import { goToRestaurantDetails } from "../../router/coordinator";
 import useRequestData from "../../hooks/useRequestData";
 
@@ -89,9 +89,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const SearchContainer = styled.div`
-  margin: 12px 12px 16px 16px;
-`;
 
 
 
@@ -155,7 +152,7 @@ const SeachPage = () => {
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
-                <SearchContainer>
+                <SeachContainer1>
                     <SeachContainer color="transparent" position="static">
                         <Toolbar>
                             <div className={classes.search}>
@@ -176,14 +173,14 @@ const SeachPage = () => {
                             </div>
                         </Toolbar>
                     </SeachContainer>
-                </SearchContainer>
+                </SeachContainer1>
                 <DivStyled>
                     {value === "" ?
                         <p> Busque por nome de restaurante</p> :
                         loading ?
-                            <p>Carregando...</p>
+                        <CircularProgress/>
                             :
-                            cardFilter.length ? card : <p> Não encontramos :(</p>}
+                            cardFilter.length ? <CardContainer> {card }</CardContainer>: <p> Não encontramos :(</p>}
                 </DivStyled>
             </div>
         </ThemeProvider>

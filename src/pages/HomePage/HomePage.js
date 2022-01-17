@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from "@material-ui/icons/Search";
 import { CardMedia, Card, CardContent, CardActionArea, Box, Toolbar, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
-import { Text, TabsStyled, UnderTextCard, ContainerCardUnderText, SeachContainer, SearchContainer1 } from "./styled";
+import { Text, TabsStyled, UnderTextCard, ContainerCardUnderText, SeachContainer, SearchContainer1, PanelArea } from "./styled";
 import { goToSearch, goToRestaurantDetails } from "../../router/coordinator";
 import useRequestData from "../../hooks/useRequestData";
 import { getActiveOrder } from "../../services/services";
@@ -134,6 +134,7 @@ const HomePage = () => {
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+       
     };
 
 
@@ -163,6 +164,7 @@ const HomePage = () => {
 
         return filter.map((restaurant) => {
             return (
+              
                 <Card key={restaurant.id} onClick={() => goToRestaurantDetails(navigate, restaurant.id)} className={classes2.root}>
                     <CardActionArea>
                         <CardMedia
@@ -185,6 +187,7 @@ const HomePage = () => {
                         </CardContent>
                     </CardActionArea>
                 </Card>
+                
             )
         })
     }
@@ -194,6 +197,7 @@ const HomePage = () => {
     const tabspanel = restaurant.restaurants && tabs.map((tabs) => {
         index2 = index2 + 1
         return (
+           
             <TabPanel key={index2} value={value} index={index2}>
                 {filterRestaurants(tabs.props.label)}
             </TabPanel>
@@ -231,11 +235,13 @@ const HomePage = () => {
                         variant="scrollable"
                         scrollButtons="off"
                         aria-label="scrollable prevent tabs example"
+                        indicatorColor="transparent"
                     >
                         {tabs}
                     </TabsStyled>
+                    <PanelArea>
                     {tabspanel}
-
+                    </PanelArea>
                 </div>
             </div>
             {
