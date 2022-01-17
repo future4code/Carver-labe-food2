@@ -29,4 +29,24 @@ export const DivStyled = styled.div`
             }
         }
     }
+    
+`
+export const SeachContainer1 = styled.div`
+  margin: 12px 12px 16px 16px;
+
+`;
+
+export const CardContainer=styled.div`
+@media screen and (min-device-width : 481px) and (max-device-width : 800px) {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    }
+    
+    @media screen and (min-device-width : 1024px) {
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+    
+    }
 `
