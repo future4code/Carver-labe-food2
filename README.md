@@ -36,11 +36,11 @@ Future Eats é uma aplicação mobile-first que simula um marketplace de vendas 
 * API LABEFOOD
 
 ### Nome dos integrantes:
-- Anna Isabella Gomes Quaranta
-- José Rodolfo Valério Costa
-- Madreyv Gomes
-- Soraia Aparecida Chaves Cordeiro Lima
-- Yanikisia Kathlyn Barbosa Cavalcante
+- <a href="https://github.com/BellaQuaranta" target=_blank> Anna Isabella Gomes Quaranta </a>
+- <a href="https://github.com/rodolforgo" target=_blank> José Rodolfo Valério Costa </a>
+- <a href="https://github.com/Madreyv" target=_blank> Madreyv Gomes </a>
+- <a href="https://github.com/soraia-aparecida" target=_blank> Soraia Aparecida Chaves Cordeiro Lima </a>
+- <a href="https://github.com/yanikisia" target=_blank> Yanikisia Kathlyn Barbosa Cavalcante </a>
 
 ### Imagens da aplicação mobile, inspirado no design de Camila Mizutani:
 
